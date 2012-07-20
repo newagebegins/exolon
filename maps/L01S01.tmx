@@ -29,6 +29,36 @@
   <object name="vitorc" x="48" y="224" width="48" height="64"/>
   <object name="ship_fire" x="16" y="112" width="16" height="32"/>
   <object name="ship_fire" x="144" y="112" width="16" height="32"/>
+  <object name="light" x="0" y="128" width="16" height="16">
+   <properties>
+    <property name="placement" value="floor"/>
+   </properties>
+  </object>
+  <object name="light" x="80" y="128" width="16" height="16">
+   <properties>
+    <property name="placement" value="floor"/>
+   </properties>
+  </object>
+  <object name="light" x="160" y="128" width="16" height="16">
+   <properties>
+    <property name="placement" value="floor"/>
+   </properties>
+  </object>
+  <object name="light" x="64" y="176" width="16" height="16">
+   <properties>
+    <property name="placement" value="ceiling"/>
+   </properties>
+  </object>
+  <object name="light" x="80" y="176" width="16" height="16">
+   <properties>
+    <property name="placement" value="ceiling"/>
+   </properties>
+  </object>
+  <object name="light" x="96" y="176" width="16" height="16">
+   <properties>
+    <property name="placement" value="ceiling"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Tile Layer 2" width="32" height="24">
   <data encoding="base64">
