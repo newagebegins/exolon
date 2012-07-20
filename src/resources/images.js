@@ -31,6 +31,11 @@ define(function () {
       type: "image",
       src: "images/blaster_bullet.gif",
     },
+    {
+      name: "ship_fire",
+      type: "image",
+      src: "images/ship_fire.gif",
+    },
   ];
   
   return images;

@@ -6,6 +6,7 @@ define(
     "src/screens/PlayScreen",
     
     "src/entities/VitorcEntity",
+    "src/entities/ShipFireEntity",
   ],
   function (
     me,
@@ -13,7 +14,8 @@ define(
     
     PlayScreen,
     
-    VitorcEntity
+    VitorcEntity,
+    ShipFireEntity
   ) {
     
   var app = {
@@ -30,6 +32,7 @@ define(
       me.state.set(me.state.PLAY, new PlayScreen());
       
       me.entityPool.add("vitorc", VitorcEntity);
+      me.entityPool.add("ship_fire", ShipFireEntity);
       
       me.input.bindKey(me.input.KEY.LEFT, "left");
       me.input.bindKey(me.input.KEY.RIGHT, "right");
