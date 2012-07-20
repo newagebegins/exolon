@@ -1,0 +1,13 @@
+#info {
+  overflow: auto;
+}
+#info, #app {
+  width: 512px;
+}
+#fps {
+  float: right;
+}
+#framecounter {
+  font-size: 10px;
+  font-family: "Courier New";
+}
