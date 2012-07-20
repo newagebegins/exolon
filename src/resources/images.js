@@ -17,6 +17,11 @@ define(function () {
       src: "images/ship.gif",
     },
     {
+      name: "gate",
+      type: "image",
+      src: "images/gate.gif",
+    },
+    {
       name: "vitorc",
       type: "image",
       src: "images/vitorc.gif",
