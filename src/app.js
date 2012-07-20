@@ -35,6 +35,7 @@ define(
       me.input.bindKey(me.input.KEY.RIGHT, "right");
       me.input.bindKey(me.input.KEY.UP, "jump");
       me.input.bindKey(me.input.KEY.DOWN, "duck");
+      me.input.bindKey(me.input.KEY.SPACE, "fire");
       
       me.state.change(me.state.PLAY);
     },

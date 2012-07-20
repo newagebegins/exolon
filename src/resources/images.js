@@ -21,6 +21,11 @@ define(function () {
       type: "image",
       src: "images/vitorc.gif",
     },
+    {
+      name: "blaster_bullet",
+      type: "image",
+      src: "images/blaster_bullet.gif",
+    },
   ];
   
   return images;

@@ -1,9 +1,11 @@
 define(
   [
-    "src/me"
+    "src/me",
+    "src/entities/BlasterBulletEntity",
   ],
   function (
-    me
+    me,
+    BlasterBulletEntity
   ) {
       
   var VitorcEntity = me.ObjectEntity.extend({
@@ -25,6 +27,9 @@ define(
       
       this.setVelocity(1.5, 3);
       this.gravity = 0.1;
+      
+      this.canFire = true;
+      this.direction = "right";
     },
     
     update: function () {
@@ -40,10 +45,27 @@ define(
     },
     
     handleInput: function () {
+      this.handleFireKey();
+      
       if (this.isCurrentAnimation("jump")) {
         return;
       }
-      
+      else {
+        this.handleInputOnTheGround();
+      }
+    },
+    
+    handleFireKey: function () {
+      if (me.input.isKeyPressed("fire")) {
+        this.fire();
+        this.canFire = false;
+      }
+      else {
+        this.canFire = true;
+      }
+    },
+    
+    handleInputOnTheGround: function () {
       if (me.input.isKeyPressed("duck")) {
         this.setCurrentAnimation("duck");
         this.vel.x = 0;
@@ -51,10 +73,12 @@ define(
       }
       
       if (me.input.isKeyPressed("right")) {
+        this.direction = "right";
         this.setCurrentAnimation("move");
         this.doWalk(false);
       }
       else if (me.input.isKeyPressed("left")) {
+        this.direction = "left";
         this.setCurrentAnimation("move");
         this.doWalk(true);
       }
@@ -73,11 +97,45 @@ define(
       }
     },
     
+    fire: function () {
+      if (!this.canFire) {
+        return;
+      }
+      var pos = this.getBlasterBulletPosition();
+      var bullet = new BlasterBulletEntity(pos.x, pos.y, this.direction);
+      me.game.add(bullet, this.z);
+      me.game.sort();
+    },
+    
+    getBlasterBulletPosition: function () {
+      var pos = {};
+      
+      if (this.direction == "right") {
+        pos.x = this.pos.x + this.width + VitorcEntity.BLASTER_BULLET_OFFSET_X;
+      }
+      else {
+        pos.x = this.pos.x - BlasterBulletEntity.WIDTH - VitorcEntity.BLASTER_BULLET_OFFSET_X;
+      }
+      
+      if (this.isCurrentAnimation("duck")) {
+        pos.y = this.pos.y + VitorcEntity.BLASTER_BULLET_OFFSET_Y_DUCK;
+      }
+      else {
+        pos.y = this.pos.y + VitorcEntity.BLASTER_BULLET_OFFSET_Y_NORMAL;
+      }
+      
+      return pos;
+    },
+    
     isOnTheGround: function () {
       return !this.jumping && !this.falling;
     },
     
   });
+  
+  VitorcEntity.BLASTER_BULLET_OFFSET_X = 2;
+  VitorcEntity.BLASTER_BULLET_OFFSET_Y_NORMAL = 30;
+  VitorcEntity.BLASTER_BULLET_OFFSET_Y_DUCK = VitorcEntity.BLASTER_BULLET_OFFSET_Y_NORMAL + 10;
   
   return VitorcEntity;
   
