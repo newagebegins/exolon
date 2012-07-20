@@ -17,6 +17,7 @@ define(
       this.addAnimation("stand", [0]);
       this.addAnimation("move", [0,1,2,3,4,0,5,6,7,8]);
       this.addAnimation("jump", [3]);
+      this.addAnimation("duck", [9]);
       
       this.setCurrentAnimation("stand");
       
@@ -40,6 +41,12 @@ define(
     
     handleInput: function () {
       if (this.isCurrentAnimation("jump")) {
+        return;
+      }
+      
+      if (me.input.isKeyPressed("duck")) {
+        this.setCurrentAnimation("duck");
+        this.vel.x = 0;
         return;
       }
       
