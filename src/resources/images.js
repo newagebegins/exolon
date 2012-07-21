@@ -32,6 +32,11 @@ define(function () {
       src: "images/blaster_bullet.gif",
     },
     {
+      name: "grenade",
+      type: "image",
+      src: "images/grenade.gif",
+    },
+    {
       name: "ship_fire",
       type: "image",
       src: "images/ship_fire.gif",

@@ -2,10 +2,12 @@ define(
   [
     "src/me",
     "src/entities/BlasterBulletEntity",
+    "src/entities/GrenadeEntity",
   ],
   function (
     me,
-    BlasterBulletEntity
+    BlasterBulletEntity,
+    GrenadeEntity
   ) {
       
   var VitorcEntity = me.ObjectEntity.extend({
@@ -28,13 +30,21 @@ define(
       this.setVelocity(1.5, 2.75);
       this.gravity = 0.1;
       
-      this.canFire = true;
+      this.firePressed = false;
+      this.grenadeLaunchDuration = 30;
+      this.grenadeLaunchTimer = 0;
+      
       this.direction = "right";
     },
     
     update: function () {
       if (this.isCurrentAnimation("jump") && this.isOnTheGround()) {
         this.setCurrentAnimation("stand");
+      }
+      
+      if (this.grenadeLaunchTimer > this.grenadeLaunchDuration) {
+        this.grenadeLaunchTimer = 0;
+        this.fireGrenade();
       }
       
       this.handleInput();
@@ -56,11 +66,13 @@ define(
     
     handleFireKey: function () {
       if (me.input.isKeyPressed("fire")) {
-        this.fire();
-        this.canFire = false;
+        this.fireBlaster();
+        this.firePressed = true;
+        this.grenadeLaunchTimer++;
       }
       else {
-        this.canFire = true;
+        this.firePressed = false;
+        this.grenadeLaunchTimer = 0;
       }
     },
     
@@ -96,13 +108,20 @@ define(
       }
     },
     
-    fire: function () {
-      if (!this.canFire) {
+    fireBlaster: function () {
+      if (this.firePressed) {
         return;
       }
       var pos = this.getBlasterBulletPosition();
       var bullet = new BlasterBulletEntity(pos.x, pos.y, this.direction);
       me.game.add(bullet, this.z);
+      me.game.sort();
+    },
+    
+    fireGrenade: function () {
+      var pos = this.getGrenadePosition();
+      var grenade = new GrenadeEntity(pos.x, pos.y, this.direction);
+      me.game.add(grenade, this.z);
       me.game.sort();
     },
     
@@ -117,10 +136,30 @@ define(
       }
       
       if (this.isCurrentAnimation("duck")) {
-        pos.y = this.pos.y + VitorcEntity.BLASTER_BULLET_OFFSET_Y_DUCK;
+        pos.y = this.pos.y + VitorcEntity.BLASTER_BULLET_OFFSET_Y + VitorcEntity.DUCK_OFFSET;
       }
       else {
-        pos.y = this.pos.y + VitorcEntity.BLASTER_BULLET_OFFSET_Y_NORMAL;
+        pos.y = this.pos.y + VitorcEntity.BLASTER_BULLET_OFFSET_Y;
+      }
+      
+      return pos;
+    },
+    
+    getGrenadePosition: function () {
+      var pos = {};
+      
+      if (this.direction == "right") {
+        pos.x = this.pos.x + VitorcEntity.GRENADE_OFFSET_X;
+      }
+      else {
+        pos.x = this.pos.x + this.width - GrenadeEntity.WIDTH - VitorcEntity.GRENADE_OFFSET_X;
+      }
+      
+      if (this.isCurrentAnimation("duck")) {
+        pos.y = this.pos.y + VitorcEntity.GRENADE_OFFSET_Y + VitorcEntity.DUCK_OFFSET;
+      }
+      else {
+        pos.y = this.pos.y + VitorcEntity.GRENADE_OFFSET_Y;
       }
       
       return pos;
@@ -132,9 +171,13 @@ define(
     
   });
   
+  VitorcEntity.DUCK_OFFSET = 10;
+  
   VitorcEntity.BLASTER_BULLET_OFFSET_X = 2;
-  VitorcEntity.BLASTER_BULLET_OFFSET_Y_NORMAL = 30;
-  VitorcEntity.BLASTER_BULLET_OFFSET_Y_DUCK = VitorcEntity.BLASTER_BULLET_OFFSET_Y_NORMAL + 10;
+  VitorcEntity.BLASTER_BULLET_OFFSET_Y = 30;
+  
+  VitorcEntity.GRENADE_OFFSET_X = 20;
+  VitorcEntity.GRENADE_OFFSET_Y = 7;
   
   return VitorcEntity;
   
