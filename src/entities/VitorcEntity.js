@@ -25,7 +25,7 @@ define(
       
       this.animationspeed = 2;
       
-      this.setVelocity(1.5, 3);
+      this.setVelocity(1.5, 2.75);
       this.gravity = 0.1;
       
       this.canFire = true;
@@ -33,13 +33,12 @@ define(
     },
     
     update: function () {
-      this.handleInput();
-      this.updateMovement();
-      
       if (this.isCurrentAnimation("jump") && this.isOnTheGround()) {
         this.setCurrentAnimation("stand");
       }
       
+      this.handleInput();
+      this.updateMovement();
       this.parent();
       return true;
     },
