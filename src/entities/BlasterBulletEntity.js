@@ -1,9 +1,11 @@
 define(
   [
     "src/me",
+    "src/entities/BlasterExplosion",
   ],
   function (
-    me
+    me,
+    BlasterExplosion
   ) {
       
   var BlasterBulletEntity = me.ObjectEntity.extend({
@@ -19,16 +21,41 @@ define(
     },
     
     update: function () {
-      this.vel.x = this.direction == "right" ? BlasterBulletEntity.SPEED : -BlasterBulletEntity.SPEED;
+      this.updateVelocity();
       this.updateMovement();
-      
-      this.passedDistance += BlasterBulletEntity.SPEED;
-      if (this.passedDistance > BlasterBulletEntity.RANGE || this.vel.x == 0) {
-        me.game.remove(this);
-        me.gamestat.updateValue("aliveBlasterBulletCount", -1);
-      }
-      
+      this.updatePassedDistance();
+      this.handleCollisions();
       return true;
+    },
+    
+    updateVelocity: function () {
+      this.vel.x = this.direction == "right" ? BlasterBulletEntity.SPEED : -BlasterBulletEntity.SPEED;
+    },
+    
+    updatePassedDistance: function () {
+      this.passedDistance += BlasterBulletEntity.SPEED;
+      if (this.passedDistance > BlasterBulletEntity.RANGE) {
+        me.game.remove(this);
+      }
+    },
+    
+    handleCollisions: function () {
+      var res = me.game.collide(this);
+      
+      if (this.vel.x == 0 || res) {
+        me.game.remove(this);
+        this.createExplosion();
+      }
+    },
+    
+    createExplosion: function () {
+      var explosion = new BlasterExplosion(this.pos.x, this.pos.y + 8);
+      me.game.add(explosion, this.z);
+      me.game.sort();
+    },
+    
+    onDestroyEvent: function () {
+      me.gamestat.updateValue("aliveBlasterBulletCount", -1);
     },
     
   });

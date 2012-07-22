@@ -68,6 +68,11 @@ define(function () {
       src: "images/blaster_bullet.gif",
     },
     {
+      name: "blaster_explosion",
+      type: "image",
+      src: "images/blaster_explosion.gif",
+    },
+    {
       name: "grenade",
       type: "image",
       src: "images/grenade.gif",

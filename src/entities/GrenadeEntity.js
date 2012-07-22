@@ -48,10 +48,13 @@ define(
       
       if (this.vel.x == 0 || this.vel.y == 0) {
         me.game.remove(this);
-        me.gamestat.updateValue("aliveGrenadesCount", -1);
       }
       
       return true;
+    },
+    
+    onDestroyEvent: function () {
+      me.gamestat.updateValue("aliveGrenadesCount", -1);
     },
     
   });
