@@ -35,6 +35,8 @@ define(
       this.gravity = 0.1;
       
       this.firePressed = false;
+      this.grenadeFireDuration = 35;
+      this.grenadeFireTimer = 0;
       
       this.direction = "right";
     },
@@ -66,9 +68,11 @@ define(
         this.fireBlaster();
         this.fireGrenade();
         this.firePressed = true;
+        this.grenadeFireTimer++;
       }
       else {
         this.firePressed = false;
+        this.grenadeFireTimer = 0;
       }
     },
     
@@ -105,7 +109,7 @@ define(
     },
     
     fireBlaster: function () {
-      if (this.firePressed) {
+      if (!this.canFireBlaster()) {
         return;
       }
       var pos = this.getBlasterBulletPosition();
@@ -114,10 +118,14 @@ define(
       me.game.sort();
       
       global.aliveBlasterBulletCount++;
+      
+      if (me.game.HUD.getItemValue("ammo") > 0) {
+        me.game.HUD.updateItemValue("ammo", -1);
+      }
     },
     
     fireGrenade: function () {
-      if (global.aliveBlasterBulletCount > 0 || global.aliveGrenadesCount > 0) {
+      if (!this.canFireGrenade()) {
         return;
       }
       var grenadePos = this.getGrenadePosition();
@@ -195,6 +203,23 @@ define(
     
     isOnTheGround: function () {
       return !this.jumping && !this.falling;
+    },
+    
+    canFireBlaster: function () {
+      if (this.firePressed || me.game.HUD.getItemValue("ammo") == 0) {
+        return false;
+      }
+      return true;
+    },
+    
+    canFireGrenade: function () {
+      if (global.aliveBlasterBulletCount > 0 || global.aliveGrenadesCount > 0) {
+        return false;
+      }
+      if (this.grenadeFireTimer < this.grenadeFireDuration) {
+        return false;
+      }
+      return true;
     },
     
   });

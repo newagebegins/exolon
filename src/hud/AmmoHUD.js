@@ -10,8 +10,8 @@ define(
   
   var AmmoHUD = me.HUD_Item.extend({
     
-    init: function(x, y) {
-      this.parent(x, y);
+    init: function(x, y, val) {
+      this.parent(x, y, val);
       
       this.fontCyan = new me.BitmapFont("font_cyan", 16);
       this.fontCyan.set("left")
