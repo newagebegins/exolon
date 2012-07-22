@@ -142,6 +142,8 @@ define(
         return;
       }
       
+      this.stand();
+      
       if (me.input.isKeyPressed("right")) {
         this.direction = "right";
         this.setCurrentAnimation("move");
@@ -156,13 +158,6 @@ define(
       if (me.input.isKeyPressed("jump")) {
         this.setCurrentAnimation("jump");
         this.doJump();
-      }
-      
-      if (!me.input.isKeyPressed("right") &&
-          !me.input.isKeyPressed("left") &&
-          !me.input.isKeyPressed("jump")
-      ) {
-        this.stand();
       }
     },
     
