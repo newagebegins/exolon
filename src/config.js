@@ -4,6 +4,7 @@ define(function () {
     initialAmmo: 99,
     initialGrenades: 10,
     initialPoints: 0,
+    initialLives: 9,
   };
   
   return config;
