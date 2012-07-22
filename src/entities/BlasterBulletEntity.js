@@ -15,6 +15,8 @@ define(
       settings.image = "blaster_bullet";
       this.parent(x, y, settings);
       
+      this.name = "blaster_bullet";
+      
       this.direction = direction;
       this.gravity = 0;
       this.passedDistance = 0;
@@ -44,6 +46,9 @@ define(
       
       if (this.vel.x == 0 || res) {
         me.game.remove(this);
+      }
+      
+      if (res) {
         this.createExplosion();
       }
     },
