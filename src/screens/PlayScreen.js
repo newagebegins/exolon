@@ -17,6 +17,9 @@ define(
       
       me.game.addHUD(0, 352, 512, 32);
       me.game.HUD.addItem("ammo", new AmmoHUD(0, 0, config.initialAmmo));
+      
+      me.gamestat.add("aliveBlasterBulletCount", 0);
+      me.gamestat.add("aliveGrenadesCount", 0);
     },
     
   });

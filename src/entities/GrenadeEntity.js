@@ -1,11 +1,9 @@
 define(
   [
     "src/me",
-    "src/global",
   ],
   function (
-    me,
-    global
+    me
   ) {
       
   var GrenadeEntity = me.ObjectEntity.extend({
@@ -50,7 +48,7 @@ define(
       
       if (this.vel.x == 0 || this.vel.y == 0) {
         me.game.remove(this);
-        global.aliveGrenadesCount--;
+        me.gamestat.updateValue("aliveGrenadesCount", -1);
       }
       
       return true;

@@ -1,14 +1,12 @@
 define(
   [
     "src/me",
-    "src/global",
     "src/entities/BlasterBulletEntity",
     "src/entities/GrenadeEntity",
     "src/entities/GrenadeTraceEntity",
   ],
   function (
     me,
-    global,
     BlasterBulletEntity,
     GrenadeEntity,
     GrenadeTraceEntity
@@ -117,7 +115,7 @@ define(
       me.game.add(bullet, this.z);
       me.game.sort();
       
-      global.aliveBlasterBulletCount++;
+      me.gamestat.updateValue("aliveBlasterBulletCount", 1);
       
       if (me.game.HUD.getItemValue("ammo") > 0) {
         me.game.HUD.updateItemValue("ammo", -1);
@@ -138,7 +136,7 @@ define(
       
       me.game.sort();
       
-      global.aliveGrenadesCount++;
+      me.gamestat.updateValue("aliveGrenadesCount", 1);
     },
     
     getBlasterBulletPosition: function () {
@@ -213,7 +211,10 @@ define(
     },
     
     canFireGrenade: function () {
-      if (global.aliveBlasterBulletCount > 0 || global.aliveGrenadesCount > 0) {
+      if (me.gamestat.getItemValue("aliveBlasterBulletCount") > 0) {
+        return false;
+      }
+      if (me.gamestat.getItemValue("aliveGrenadesCount") > 0) {
         return false;
       }
       if (this.grenadeFireTimer < this.grenadeFireDuration) {
