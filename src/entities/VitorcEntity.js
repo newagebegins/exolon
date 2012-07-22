@@ -52,8 +52,7 @@ define(
       var res = this.updateMovement();
       this.handleCollisionsWithCollisionMap(res);
       this.handleCollisionsWithEntities();
-      this.parent();
-      return true;
+      return this.parent();
     },
     
     updateJump: function () {
@@ -98,7 +97,7 @@ define(
     },
     
     handleCollisionsWithCollisionMap: function (res) {
-      if (res.x) {
+      if (!this.isCurrentAnimation("jump") && res.x) {
         this.setCurrentAnimation("stand");
       }
     },
