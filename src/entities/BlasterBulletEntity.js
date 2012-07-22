@@ -1,9 +1,11 @@
 define(
   [
-    "src/me"
+    "src/me",
+    "src/global",
   ],
   function (
-    me
+    me,
+    global
   ) {
       
   var BlasterBulletEntity = me.ObjectEntity.extend({
@@ -25,6 +27,7 @@ define(
       this.passedDistance += BlasterBulletEntity.SPEED;
       if (this.passedDistance > BlasterBulletEntity.RANGE || this.vel.x == 0) {
         me.game.remove(this);
+        global.aliveBlasterBulletCount--;
       }
       
       return true;

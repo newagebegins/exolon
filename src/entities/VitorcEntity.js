@@ -1,12 +1,14 @@
 define(
   [
     "src/me",
+    "src/global",
     "src/entities/BlasterBulletEntity",
     "src/entities/GrenadeEntity",
     "src/entities/GrenadeTraceEntity",
   ],
   function (
     me,
+    global,
     BlasterBulletEntity,
     GrenadeEntity,
     GrenadeTraceEntity
@@ -33,8 +35,6 @@ define(
       this.gravity = 0.1;
       
       this.firePressed = false;
-      this.grenadeLaunchDuration = 80;
-      this.grenadeLaunchTimer = 0;
       
       this.direction = "right";
     },
@@ -42,11 +42,6 @@ define(
     update: function () {
       if (this.isCurrentAnimation("jump") && this.isOnTheGround()) {
         this.setCurrentAnimation("stand");
-      }
-      
-      if (this.grenadeLaunchTimer > this.grenadeLaunchDuration) {
-        this.grenadeLaunchTimer = 0;
-        this.fireGrenade();
       }
       
       this.handleInput();
@@ -69,12 +64,11 @@ define(
     handleFireKey: function () {
       if (me.input.isKeyPressed("fire")) {
         this.fireBlaster();
+        this.fireGrenade();
         this.firePressed = true;
-        this.grenadeLaunchTimer++;
       }
       else {
         this.firePressed = false;
-        this.grenadeLaunchTimer = 0;
       }
     },
     
@@ -118,9 +112,14 @@ define(
       var bullet = new BlasterBulletEntity(pos.x, pos.y, this.direction);
       me.game.add(bullet, this.z);
       me.game.sort();
+      
+      global.aliveBlasterBulletCount++;
     },
     
     fireGrenade: function () {
+      if (global.aliveBlasterBulletCount > 0 || global.aliveGrenadesCount > 0) {
+        return;
+      }
       var grenadePos = this.getGrenadePosition();
       var grenade = new GrenadeEntity(grenadePos.x, grenadePos.y, this.direction);
       me.game.add(grenade, this.z);
@@ -130,6 +129,8 @@ define(
       me.game.add(trace, this.z);
       
       me.game.sort();
+      
+      global.aliveGrenadesCount++;
     },
     
     getBlasterBulletPosition: function () {
