@@ -49,8 +49,9 @@ define(
       this.updateJump();
       this.updateDieTimer();
       this.handleInput();
-      this.updateMovement();
-      this.handleCollisions();
+      var res = this.updateMovement();
+      this.handleCollisionsWithCollisionMap(res);
+      this.handleCollisionsWithEntities();
       this.parent();
       return true;
     },
@@ -96,7 +97,13 @@ define(
       }
     },
     
-    handleCollisions: function () {
+    handleCollisionsWithCollisionMap: function (res) {
+      if (res.x) {
+        this.setCurrentAnimation("stand");
+      }
+    },
+    
+    handleCollisionsWithEntities: function () {
       var res = me.game.collide(this);
       if (res) {
         this.pos.sub(res);
