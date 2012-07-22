@@ -41,6 +41,11 @@ define(function () {
       src: "images/tiles.gif",
     },
     {
+      name: "rocks",
+      type: "image",
+      src: "images/rocks.gif",
+    },
+    {
       name: "ship",
       type: "image",
       src: "images/ship.gif",
