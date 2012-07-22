@@ -20,17 +20,18 @@ define(
       this.direction = direction;
       this.gravity = 0;
       this.passedDistance = 0;
+      
+      this.configureVelocity();
     },
     
     update: function () {
-      this.updateVelocity();
       this.updateMovement();
       this.updatePassedDistance();
       this.handleCollisions();
       return true;
     },
     
-    updateVelocity: function () {
+    configureVelocity: function () {
       this.vel.x = this.direction == "right" ? BlasterBulletEntity.SPEED : -BlasterBulletEntity.SPEED;
     },
     

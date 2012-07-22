@@ -98,6 +98,11 @@ define(function () {
       src: "images/turret_tube.gif",
     },
     {
+      name: "explosion_particle",
+      type: "image",
+      src: "images/explosion_particle.gif",
+    },
+    {
       name: "ship_fire",
       type: "image",
       src: "images/ship_fire.gif",
