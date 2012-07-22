@@ -3,11 +3,13 @@ define(
     "src/me",
     "src/entities/BlasterBulletEntity",
     "src/entities/GrenadeEntity",
+    "src/entities/GrenadeTraceEntity",
   ],
   function (
     me,
     BlasterBulletEntity,
-    GrenadeEntity
+    GrenadeEntity,
+    GrenadeTraceEntity
   ) {
       
   var VitorcEntity = me.ObjectEntity.extend({
@@ -31,7 +33,7 @@ define(
       this.gravity = 0.1;
       
       this.firePressed = false;
-      this.grenadeLaunchDuration = 30;
+      this.grenadeLaunchDuration = 80;
       this.grenadeLaunchTimer = 0;
       
       this.direction = "right";
@@ -119,9 +121,14 @@ define(
     },
     
     fireGrenade: function () {
-      var pos = this.getGrenadePosition();
-      var grenade = new GrenadeEntity(pos.x, pos.y, this.direction);
+      var grenadePos = this.getGrenadePosition();
+      var grenade = new GrenadeEntity(grenadePos.x, grenadePos.y, this.direction);
       me.game.add(grenade, this.z);
+      
+      var tracePos = this.getGrenadeTracePosition();
+      var trace = new GrenadeTraceEntity(tracePos.x, tracePos.y, this.direction);
+      me.game.add(trace, this.z);
+      
       me.game.sort();
     },
     
@@ -165,6 +172,26 @@ define(
       return pos;
     },
     
+    getGrenadeTracePosition: function () {
+      var pos = {};
+      
+      if (this.direction == "right") {
+        pos.x = this.pos.x + VitorcEntity.GRENADE_TRACE_OFFSET_X;
+      }
+      else {
+        pos.x = this.pos.x + this.width - GrenadeTraceEntity.WIDTH - VitorcEntity.GRENADE_TRACE_OFFSET_X;
+      }
+      
+      if (this.isCurrentAnimation("duck")) {
+        pos.y = this.pos.y + VitorcEntity.GRENADE_TRACE_OFFSET_Y + VitorcEntity.DUCK_OFFSET;
+      }
+      else {
+        pos.y = this.pos.y + VitorcEntity.GRENADE_TRACE_OFFSET_Y;
+      }
+      
+      return pos;
+    },
+    
     isOnTheGround: function () {
       return !this.jumping && !this.falling;
     },
@@ -178,6 +205,9 @@ define(
   
   VitorcEntity.GRENADE_OFFSET_X = 20;
   VitorcEntity.GRENADE_OFFSET_Y = 7;
+  
+  VitorcEntity.GRENADE_TRACE_OFFSET_X = 4;
+  VitorcEntity.GRENADE_TRACE_OFFSET_Y = 5;
   
   return VitorcEntity;
   
