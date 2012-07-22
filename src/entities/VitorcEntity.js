@@ -132,8 +132,7 @@ define(
     
     handleInputOnTheGround: function () {
       if (me.input.isKeyPressed("duck")) {
-        this.setCurrentAnimation("duck");
-        this.vel.x = 0;
+        this.duck();
         return;
       }
       
@@ -157,8 +156,7 @@ define(
           !me.input.isKeyPressed("left") &&
           !me.input.isKeyPressed("jump")
       ) {
-        this.setCurrentAnimation("stand");
-        this.vel.x = 0;
+        this.stand();
       }
     },
     
@@ -197,6 +195,18 @@ define(
       if (me.game.HUD.getItemValue("grenades") > 0) {
         me.game.HUD.updateItemValue("grenades", -1);
       }
+    },
+    
+    duck: function () {
+      this.setCurrentAnimation("duck");
+      this.vel.x = 0;
+      this.updateColRect(-1, 0, 11, 53);
+    },
+    
+    stand: function () {
+      this.setCurrentAnimation("stand");
+      this.vel.x = 0;
+      this.updateColRect(-1, 0, 0, 64);
     },
     
     die: function () {

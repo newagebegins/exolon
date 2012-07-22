@@ -18,6 +18,8 @@ define(
       
       this.parent(x + 32, y, settings);
       
+      this.updateColRect(8, 48, 4, 76);
+      
       this.collidable = true;
       this.tube = null;
       
