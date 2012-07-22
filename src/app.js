@@ -1,21 +1,25 @@
 define(
   [
     "src/me",
+    "src/config",
     "src/resources/resources",
     
     "src/screens/PlayScreen",
     
     "src/entities/VitorcEntity",
+    "src/entities/TurretEntity",
     "src/entities/ShipFireEntity",
     "src/entities/LightEntity",
   ],
   function (
     me,
+    config,
     resources,
     
     PlayScreen,
     
     VitorcEntity,
+    TurretEntity,
     ShipFireEntity,
     LightEntity
   ) {
@@ -23,6 +27,9 @@ define(
   var app = {
     
     onload: function () {
+      me.debug.renderHitBox = config.renderHitBox;
+      me.debug.renderCollisionMap = config.renderCollisionMap;
+      
       me.video.init("app", 512, 384);
       me.loader.onload = this.loaded.bind(this);
       me.loader.preload(resources);
@@ -34,6 +41,7 @@ define(
       me.state.set(me.state.PLAY, new PlayScreen());
       
       me.entityPool.add("vitorc", VitorcEntity);
+      me.entityPool.add("turret", TurretEntity);
       me.entityPool.add("ship_fire", ShipFireEntity);
       me.entityPool.add("light", LightEntity);
       

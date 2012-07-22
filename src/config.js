@@ -6,6 +6,10 @@ define(function () {
     initialPoints: 0,
     initialLives: 9,
     initialZones: 0,
+    
+    // debug
+    renderHitBox: false,
+    renderCollisionMap: false,
   };
   
   return config;

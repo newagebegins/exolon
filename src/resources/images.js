@@ -78,6 +78,21 @@ define(function () {
       src: "images/grenade_trace.gif",
     },
     {
+      name: "turret",
+      type: "image",
+      src: "images/turret.gif",
+    },
+    {
+      name: "turret_body",
+      type: "image",
+      src: "images/turret_body.gif",
+    },
+    {
+      name: "turret_tube",
+      type: "image",
+      src: "images/turret_tube.gif",
+    },
+    {
       name: "ship_fire",
       type: "image",
       src: "images/ship_fire.gif",
