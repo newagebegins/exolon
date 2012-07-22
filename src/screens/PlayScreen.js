@@ -7,6 +7,7 @@ define(
     "src/hud/GrenadesHUD",
     "src/hud/PointsHUD",
     "src/hud/LivesHUD",
+    "src/hud/ZonesHUD",
   ],
   function (
     me,
@@ -15,7 +16,8 @@ define(
     AmmoHUD,
     GrenadesHUD,
     PointsHUD,
-    LivesHUD
+    LivesHUD,
+    ZonesHUD
   ) {
       
   var PlayScreen = me.ScreenObject.extend({
@@ -28,6 +30,7 @@ define(
       me.game.HUD.addItem("grenades", new GrenadesHUD(80, 0, config.initialGrenades));
       me.game.HUD.addItem("points", new PointsHUD(224, 0, config.initialPoints));
       me.game.HUD.addItem("lives", new LivesHUD(336, 0, config.initialLives));
+      me.game.HUD.addItem("zones", new ZonesHUD(432, 0, config.initialZones));
       
       me.gamestat.add("aliveBlasterBulletCount", 0);
       me.gamestat.add("aliveGrenadesCount", 0);

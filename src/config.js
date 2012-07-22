@@ -5,6 +5,7 @@ define(function () {
     initialGrenades: 10,
     initialPoints: 0,
     initialLives: 9,
+    initialZones: 0,
   };
   
   return config;
