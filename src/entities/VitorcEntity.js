@@ -137,6 +137,10 @@ define(
       me.game.sort();
       
       me.gamestat.updateValue("aliveGrenadesCount", 1);
+      
+      if (me.game.HUD.getItemValue("grenades") > 0) {
+        me.game.HUD.updateItemValue("grenades", -1);
+      }
     },
     
     getBlasterBulletPosition: function () {
@@ -218,6 +222,9 @@ define(
         return false;
       }
       if (this.grenadeFireTimer < this.grenadeFireDuration) {
+        return false;
+      }
+      if (me.game.HUD.getItemValue("grenades") == 0) {
         return false;
       }
       return true;
