@@ -35,6 +35,7 @@ define(
         this.createExplosion();
         me.game.remove(this.tube);
         me.game.remove(this);
+        me.game.HUD.updateItemValue("points", 150);
       }
     },
     
