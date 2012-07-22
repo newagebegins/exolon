@@ -26,6 +26,7 @@ define(
       this.addAnimation("move", [0,1,2,3,4,0,5,6,7,8]);
       this.addAnimation("jump", [3]);
       this.addAnimation("duck", [9]);
+      this.addAnimation("die", [10]);
       
       this.setCurrentAnimation("stand");
       
@@ -39,13 +40,14 @@ define(
       this.grenadeFireTimer = 0;
       
       this.direction = "right";
+      
+      this.dieTimer = 0;
+      this.dieDuration = 70;
     },
     
     update: function () {
-      if (this.isCurrentAnimation("jump") && this.isOnTheGround()) {
-        this.setCurrentAnimation("stand");
-      }
-      
+      this.updateJump();
+      this.updateDieTimer();
       this.handleInput();
       this.updateMovement();
       this.handleCollisions();
@@ -53,7 +55,37 @@ define(
       return true;
     },
     
+    updateJump: function () {
+      if (this.isCurrentAnimation("jump") && this.isOnTheGround()) {
+        this.setCurrentAnimation("stand");
+      }
+    },
+    
+    updateDieTimer: function () {
+      if (!this.isCurrentAnimation("die")) {
+        return;
+      }
+      if (!this.isOnTheGround()) {
+        return;
+      }
+      this.dieTimer++;
+      if (this.dieTimer > this.dieDuration) {
+        this.dieTimer = 0;
+        
+        if (me.game.HUD.getItemValue("lives") == 0) {
+          // game over
+        }
+        else {
+          this.setCurrentAnimation("stand");
+        }
+      }
+    },
+    
     handleInput: function () {
+      if (this.isCurrentAnimation("die")) {
+        return;
+      }
+      
       this.handleFireKey();
       
       if (this.isCurrentAnimation("jump")) {
@@ -72,6 +104,16 @@ define(
         if (this.isOnTheGround()) {
           this.setCurrentAnimation("stand");
         }
+      }
+    },
+    
+    onCollision: function (res, obj) {
+      if (this.isCurrentAnimation("die")) {
+        return;
+      }
+      
+      if (obj.name == "turret_bullet") {
+        this.die();
       }
     },
     
@@ -155,6 +197,13 @@ define(
       if (me.game.HUD.getItemValue("grenades") > 0) {
         me.game.HUD.updateItemValue("grenades", -1);
       }
+    },
+    
+    die: function () {
+      me.game.HUD.updateItemValue("lives", -1);
+      this.setCurrentAnimation("die");
+      this.vel.x = 0;
+      this.forceJump();
     },
     
     getBlasterBulletPosition: function () {
