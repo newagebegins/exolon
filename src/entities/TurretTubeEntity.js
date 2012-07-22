@@ -14,6 +14,11 @@ define(
       settings.spritewidth = TurretTubeEntity.WIDTH;
       
       this.parent(x, y, settings);
+      
+      this.collidable = true;
+      
+      this.addAnimation("default", [0]);
+      this.setCurrentAnimation("default");
     },
     
   });

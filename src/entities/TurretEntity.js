@@ -16,6 +16,8 @@ define(
       
       this.parent(x + 32, y, settings);
       
+      this.collidable = true;
+      
       this.createTube(settings.z);
     },
     

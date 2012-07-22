@@ -46,6 +46,7 @@ define(
       
       this.handleInput();
       this.updateMovement();
+      this.handleCollisions();
       this.parent();
       return true;
     },
@@ -58,6 +59,17 @@ define(
       }
       else {
         this.handleInputOnTheGround();
+      }
+    },
+    
+    handleCollisions: function () {
+      var res = me.game.collide(this);
+      if (res) {
+        this.pos.sub(res);
+        
+        if (this.isOnTheGround()) {
+          this.setCurrentAnimation("stand");
+        }
       }
     },
     
