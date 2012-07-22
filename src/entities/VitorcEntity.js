@@ -20,6 +20,8 @@ define(
       
       this.parent(x, y, settings);
       
+      this.collidable = true;
+      
       this.addAnimation("stand", [0]);
       this.addAnimation("move", [0,1,2,3,4,0,5,6,7,8]);
       this.addAnimation("jump", [3]);
