@@ -108,6 +108,11 @@ define(function () {
       src: "images/explosion_particle.gif",
     },
     {
+      name: "obstacle",
+      type: "image",
+      src: "images/obstacle.gif",
+    },
+    {
       name: "ship_fire",
       type: "image",
       src: "images/ship_fire.gif",

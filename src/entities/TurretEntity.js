@@ -2,12 +2,12 @@ define(
   [
     "src/me",
     "src/entities/TurretTubeEntity",
-    "src/entities/ExplosionParticleEntity",
+    "src/explosion",
   ],
   function (
     me,
     TurretTubeEntity,
-    ExplosionParticleEntity
+    explosion
   ) {
       
   var TurretEntity = me.ObjectEntity.extend({
@@ -34,25 +34,14 @@ define(
     
     onCollision: function (res, obj) {
       if (obj.name == "grenade") {
-        this.createExplosion();
+        explosion.create(this.pos.x + this.width / 2, this.pos.y + this.height / 2, this.z);
         me.game.remove(this.tube);
         me.game.remove(this);
         me.game.HUD.updateItemValue("points", 150);
       }
     },
     
-    createExplosion: function () {
-      for (var i = 0; i < TurretEntity.EXPLOSION_PARTICLES_COUNT; ++i) {
-        var particle = new ExplosionParticleEntity(this.pos.x + this.width / 2, this.pos.y + this.height / 2);
-        me.game.add(particle, this.z);
-      }
-      
-      me.game.sort();
-    },
-    
   });
-  
-  TurretEntity.EXPLOSION_PARTICLES_COUNT = 50;
   
   return TurretEntity;
   

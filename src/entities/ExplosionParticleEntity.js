@@ -42,42 +42,28 @@ define(
     },
     
     setRandomVelocity: function () {
-      this.vel.x = 0.01 * util.randomSign();
-      this.vel.y = 0.01 * util.randomSign();
+      this.vel.x = 0;
+      this.vel.y = 0;
       
-      this.accel.x = Math.random() * 0.4 + 0.01;
-      if (this.vel.x < 0) {
-        this.accel.x *= -1;
-      }
+      var xSign = util.randomSign();
+      var ySign = util.randomSign();
       
-      this.accel.y = Math.random() * 0.4 + 0.01;
-      if (this.vel.y < 0) {
-        this.accel.y *= -1;
-      }
+      this.accel.x = (Math.random() * 0.4 + 0.01) * xSign;
+      this.accel.y = (Math.random() * 0.4 + 0.01) * ySign;
       
-      this.maxVel.x = Math.random() * 7 + 3;
-      this.maxVel.y = Math.random() * 7 + 3;
+      this.maxVel.x = (Math.random() * 7 + 3) * xSign;
+      this.maxVel.y = (Math.random() * 7 + 3) * ySign;
     },
     
     updateMovement: function () {
       this.vel.x += this.accel.x * me.timer.tick;
-      if (Math.abs(this.vel.x) > this.maxVel.x) {
-        if (this.vel.x > 0) {
-          this.vel.x = this.maxVel.x;
-        }
-        else {
-          this.vel.x = -this.maxVel.x;
-        }
+      if (Math.abs(this.vel.x) > Math.abs(this.maxVel.x)) {
+        this.vel.x = this.maxVel.x;
       }
       
       this.vel.y += this.accel.y * me.timer.tick;
-      if (Math.abs(this.vel.y) > this.maxVel.y) {
-        if (this.vel.y > 0) {
-          this.vel.y = this.maxVel.y;
-        }
-        else {
-          this.vel.y = -this.maxVel.y;
-        }
+      if (Math.abs(this.vel.y) > Math.abs(this.maxVel.y)) {
+        this.vel.y = this.maxVel.y;
       }
       
       this.pos.x += this.vel.x;

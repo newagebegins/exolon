@@ -8,6 +8,7 @@ define(
     
     "src/entities/VitorcEntity",
     "src/entities/TurretEntity",
+    "src/entities/ObstacleEntity",
     "src/entities/ShipFireEntity",
     "src/entities/LightEntity",
   ],
@@ -20,6 +21,7 @@ define(
     
     VitorcEntity,
     TurretEntity,
+    ObstacleEntity,
     ShipFireEntity,
     LightEntity
   ) {
@@ -42,6 +44,7 @@ define(
       
       me.entityPool.add("vitorc", VitorcEntity);
       me.entityPool.add("turret", TurretEntity);
+      me.entityPool.add("obstacle", ObstacleEntity);
       me.entityPool.add("ship_fire", ShipFireEntity);
       me.entityPool.add("light", LightEntity);
       

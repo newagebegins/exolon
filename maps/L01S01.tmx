@@ -30,10 +30,13 @@
   <image source="../images/light.gif" width="128" height="32"/>
  </tileset>
  <tileset firstgid="520" name="vitorc" tilewidth="48" tileheight="64">
-  <image source="../images/vitorc.gif" width="480" height="64"/>
+  <image source="../images/vitorc.gif" width="528" height="64"/>
  </tileset>
- <tileset firstgid="530" name="turret" tilewidth="96" tileheight="80">
+ <tileset firstgid="531" name="turret" tilewidth="96" tileheight="80">
   <image source="../images/turret.gif" width="96" height="80"/>
+ </tileset>
+ <tileset firstgid="532" name="obstacle" tilewidth="80" tileheight="128">
+  <image source="../images/obstacle.gif" width="80" height="128"/>
  </tileset>
  <layer name="Tile Layer 1" width="32" height="24">
   <data encoding="base64">
@@ -74,7 +77,8 @@
    </properties>
   </object>
   <object name="vitorc" gid="520" x="48" y="288"/>
-  <object name="turret" gid="530" x="320" y="288"/>
+  <object name="turret" gid="531" x="320" y="288"/>
+  <object name="obstacle" gid="532" x="432" y="288"/>
  </objectgroup>
  <layer name="Tile Layer 2" width="32" height="24">
   <data encoding="base64">
