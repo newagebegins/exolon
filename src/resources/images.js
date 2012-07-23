@@ -118,6 +118,11 @@ define(function () {
       src: "images/radar.gif",
     },
     {
+      name: "rocket",
+      type: "image",
+      src: "images/rocket.gif",
+    },
+    {
       name: "ship_fire",
       type: "image",
       src: "images/ship_fire.gif",

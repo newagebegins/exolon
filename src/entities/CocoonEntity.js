@@ -1,10 +1,8 @@
 define(
   [
-    "src/me",
     "src/entities/ObstacleEntity",
   ],
   function (
-    me,
     ObstacleEntity
   ) {
       

@@ -10,6 +10,7 @@ define(
     "src/entities/TurretEntity",
     "src/entities/CocoonEntity",
     "src/entities/RadarEntity",
+    "src/entities/RocketEntity",
     "src/entities/ShipFireEntity",
     "src/entities/LightEntity",
   ],
@@ -24,6 +25,7 @@ define(
     TurretEntity,
     CocoonEntity,
     RadarEntity,
+    RocketEntity,
     ShipFireEntity,
     LightEntity
   ) {
@@ -48,6 +50,7 @@ define(
       me.entityPool.add("turret", TurretEntity);
       me.entityPool.add("cocoon", CocoonEntity);
       me.entityPool.add("radar", RadarEntity);
+      me.entityPool.add("rocket", RocketEntity);
       me.entityPool.add("ship_fire", ShipFireEntity);
       me.entityPool.add("light", LightEntity);
       

@@ -6,17 +6,17 @@ define(
     ObstacleEntity
   ) {
       
-  var RadarEntity = ObstacleEntity.extend({
+  var RocketEntity = ObstacleEntity.extend({
     
     init: function (x, y, settings) {
-      settings.image = "radar";
+      settings.image = "rocket";
       this.parent(x, y, settings);
       
-      this.updateColRect(6, 68, -1, 0);
+      this.updateColRect(12, 52, 10, 86);
     },
     
   });
   
-  return RadarEntity;
+  return RocketEntity;
   
 });
