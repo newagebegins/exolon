@@ -142,6 +142,11 @@ define(function () {
       type: "image",
       src: "images/teleport.gif",
     },
+    {
+      name: "piston",
+      type: "image",
+      src: "images/piston.gif",
+    },
   ];
   
   return images;

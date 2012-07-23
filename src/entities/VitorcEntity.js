@@ -152,7 +152,7 @@ define(
         return;
       }
       
-      if (obj.name == "turret_bullet") {
+      if (obj.isLethal) {
         this.die();
       }
     },

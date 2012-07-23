@@ -17,6 +17,7 @@ define(
       
       this.gravity = 0;
       this.vel.x = -5;
+      this.isLethal = true;
     },
     
     update: function () {
