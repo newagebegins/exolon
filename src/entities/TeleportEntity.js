@@ -15,6 +15,7 @@ define(
       
       this.collidable = true;
       this.animationspeed = 1;
+      this.updateColRect(16, 32, 32, 48);
     },
     
   });

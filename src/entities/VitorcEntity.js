@@ -57,6 +57,7 @@ define(
       var res = this.updateMovement();
       this.handleCollisionsWithCollisionMap(res);
       this.handleCollisionsWithEntities();
+      this.handleCollisionsWithEntities();
       this.handleNextScreen();
       this.parent();
       return true;
@@ -95,7 +96,7 @@ define(
       
       this.handleFireKey();
       
-      if (this.isCurrentAnimation("jump")) {
+      if (this.isCurrentAnimation("jump") || this.falling) {
         return;
       }
       else {
@@ -127,8 +128,14 @@ define(
       }
       
       this.pos.sub(res);
-
-      if (this.isOnTheGround()) {
+      
+      if (res.y > 0) {
+        this.vel.y = 0;
+        this.falling = false;
+      }
+      
+      if (res.x && this.isOnTheGround()) {
+        this.vel.x = 0;
         this.setCurrentAnimation("stand");
       }
     },

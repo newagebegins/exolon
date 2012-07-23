@@ -17,7 +17,7 @@ define(
       settings.spritewidth = 64;
       this.parent(x + 32, y, settings);
       
-      this.updateColRect(8, 48, 4, 76);
+      this.updateColRect(8, 48, -1, 0);
       this.tube = null;
       this.createTube(settings.z);
     },
