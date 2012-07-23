@@ -44,7 +44,7 @@ define(
     },
     
     nextLevel: function () {
-      this.loadLevel("L01S02");
+      this.loadLevel(me.game.currentLevel.nextLevel);
       me.game.HUD.updateItemValue("zones", 1);
     },
     

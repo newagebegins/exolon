@@ -11,6 +11,11 @@ define(function () {
       type: "tmx",
       src: "maps/L01S02.tmx",
     },
+    {
+      name: "L01S03",
+      type: "tmx",
+      src: "maps/L01S03.tmx",
+    },
   ];
   
   return maps;
