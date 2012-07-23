@@ -9,6 +9,8 @@ define(
     "src/hud/PointsHUD",
     "src/hud/LivesHUD",
     "src/hud/ZonesHUD",
+    
+    "src/entities/HarbringerCreatorEntity",
   ],
   function (
     me,
@@ -19,7 +21,9 @@ define(
     GrenadesHUD,
     PointsHUD,
     LivesHUD,
-    ZonesHUD
+    ZonesHUD,
+    
+    HarbringerCreatorEntity
   ) {
       
   var PlayScreen = me.ScreenObject.extend({
@@ -41,6 +45,7 @@ define(
     loadLevel: function (level) {
       me.levelDirector.loadLevel(level);
       this.addStars();
+      this.addHarbringerCreator();
     },
     
     nextLevel: function () {
@@ -62,6 +67,12 @@ define(
         layer.setTile(x, y, util.arrayRandomElement(colors));
         i++;
       }
+    },
+    
+    addHarbringerCreator: function () {
+      var creator = new HarbringerCreatorEntity();
+      me.game.add(creator, 999);
+      me.game.sort();
     },
     
     onDestroyEvent: function() {  

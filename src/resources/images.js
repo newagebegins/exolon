@@ -152,6 +152,16 @@ define(function () {
       type: "image",
       src: "images/piston.gif",
     },
+    {
+      name: "harbringer",
+      type: "image",
+      src: "images/harbringer.gif",
+    },
+    {
+      name: "harbringer_explosion",
+      type: "image",
+      src: "images/harbringer_explosion.gif",
+    },
   ];
   
   return images;
