@@ -21,6 +21,7 @@ define(
       
       this.turret = turret;
       this.collidable = true;
+      this.isSolid = true;
       
       this.addAnimation("default", [0]);
       this.addAnimation("fire", [7,6,5,4,3,2,1,0]);

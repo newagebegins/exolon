@@ -36,6 +36,8 @@ define(
       this.gravity = 0.1;
       
       this.firePressed = false;
+      this.jumpPressed = false;
+      
       this.grenadeFireDuration = 35;
       this.grenadeFireTimer = 0;
       
@@ -43,6 +45,9 @@ define(
       
       this.dieTimer = 0;
       this.dieDuration = 70;
+      
+      this.insideTeleport = false;
+      this.thisTeleportGUID = null;
     },
     
     update: function () {
@@ -105,13 +110,33 @@ define(
     },
     
     handleCollisionsWithEntities: function () {
+      this.insideTeleport = false;
+      
       var res = me.game.collide(this);
-      if (res) {
-        this.pos.sub(res);
-        
-        if (this.isOnTheGround()) {
-          this.setCurrentAnimation("stand");
-        }
+      if (!res) {
+        return;
+      }
+      
+      this.handleCollisionWithSolidObject(res, res.obj);
+      this.handleCollisionWithTeleport(res, res.obj);
+    },
+    
+    handleCollisionWithSolidObject: function (res, obj) {
+      if (!obj.isSolid) {
+        return;
+      }
+      
+      this.pos.sub(res);
+
+      if (this.isOnTheGround()) {
+        this.setCurrentAnimation("stand");
+      }
+    },
+    
+    handleCollisionWithTeleport: function (res, obj) {
+      if (obj.name == "teleport") {
+        this.insideTeleport = true;
+        this.thisTeleportGUID = obj.GUID;
       }
     },
     
@@ -163,10 +188,26 @@ define(
         this.doWalk(true);
       }
       
-      if (me.input.isKeyPressed("jump")) {
+      this.handleJumpKey();
+    },
+    
+    handleJumpKey: function () {
+      if (!me.input.isKeyPressed("jump")) {
+        this.jumpPressed = false;
+        return;
+      }
+      
+      if (this.insideTeleport) {
+        if (!this.jumpPressed) {
+          this.doTeleport();
+        }
+      }
+      else {
         this.setCurrentAnimation("jump");
         this.doJump();
       }
+      
+      this.jumpPressed = true;
     },
     
     fireBlaster: function () {
@@ -223,6 +264,22 @@ define(
       this.setCurrentAnimation("die");
       this.vel.x = 0;
       this.forceJump();
+    },
+    
+    doTeleport: function () {
+      var otherTeleport = this.getOtherTeleport();
+      this.pos.x = otherTeleport.pos.x;
+      this.pos.y = otherTeleport.pos.y + 32;
+    },
+    
+    getOtherTeleport: function () {
+      var teleports = me.game.getEntityByName("teleport");
+      for (var i in teleports) {
+        if (teleports[i].GUID != this.thisTeleportGUID) {
+          return teleports[i];
+        }
+      }
+      return null;
     },
     
     getBlasterBulletPosition: function () {

@@ -45,11 +45,11 @@ define(
     handleCollisions: function () {
       var res = me.game.collide(this);
       
-      if (this.vel.x == 0 || res) {
+      if (this.vel.x == 0 || (res && res.obj.isSolid)) {
         me.game.remove(this);
       }
       
-      if (res) {
+      if (res && res.obj.isSolid) {
         this.createExplosion();
       }
     },

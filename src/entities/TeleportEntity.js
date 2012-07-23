@@ -13,6 +13,7 @@ define(
       settings.spritewidth = 64;
       this.parent(x, y, settings);
       
+      this.collidable = true;
       this.animationspeed = 1;
     },
     

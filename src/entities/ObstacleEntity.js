@@ -13,6 +13,7 @@ define(
     init: function (x, y, settings) {
       this.parent(x, y, settings);
       this.collidable = true;
+      this.isSolid = true;
     },
     
     onCollision: function (res, obj) {
