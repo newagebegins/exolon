@@ -143,6 +143,11 @@ define(function () {
       src: "images/teleport.gif",
     },
     {
+      name: "teleport_flash",
+      type: "image",
+      src: "images/teleport_flash.gif",
+    },
+    {
       name: "piston",
       type: "image",
       src: "images/piston.gif",

@@ -4,12 +4,14 @@ define(
     "src/entities/BlasterBulletEntity",
     "src/entities/GrenadeEntity",
     "src/entities/GrenadeTraceEntity",
+    "src/entities/TeleportFlashEntity",
   ],
   function (
     me,
     BlasterBulletEntity,
     GrenadeEntity,
-    GrenadeTraceEntity
+    GrenadeTraceEntity,
+    TeleportFlashEntity
   ) {
       
   var VitorcEntity = me.ObjectEntity.extend({
@@ -274,13 +276,24 @@ define(
     },
     
     doTeleport: function () {
-      var otherTeleport = this.getOtherTeleport();
+      var teleports = me.game.getEntityByName("teleport");
+      this.createTeleportFlashes(teleports);
+      var otherTeleport = this.getOtherTeleport(teleports);
       this.pos.x = otherTeleport.pos.x;
       this.pos.y = otherTeleport.pos.y + 32;
     },
     
-    getOtherTeleport: function () {
-      var teleports = me.game.getEntityByName("teleport");
+    createTeleportFlashes: function (teleports) {
+      for (var i in teleports) {
+        var x = teleports[i].pos.x + 16;
+        var y = teleports[i].pos.y + 32;
+        var flash = new TeleportFlashEntity(x, y);
+        me.game.add(flash, this.z + 1);
+      }
+      me.game.sort();
+    },
+    
+    getOtherTeleport: function (teleports) {
       for (var i in teleports) {
         if (teleports[i].GUID != this.thisTeleportGUID) {
           return teleports[i];
