@@ -11,10 +11,10 @@ define(
   var PARTICLES_COUNT = 50;
   
   var explosion = {
-    create: function (x, y, z) {
+    create: function (x, y) {
       for (var i = 0; i < PARTICLES_COUNT; ++i) {
         var particle = new ExplosionParticleEntity(x, y);
-        me.game.add(particle, z);
+        me.game.add(particle, 10);
       }
       
       me.game.sort();
