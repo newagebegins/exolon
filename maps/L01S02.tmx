@@ -35,8 +35,8 @@
  <tileset firstgid="531" name="turret" tilewidth="96" tileheight="80">
   <image source="../images/turret.gif" width="96" height="80"/>
  </tileset>
- <tileset firstgid="532" name="obstacle" tilewidth="80" tileheight="128">
-  <image source="../images/obstacle.gif" width="80" height="128"/>
+ <tileset firstgid="532" name="cocoon" tilewidth="80" tileheight="128">
+  <image source="../images/cocoon.gif" width="80" height="128"/>
  </tileset>
  <tileset firstgid="533" name="radar" tilewidth="80" tileheight="128">
   <image source="../images/radar.gif" width="80" height="128"/>

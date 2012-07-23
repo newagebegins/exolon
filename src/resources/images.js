@@ -108,9 +108,9 @@ define(function () {
       src: "images/explosion_particle.gif",
     },
     {
-      name: "obstacle",
+      name: "cocoon",
       type: "image",
-      src: "images/obstacle.gif",
+      src: "images/cocoon.gif",
     },
     {
       name: "radar",

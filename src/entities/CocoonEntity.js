@@ -8,10 +8,10 @@ define(
     explosion
   ) {
       
-  var ObstacleEntity = me.ObjectEntity.extend({
+  var CocoonEntity = me.ObjectEntity.extend({
     
     init: function (x, y, settings) {
-      settings.image = "obstacle";
+      settings.image = "cocoon";
       this.parent(x, y, settings);
       
       this.collidable = true;
@@ -27,6 +27,6 @@ define(
     
   });
   
-  return ObstacleEntity;
+  return CocoonEntity;
   
 });
