@@ -38,6 +38,7 @@ define(
     
     nextLevel: function () {
       me.levelDirector.loadLevel("L01S02");
+      me.game.HUD.updateItemValue("zones", 1);
     },
     
     onDestroyEvent: function() {  
