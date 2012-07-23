@@ -36,6 +36,10 @@ define(
       me.gamestat.add("aliveGrenadesCount", 0);
     },
     
+    nextLevel: function () {
+      me.levelDirector.loadLevel("L01S02");
+    },
+    
     onDestroyEvent: function() {  
       me.game.disableHUD();
     },

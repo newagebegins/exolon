@@ -52,7 +52,9 @@ define(
       var res = this.updateMovement();
       this.handleCollisionsWithCollisionMap(res);
       this.handleCollisionsWithEntities();
-      return this.parent();
+      this.handleNextScreen();
+      this.parent();
+      return true;
     },
     
     updateJump: function () {
@@ -120,6 +122,12 @@ define(
       
       if (obj.name == "turret_bullet") {
         this.die();
+      }
+    },
+    
+    handleNextScreen: function () {
+      if (this.pos.x > 510) {
+        me.state.current().nextLevel();
       }
     },
     
