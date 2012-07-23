@@ -113,6 +113,11 @@ define(function () {
       src: "images/obstacle.gif",
     },
     {
+      name: "radar",
+      type: "image",
+      src: "images/radar.gif",
+    },
+    {
       name: "ship_fire",
       type: "image",
       src: "images/ship_fire.gif",
