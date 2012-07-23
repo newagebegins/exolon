@@ -137,6 +137,11 @@ define(function () {
       type: "image",
       src: "images/light.gif",
     },
+    {
+      name: "teleport",
+      type: "image",
+      src: "images/teleport.gif",
+    },
   ];
   
   return images;

@@ -14,6 +14,7 @@ define(
     "src/entities/ShipFireEntity",
     "src/entities/LightEntity",
     "src/entities/GrenadePackEntity",
+    "src/entities/TeleportEntity",
   ],
   function (
     me,
@@ -29,7 +30,8 @@ define(
     RocketEntity,
     ShipFireEntity,
     LightEntity,
-    GrenadePackEntity
+    GrenadePackEntity,
+    TeleportEntity
   ) {
     
   var app = {
@@ -56,6 +58,7 @@ define(
       me.entityPool.add("ship_fire", ShipFireEntity);
       me.entityPool.add("light", LightEntity);
       me.entityPool.add("grenade_pack", GrenadePackEntity);
+      me.entityPool.add("teleport", TeleportEntity);
       
       me.input.bindKey(me.input.KEY.LEFT, "left");
       me.input.bindKey(me.input.KEY.RIGHT, "right");
