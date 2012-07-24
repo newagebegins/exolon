@@ -1,9 +1,11 @@
 define(
   [
     "src/me",
+    "src/util",
   ],
   function (
-    me
+    me,
+    util
   ) {
       
   var PistonEntity = me.ObjectEntity.extend({
@@ -33,7 +35,7 @@ define(
     startMove: function () {
       var self = this;
       this.moving = true;
-      var up = new me.Tween(this.pos).to({y: this.pos.y - this.height}, 300).delay(1500);
+      var up = new me.Tween(this.pos).to({y: this.pos.y - this.height}, 300).delay(util.getRandomInt(1000, 5000));
       var down = new me.Tween(this.pos).to({y: this.pos.y}, 300).delay(1000);
       up.chain(down);
       down.onComplete(function () {

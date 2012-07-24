@@ -458,7 +458,7 @@ define(
   VitorcEntity.GRENADE_TRACE_OFFSET_X = 4;
   VitorcEntity.GRENADE_TRACE_OFFSET_Y = 5;
   
-  VitorcEntity.INVINCIBILITY_DURATION = 3000;
+  VitorcEntity.INVINCIBILITY_DURATION = 1500;
   
   return VitorcEntity;
   
