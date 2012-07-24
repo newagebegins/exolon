@@ -49,8 +49,20 @@ define(
     },
     
     nextLevel: function () {
+      var prevLevelVitorc = me.game.getEntityByName("vitorc")[0];
       this.loadLevel(me.game.currentLevel.nextLevel);
+      this.restoreVitorcProperties(prevLevelVitorc);
       me.game.HUD.updateItemValue("zones", 1);
+    },
+    
+    restoreVitorcProperties: function (prevLevelVitorc) {
+      var vitorc = me.game.getEntityByName("vitorc")[0];
+      vitorc.pos.y = prevLevelVitorc.pos.y;
+      vitorc.vel.x = prevLevelVitorc.vel.x;
+      vitorc.vel.y = prevLevelVitorc.vel.y;
+      vitorc.setCurrentAnimation(prevLevelVitorc.current.name);
+      vitorc.falling = prevLevelVitorc.falling;
+      vitorc.jumping = prevLevelVitorc.jumping;
     },
     
     addStars: function () {
