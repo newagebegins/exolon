@@ -15,11 +15,11 @@ define(
       settings.image = "double_launcher_bullet";
       this.parent(x, y + DoubleLauncherBulletEntity.HEIGHT, settings);
       
-      this.updateColRect(-1, 0, 4, 6);
-      
       this.gravity = 0;
       this.vel.x = -5;
       this.isLethal = true;
+      this.isDestroyable = true;
+      this.collidable = true;
     },
     
     update: function () {
@@ -38,6 +38,14 @@ define(
       
       if (hitVitorc) {
         this.createExplosion();
+      }
+    },
+    
+    onCollision: function (res, obj) {
+      if (obj.name == "blaster_bullet") {
+        me.game.remove(this);
+        this.createExplosion();
+        me.game.HUD.updateItemValue("points", 50);
       }
     },
     
