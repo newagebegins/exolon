@@ -8,19 +8,19 @@ define(
     CircularExplosionEntity
   ) {
       
-  var HarbringerEntity = me.ObjectEntity.extend({
+  var BubbleEntity = me.ObjectEntity.extend({
     
     init: function (x, y) {
       var settings = {};
-      settings.image = "harbringer";
-      settings.spritewidth = HarbringerEntity.WIDTH;
-      this.parent(x, y + HarbringerEntity.HEIGHT, settings);
+      settings.image = "bubble";
+      settings.spritewidth = BubbleEntity.WIDTH;
+      settings.spriteheight = BubbleEntity.HEIGHT;
+      this.parent(x, y + BubbleEntity.HEIGHT, settings);
       
       this.animationspeed = 1;
       this.gravity = 0;
-      this.vel.x = -HarbringerEntity.SPEED;
+      this.vel.x = -BubbleEntity.SPEED;
       this.isLethal = true;
-      this.updateColRect(0, 32, -1, 0);
     },
     
     update: function () {
@@ -50,10 +50,10 @@ define(
     
   });
   
-  HarbringerEntity.WIDTH = 128;
-  HarbringerEntity.HEIGHT = 32;
-  HarbringerEntity.SPEED = 3;
+  BubbleEntity.WIDTH = 32;
+  BubbleEntity.HEIGHT = 32;
+  BubbleEntity.SPEED = 3;
   
-  return HarbringerEntity;
+  return BubbleEntity;
   
 });
