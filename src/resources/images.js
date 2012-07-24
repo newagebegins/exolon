@@ -202,6 +202,11 @@ define(function () {
       type: "image",
       src: "images/mine_fire.gif",
     },
+    {
+      name: "missile_guidance",
+      type: "image",
+      src: "images/missile_guidance.gif",
+    },
   ];
   
   return images;

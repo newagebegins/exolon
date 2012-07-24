@@ -15,7 +15,7 @@ define(
       settings.image = "explosion_particle";
       settings.spritewidth = 32;
       
-      this.parent(x, y, settings);
+      this.parent(x, y + 16, settings);
       
       this.addAnimation("yellow", [0]);
       this.addAnimation("white", [1]);

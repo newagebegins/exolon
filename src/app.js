@@ -21,6 +21,7 @@ define(
     "src/entities/IncubatorEntity",
     "src/entities/DoubleLauncherEntity",
     "src/entities/MineEntity",
+    "src/entities/MissileGuidanceEntity",
   ],
   function (
     me,
@@ -43,7 +44,8 @@ define(
     BubbleCreatorEntity,
     IncubatorEntity,
     DoubleLauncherEntity,
-    MineEntity
+    MineEntity,
+    MissileGuidanceEntity
   ) {
     
   var app = {
@@ -77,6 +79,7 @@ define(
       me.entityPool.add("incubator", IncubatorEntity);
       me.entityPool.add("double_launcher", DoubleLauncherEntity);
       me.entityPool.add("mine", MineEntity);
+      me.entityPool.add("missile_guidance", MissileGuidanceEntity);
       
       me.input.bindKey(me.input.KEY.LEFT, "left");
       me.input.bindKey(me.input.KEY.RIGHT, "right");
