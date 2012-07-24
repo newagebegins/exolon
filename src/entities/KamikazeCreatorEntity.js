@@ -34,7 +34,7 @@ define(
         return;
       }
       var kamikaze = this.createSpecificKamikaze(512, this.vitorc.pos.y);
-      me.game.add(kamikaze, this.vitorc.z - 1);
+      me.game.add(kamikaze, this.vitorc.z);
       me.game.sort.defer();
     },
     
