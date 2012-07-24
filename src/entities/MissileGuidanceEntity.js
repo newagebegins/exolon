@@ -3,14 +3,18 @@ define(
     "src/me",
     "src/entities/ObstacleEntity",
     "src/entities/MissileEntity",
+    "src/entities/AwardPointsEntity",
   ],
   function (
     me,
     ObstacleEntity,
-    MissileEntity
+    MissileEntity,
+    AwardPointsEntity
   ) {
       
   var MissileGuidanceEntity = ObstacleEntity.extend({
+    
+    points: 0,
     
     init: function (x, y, settings) {
       this.vitorc = me.game.getEntityByName("vitorc")[0];
@@ -32,9 +36,15 @@ define(
     
     onDestroyEvent: function () {
       this.missile.explode();
+      
+      var award = new AwardPointsEntity(MissileGuidanceEntity.POINTS);
+      me.game.add(award, 999);
+      me.game.sort.defer();
     },
     
   });
+  
+  MissileGuidanceEntity.POINTS = 1000;
   
   return MissileGuidanceEntity;
   

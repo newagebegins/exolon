@@ -10,6 +10,8 @@ define(
       
   var ObstacleEntity = me.ObjectEntity.extend({
     
+    points: 150,
+    
     init: function (x, y, settings) {
       this.parent(x, y, settings);
       this.collidable = true;
@@ -22,7 +24,7 @@ define(
         explosion.create(this.pos.x + this.width / 2 - 8, this.pos.y + this.height / 2, 50);
         me.game.remove(this);
         this.alive = false;
-        me.game.HUD.updateItemValue("points", 150);
+        me.game.HUD.updateItemValue("points", this.points);
       }
     },
     
