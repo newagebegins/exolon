@@ -1,34 +1,20 @@
 define(
   [
     "src/me",
-    "src/util",
+    "src/entities/KamikazeCreator",
     "src/entities/HarbringerEntity",
   ],
   function (
     me,
-    util,
+    KamikazeCreator,
     HarbringerEntity
   ) {
       
-  var HarbringerCreatorEntity = Object.extend({
+  var HarbringerCreatorEntity = KamikazeCreator.extend({
     
-    init: function () {
-      this.createTimer();
-    },
+    delay: 30000,
     
-    update: function () {
-      return false;
-    },
-    
-    createTimer: function () {
-      var self = this;
-      util.executeWithDelay(function () {
-        self.createHarbringer();
-        self.createTimer();
-      }, HarbringerCreatorEntity.DELAY);
-    },
-    
-    createHarbringer: function () {
+    createKamikaze: function () {
       var vitorc = me.game.getEntityByName("vitorc")[0];
       var harbringer = new HarbringerEntity(512, vitorc.pos.y);
       me.game.add(harbringer, vitorc.z);
@@ -36,8 +22,6 @@ define(
     },
     
   });
-  
-  HarbringerCreatorEntity.DELAY = 30000;
   
   return HarbringerCreatorEntity;
   
