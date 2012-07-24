@@ -16,7 +16,7 @@ define(
       this.parent(x, y + DoubleLauncherBulletEntity.HEIGHT, settings);
       
       this.gravity = 0;
-      this.vel.x = -4;
+      this.vel.x = -3;
       this.isLethal = true;
       this.isDestroyable = true;
       this.collidable = true;

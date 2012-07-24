@@ -33,12 +33,12 @@ define(
     },
     
     resetFireDurationAndTimer: function () {
-      this.fireDuration = util.getRandomInt(20, 200);
+      this.fireDuration = util.getRandomInt(20, 160);
       this.fireTimer = 0;
     },
     
     fire: function () {
-      if (this.vitorc.pos.x > this.pos.x - DoubleLauncherEntity.STOP_FIRE_DISTANCE) {
+      if (!this.shouldFire()) {
         return;
       }
       var x = this.pos.x - DoubleLauncherBulletEntity.WIDTH;
@@ -46,6 +46,16 @@ define(
       var bullet = new DoubleLauncherBulletEntity(x, y);
       me.game.add(bullet, this.z);
       me.game.sort.defer();
+    },
+    
+    shouldFire: function () {
+      if (this.vitorc.pos.x > this.pos.x - DoubleLauncherEntity.STOP_FIRE_DISTANCE) {
+        return false;
+      }
+      if (this.vitorc.pos.y + this.vitorc.height < this.pos.y) {
+        return false;
+      }
+      return true;
     },
     
     onCollision: function (res, obj) {
@@ -67,7 +77,7 @@ define(
     
   });
   
-  DoubleLauncherEntity.STOP_FIRE_DISTANCE = 64;
+  DoubleLauncherEntity.STOP_FIRE_DISTANCE = 80;
   DoubleLauncherEntity.POINTS = 2000;
   
   return DoubleLauncherEntity;
