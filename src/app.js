@@ -18,6 +18,7 @@ define(
     "src/entities/TeleportEntity",
     "src/entities/PistonEntity",
     "src/entities/BubbleCreatorEntity",
+    "src/entities/IncubatorEntity",
   ],
   function (
     me,
@@ -37,7 +38,8 @@ define(
     AmmoPackEntity,
     TeleportEntity,
     PistonEntity,
-    BubbleCreatorEntity
+    BubbleCreatorEntity,
+    IncubatorEntity
   ) {
     
   var app = {
@@ -68,6 +70,7 @@ define(
       me.entityPool.add("teleport", TeleportEntity);
       me.entityPool.add("piston", PistonEntity);
       me.entityPool.add("bubble_creator", BubbleCreatorEntity);
+      me.entityPool.add("incubator", IncubatorEntity);
       
       me.input.bindKey(me.input.KEY.LEFT, "left");
       me.input.bindKey(me.input.KEY.RIGHT, "right");

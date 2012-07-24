@@ -172,6 +172,11 @@ define(function () {
       type: "image",
       src: "images/bubble.gif",
     },
+    {
+      name: "incubator",
+      type: "image",
+      src: "images/incubator.gif",
+    },
   ];
   
   return images;
