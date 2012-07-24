@@ -32,7 +32,7 @@ define(
       var vitorc = me.game.getEntityByName("vitorc")[0];
       var harbringer = this.createSpecificKamikaze(512, vitorc.pos.y);
       me.game.add(harbringer, vitorc.z - 1);
-      me.game.sort();
+      me.game.sort.defer();
     },
     
     createSpecificKamikaze: function () {

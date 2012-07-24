@@ -1,8 +1,10 @@
 define(
   [
+    "src/me",
     "src/entities/KamikazeEntity",
   ],
   function (
+    me,
     KamikazeEntity
   ) {
       
@@ -17,11 +19,20 @@ define(
       
       this.animationspeed = 1;
       this.gravity = 0;
+      this.collidable = true;
+      this.isDestroyable = true;
     },
     
     updateMovement: function () {
       this.pos.x -= BubbleEntity.SPEED;
       this.pos.y += 3 * Math.sin(this.pos.x / 20);
+    },
+    
+    onCollision: function (res, obj) {
+      if (obj.name == "blaster_bullet") {
+        me.game.remove(this);
+        this.createExplosion();
+      }
     },
     
   });
