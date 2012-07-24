@@ -10,7 +10,7 @@ define(
       
   var BubbleCreatorEntity = KamikazeCreatorEntity.extend({
     
-    delay: 3000,
+    delay: 1000,
     
     createSpecificKamikaze: function (x, y) {
       return new BubbleEntity(x, y);

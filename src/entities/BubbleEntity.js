@@ -1,10 +1,12 @@
 define(
   [
     "src/me",
+    "src/util",
     "src/entities/KamikazeEntity",
   ],
   function (
     me,
+    util,
     KamikazeEntity
   ) {
       
@@ -21,6 +23,9 @@ define(
       this.gravity = 0;
       this.collidable = true;
       this.isDestroyable = true;
+      
+      this.pos.y += util.getRandomArbitrary(-32, 32);
+      this.pos.x += util.getRandomArbitrary(0, 32);
     },
     
     updateMovement: function () {
@@ -32,6 +37,7 @@ define(
       if (obj.name == "blaster_bullet") {
         me.game.remove(this);
         this.createExplosion();
+        me.game.HUD.updateItemValue("points", 150);
       }
     },
     
@@ -39,7 +45,7 @@ define(
   
   BubbleEntity.WIDTH = 32;
   BubbleEntity.HEIGHT = 32;
-  BubbleEntity.SPEED = 2;
+  BubbleEntity.SPEED = 1.7;
   
   return BubbleEntity;
   

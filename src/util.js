@@ -17,6 +17,11 @@ define(["src/me"], function (me) {
     return util.arrayRandomElement([-1, 1]);
   };
   
+  // Returns a random number between min and max  
+  util.getRandomArbitrary = function (min, max) {  
+    return Math.random() * (max - min) + min;  
+  };
+  
   util.strlpad = function (s, padString, length) {
     var str = "" + s;
     while (str.length < length) {
