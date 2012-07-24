@@ -17,7 +17,7 @@ define(
     },
     
     shouldCreate: function () {
-      if (this.vitorc.pos.x > 383) {
+      if (this.vitorc.pos.x > 360) {
         return false;
       }
       return true;
