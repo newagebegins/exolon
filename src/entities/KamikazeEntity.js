@@ -22,10 +22,14 @@ define(
       return true;
     },
     
+    updateMovement: function () {
+      this.pos.x += this.vel.x;
+    },
+    
     handleCollisions: function () {
       var res = me.game.collide(this);
       
-      if (this.vel.x == 0 || (res && res.obj.name == "vitorc")) {
+      if (this.pos.x < 0 || (res && res.obj.name == "vitorc")) {
         me.game.remove(this);
       }
       

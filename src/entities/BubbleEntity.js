@@ -17,14 +17,18 @@ define(
       
       this.animationspeed = 1;
       this.gravity = 0;
-      this.vel.x = -BubbleEntity.SPEED;
+    },
+    
+    updateMovement: function () {
+      this.pos.x -= BubbleEntity.SPEED;
+      this.pos.y += 3 * Math.sin(this.pos.x / 20);
     },
     
   });
   
   BubbleEntity.WIDTH = 32;
   BubbleEntity.HEIGHT = 32;
-  BubbleEntity.SPEED = 3;
+  BubbleEntity.SPEED = 2;
   
   return BubbleEntity;
   
