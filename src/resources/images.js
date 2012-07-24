@@ -192,6 +192,11 @@ define(function () {
       type: "image",
       src: "images/double_launcher_bullet.gif",
     },
+    {
+      name: "mine",
+      type: "image",
+      src: "images/mine.gif",
+    },
   ];
   
   return images;
