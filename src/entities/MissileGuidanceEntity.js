@@ -19,15 +19,19 @@ define(
     },
     
     update: function () {
-      if (me.gamestat.getItemValue("aliveMissilesCount") > 0) {
+      if (me.gamestat.getItemValue("aliveMissilesCount") > 0 || !this.alive) {
         return false;
       }
       
-      var missile = new MissileEntity(this.vitorc);
-      me.game.add(missile, this.vitorc.z);
+      this.missile = new MissileEntity(this.vitorc);
+      me.game.add(this.missile, this.vitorc.z);
       me.game.sort.defer();
       
       return false;
+    },
+    
+    onDestroyEvent: function () {
+      this.missile.explode();
     },
     
   });

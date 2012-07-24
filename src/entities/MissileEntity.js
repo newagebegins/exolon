@@ -37,7 +37,7 @@ define(
     },
     
     updateMovement: function () {
-      if (this.isCurrentAnimation("normal") && this.pos.x <= 271) {
+      if (this.isCurrentAnimation("normal") && this.pos.x <= 280) {
         this.setCurrentAnimation("fast");
         this.vel.x = -MissileEntity.SPEED_X_FAST;
       }
@@ -66,6 +66,11 @@ define(
       }
     },
     
+    explode: function () {
+      me.game.remove(this);
+      this.createExplosion();
+    },
+    
     createExplosion: function () {
       var explosion = new CircularExplosionEntity(this.pos.x, this.pos.y);
       me.game.add(explosion, this.z);
@@ -82,7 +87,7 @@ define(
   MissileEntity.HEIGHT = 32;
   
   MissileEntity.SPEED_X_NORMAL = 1.5;
-  MissileEntity.SPEED_X_FAST = 2.5;
+  MissileEntity.SPEED_X_FAST = 3;
   MissileEntity.SPEED_Y = 1;
   
   return MissileEntity;
