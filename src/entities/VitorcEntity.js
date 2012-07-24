@@ -87,6 +87,7 @@ define(
         }
         else {
           this.setCurrentAnimation("stand");
+          this.respawn();
         }
       }
     },
@@ -273,6 +274,11 @@ define(
       this.setCurrentAnimation("die");
       this.vel.x = 0;
       this.forceJump();
+    },
+    
+    respawn: function () {
+      this.pos.x = this.respawn.x;
+      this.pos.y = this.respawn.y;
     },
     
     doTeleport: function () {

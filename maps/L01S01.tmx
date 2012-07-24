@@ -82,7 +82,7 @@
     <property name="placement" value="ceiling"/>
    </properties>
   </object>
-  <object name="vitorc" gid="520" x="48" y="288"/>
+  <object name="vitorc" gid="520" x="64" y="288"/>
   <object name="turret" gid="531" x="320" y="288"/>
   <object name="cocoon" gid="532" x="432" y="288"/>
  </objectgroup>
