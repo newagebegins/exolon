@@ -16,6 +16,7 @@ define(
       settings.image = "double_launcher";
       this.parent(x, y, settings);
       
+      this.vitorc = me.game.getEntityByName("vitorc")[0];
       this.resetFireDurationAndTimer();
     },
     
@@ -33,6 +34,9 @@ define(
     },
     
     fire: function () {
+      if (this.vitorc.pos.x > this.pos.x - DoubleLauncherEntity.STOP_FIRE_DISTANCE) {
+        return;
+      }
       var x = this.pos.x - DoubleLauncherBulletEntity.WIDTH;
       var y = util.arrayRandomElement([this.pos.y, this.pos.y + 16]);
       var bullet = new DoubleLauncherBulletEntity(x, y);
@@ -41,6 +45,8 @@ define(
     },
     
   });
+  
+  DoubleLauncherEntity.STOP_FIRE_DISTANCE = 64;
   
   return DoubleLauncherEntity;
   
