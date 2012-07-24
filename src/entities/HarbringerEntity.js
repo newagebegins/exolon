@@ -1,14 +1,12 @@
 define(
   [
-    "src/me",
-    "src/entities/CircularExplosionEntity",
+    "src/entities/KamikazeEntity",
   ],
   function (
-    me,
-    CircularExplosionEntity
+    KamikazeEntity
   ) {
       
-  var HarbringerEntity = me.ObjectEntity.extend({
+  var HarbringerEntity = KamikazeEntity.extend({
     
     init: function (x, y) {
       var settings = {};
@@ -19,33 +17,7 @@ define(
       this.animationspeed = 1;
       this.gravity = 0;
       this.vel.x = -HarbringerEntity.SPEED;
-      this.isLethal = true;
       this.updateColRect(0, 32, -1, 0);
-    },
-    
-    update: function () {
-      this.updateMovement();
-      this.handleCollisions();
-      this.parent();
-      return true;
-    },
-    
-    handleCollisions: function () {
-      var res = me.game.collide(this);
-      
-      if (this.vel.x == 0 || (res && res.obj.name == "vitorc")) {
-        me.game.remove(this);
-      }
-    },
-    
-    onDestroyEvent: function () {
-      this.createExplosion();
-    },
-    
-    createExplosion: function () {
-      var explosion = new CircularExplosionEntity(this.pos.x, this.pos.y);
-      me.game.add(explosion, this.z + 1);
-      me.game.sort();
     },
     
   });
