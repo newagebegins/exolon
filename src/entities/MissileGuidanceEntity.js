@@ -23,7 +23,10 @@ define(
     },
     
     update: function () {
-      if (me.gamestat.getItemValue("aliveMissilesCount") > 0 || !this.alive) {
+      if (me.gamestat.getItemValue("aliveMissilesCount") > 0 ||
+          !this.alive ||
+          this.vitorc.isCurrentAnimation("die")
+      ) {
         return false;
       }
       
