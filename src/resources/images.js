@@ -197,6 +197,11 @@ define(function () {
       type: "image",
       src: "images/mine.gif",
     },
+    {
+      name: "mine_fire",
+      type: "image",
+      src: "images/mine_fire.gif",
+    },
   ];
   
   return images;

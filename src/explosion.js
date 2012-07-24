@@ -8,11 +8,9 @@ define(
     ExplosionParticleEntity
   ) {
   
-  var PARTICLES_COUNT = 50;
-  
   var explosion = {
-    create: function (x, y) {
-      for (var i = 0; i < PARTICLES_COUNT; ++i) {
+    create: function (x, y, particlesCount) {
+      for (var i = 0; i < particlesCount; ++i) {
         var particle = new ExplosionParticleEntity(x, y);
         me.game.add(particle, 10);
       }

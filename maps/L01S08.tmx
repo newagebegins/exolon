@@ -86,7 +86,7 @@
   <object name="ship_fire" gid="495" x="80" y="240"/>
   <object name="ship_fire" gid="495" x="240" y="208"/>
   <object name="ship_fire" gid="495" x="400" y="240"/>
-  <object name="vitorc" gid="519" x="112" y="304"/>
+  <object name="vitorc" gid="519" x="0" y="128"/>
   <object name="mine" gid="661" x="160" y="320"/>
   <object name="mine" gid="661" x="240" y="320"/>
   <object name="mine" gid="661" x="320" y="320"/>
