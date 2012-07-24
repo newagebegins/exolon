@@ -1,32 +1,28 @@
 define(
   [
     "src/me",
-    "src/util",
   ],
   function (
-    me,
-    util
+    me
   ) {
       
   var KamikazeCreatorEntity = Object.extend({
     
-    delay: 5000,
+    // in sec
+    delay: 5,
     
     init: function () {
       this.vitorc = me.game.getEntityByName("vitorc")[0];
-      this.createTimer();
+      this.timer = 0;
     },
     
     update: function () {
+      this.timer +=  me.timer.tick / me.sys.fps;
+      if (this.timer > this.delay) {
+        this.timer = 0;
+        this.createKamikaze();
+      }
       return false;
-    },
-    
-    createTimer: function () {
-      var self = this;
-      util.executeWithDelay(function () {
-        self.createKamikaze();
-        self.createTimer();
-      }, this.delay);
     },
     
     createKamikaze: function () {

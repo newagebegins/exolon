@@ -10,7 +10,8 @@ define(
       
   var HarbringerCreatorEntity = KamikazeCreatorEntity.extend({
     
-    delay: 40000,
+    // in sec
+    delay: 30,
     
     createSpecificKamikaze: function (x, y) {
       return new HarbringerEntity(x, y);
