@@ -43,6 +43,7 @@ define(
       
       me.gamestat.add("aliveBlasterBulletCount", 0);
       me.gamestat.add("aliveGrenadesCount", 0);
+      me.gamestat.add("aliveMissilesCount", 0);
     },
     
     loadLevel: function (level) {

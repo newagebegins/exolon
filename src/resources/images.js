@@ -207,6 +207,11 @@ define(function () {
       type: "image",
       src: "images/missile_guidance.gif",
     },
+    {
+      name: "missile",
+      type: "image",
+      src: "images/missile.gif",
+    },
   ];
   
   return images;
