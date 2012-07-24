@@ -74,6 +74,7 @@
  <objectgroup color="#a41e0c" name="Object Layer 1" width="35" height="24">
   <object name="vitorc" gid="519" x="0" y="288"/>
   <object name="incubator" gid="658" x="368" y="320"/>
+  <object name="bubble_creator" gid="544" x="512" y="64"/>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24"/>
  <layer name="Tile Layer 2" width="35" height="24">
