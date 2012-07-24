@@ -57,7 +57,7 @@ define(
     createExplosion: function () {
       var explosion = new BlasterExplosion(this.pos.x, this.pos.y + 8);
       me.game.add(explosion, this.z);
-      me.game.sort();
+      me.game.sort.defer();
     },
     
     onDestroyEvent: function () {

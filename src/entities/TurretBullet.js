@@ -29,7 +29,7 @@ define(
     handleCollisions: function () {
       var res = me.game.collide(this);
       
-      if (this.vel.x == 0 || (res && res.obj.isSolid)) {
+      if (this.vel.x == 0 || (res && (res.obj.isSolid || res.obj.name == "vitorc"))) {
         me.game.remove(this);
       }
     },

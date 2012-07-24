@@ -25,7 +25,7 @@ define(
     createTube: function (z) {
       this.tube = new TurretTubeEntity(this.pos.x - TurretTubeEntity.WIDTH, this.pos.y + 32, this);
       me.game.add(this.tube, z);
-      me.game.sort();
+      me.game.sort.defer();
     },
     
     onDestroyEvent: function () {

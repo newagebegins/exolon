@@ -62,7 +62,7 @@ define(
     createBullet: function () {
       var bullet = new TurretBullet(this.pos.x - TurretBullet.WIDTH, this.pos.y + 10);
       me.game.add(bullet, this.z);
-      me.game.sort();
+      me.game.sort.defer();
     },
     
   });

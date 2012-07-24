@@ -31,6 +31,7 @@ define(
       this.addAnimation("jump", [3]);
       this.addAnimation("duck", [9]);
       this.addAnimation("die", [10]);
+      this.addAnimation("fall", [8]);
       
       this.setCurrentAnimation("stand");
       
@@ -64,6 +65,7 @@ define(
       this.handleCollisionsWithCollisionMap(res);
       this.handleCollisionsWithEntities();
       this.handleCollisionsWithEntities();
+      this.handleFallFromPlatform();
       this.handleNextScreen();
       this.parent();
       return true;
@@ -165,6 +167,13 @@ define(
       }
     },
     
+    handleFallFromPlatform: function () {
+      if (!this.isCurrentAnimation("jump") && !this.isCurrentAnimation("die") && this.falling) {
+        this.vel.x = 0;
+        this.setCurrentAnimation("fall");
+      }
+    },
+    
     handleNextScreen: function () {
       if (this.pos.x > 510) {
         me.state.current().nextLevel();
@@ -232,7 +241,7 @@ define(
       var pos = this.getBlasterBulletPosition();
       var bullet = new BlasterBulletEntity(pos.x, pos.y, this.direction);
       me.game.add(bullet, this.z);
-      me.game.sort();
+      me.game.sort.defer();
       
       me.gamestat.updateValue("aliveBlasterBulletCount", 1);
       
@@ -253,7 +262,7 @@ define(
       var trace = new GrenadeTraceEntity(tracePos.x, tracePos.y, this.direction);
       me.game.add(trace, this.z);
       
-      me.game.sort();
+      me.game.sort.defer();
       
       me.gamestat.updateValue("aliveGrenadesCount", 1);
       
@@ -312,7 +321,7 @@ define(
         var flash = new TeleportFlashEntity(x, y);
         me.game.add(flash, this.z + 1);
       }
-      me.game.sort();
+      me.game.sort.defer();
     },
     
     getOtherTeleport: function (teleports) {

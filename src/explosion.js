@@ -17,7 +17,7 @@ define(
         me.game.add(particle, 10);
       }
       
-      me.game.sort();
+      me.game.sort.defer();
     },
   };
   
