@@ -3,11 +3,13 @@ define(
     "src/me",
     "src/util",
     "src/entities/DoubleLauncherBulletEntity",
+    "src/entities/AwardPointsEntity",
   ],
   function (
     me,
     util,
-    DoubleLauncherBulletEntity
+    DoubleLauncherBulletEntity,
+    AwardPointsEntity
   ) {
       
   var DoubleLauncherEntity = me.ObjectEntity.extend({
@@ -16,6 +18,8 @@ define(
       settings.image = "double_launcher";
       this.parent(x, y, settings);
       
+      this.collidable = true;
+      this.captured = false;
       this.vitorc = me.game.getEntityByName("vitorc")[0];
       this.resetFireDurationAndTimer();
     },
@@ -44,9 +48,27 @@ define(
       me.game.sort.defer();
     },
     
+    onCollision: function (res, obj) {
+      if (obj.name == "vitorc") {
+        this.capture();
+      }
+    },
+    
+    capture: function () {
+      if (this.captured) {
+        return;
+      }
+      this.captured = true;
+      
+      var award = new AwardPointsEntity(DoubleLauncherEntity.POINTS);
+      me.game.add(award, 999);
+      me.game.sort.defer();
+    },
+    
   });
   
   DoubleLauncherEntity.STOP_FIRE_DISTANCE = 64;
+  DoubleLauncherEntity.POINTS = 2000;
   
   return DoubleLauncherEntity;
   
