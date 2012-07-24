@@ -1,6 +1,7 @@
 define(
   [
     "src/me",
+    "src/util",
     "src/entities/BlasterBulletEntity",
     "src/entities/GrenadeEntity",
     "src/entities/GrenadeTraceEntity",
@@ -8,6 +9,7 @@ define(
   ],
   function (
     me,
+    util,
     BlasterBulletEntity,
     GrenadeEntity,
     GrenadeTraceEntity,
@@ -47,6 +49,8 @@ define(
       
       this.dieTimer = 0;
       this.dieDuration = 70;
+      
+      this.invincible = false;
       
       this.insideTeleport = false;
       this.thisTeleportGUID = null;
@@ -88,6 +92,7 @@ define(
         else {
           this.setCurrentAnimation("stand");
           this.respawn();
+          this.makeTemporarilyInvincible();
         }
       }
     },
@@ -270,6 +275,9 @@ define(
     },
     
     die: function () {
+      if (this.invincible) {
+        return;
+      }
       me.game.HUD.updateItemValue("lives", -1);
       this.setCurrentAnimation("die");
       this.vel.x = 0;
@@ -279,6 +287,14 @@ define(
     respawn: function () {
       this.pos.x = this.respawn.x;
       this.pos.y = this.respawn.y;
+    },
+    
+    makeTemporarilyInvincible: function () {
+      var self = this;
+      this.invincible = true;
+      util.executeWithDelay(function () {
+        self.invincible = false;
+      }, VitorcEntity.INVINCIBILITY_DURATION);
     },
     
     doTeleport: function () {
@@ -407,6 +423,8 @@ define(
   
   VitorcEntity.GRENADE_TRACE_OFFSET_X = 4;
   VitorcEntity.GRENADE_TRACE_OFFSET_Y = 5;
+  
+  VitorcEntity.INVINCIBILITY_DURATION = 3000;
   
   return VitorcEntity;
   
