@@ -17,7 +17,10 @@ define(
       this.updateColRect(2, 28, 2, 30);
     },
     
-    onCollision: function () {
+    onCollision: function (res, obj) {
+      if (obj.name != "vitorc") {
+        return;
+      }
       this.collidable = false;
       me.game.remove(this);
       me.game.HUD.setItemValue("ammo", config.initialAmmo);
