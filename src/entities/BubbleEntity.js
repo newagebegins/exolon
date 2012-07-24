@@ -19,6 +19,15 @@ define(
       settings.spriteheight = BubbleEntity.HEIGHT;
       this.parent(x, y + BubbleEntity.HEIGHT, settings);
       
+      this.addAnimation("green", [0,1,2]);
+      this.addAnimation("cyan", [3,4,5]);
+      this.addAnimation("purple", [6,7,8]);
+      this.addAnimation("yellow", [9,10,11]);
+      this.addAnimation("red", [12,13,14]);
+      this.addAnimation("white", [15,16,17]);
+      
+      this.setCurrentAnimation(util.arrayRandomElement(["green", "cyan", "purple", "yellow", "red", "white"]));
+      
       this.animationspeed = 1;
       this.gravity = 0;
       this.collidable = true;
