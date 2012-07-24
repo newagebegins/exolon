@@ -88,6 +88,11 @@ define(function () {
       src: "images/grenade_pack.gif",
     },
     {
+      name: "ammo_pack",
+      type: "image",
+      src: "images/ammo_pack.gif",
+    },
+    {
       name: "turret",
       type: "image",
       src: "images/turret.gif",

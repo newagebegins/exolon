@@ -14,6 +14,7 @@ define(
     "src/entities/ShipFireEntity",
     "src/entities/LightEntity",
     "src/entities/GrenadePackEntity",
+    "src/entities/AmmoPackEntity",
     "src/entities/TeleportEntity",
     "src/entities/PistonEntity",
   ],
@@ -32,6 +33,7 @@ define(
     ShipFireEntity,
     LightEntity,
     GrenadePackEntity,
+    AmmoPackEntity,
     TeleportEntity,
     PistonEntity
   ) {
@@ -60,6 +62,7 @@ define(
       me.entityPool.add("ship_fire", ShipFireEntity);
       me.entityPool.add("light", LightEntity);
       me.entityPool.add("grenade_pack", GrenadePackEntity);
+      me.entityPool.add("ammo_pack", AmmoPackEntity);
       me.entityPool.add("teleport", TeleportEntity);
       me.entityPool.add("piston", PistonEntity);
       
