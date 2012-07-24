@@ -106,8 +106,11 @@ define(
       
       this.handleFireKey();
       
-      if (this.isCurrentAnimation("jump") || this.falling) {
+      if (this.falling) {
         return;
+      }
+      else if (this.isCurrentAnimation("jump")) {
+        this.handleInputDuringJump();
       }
       else {
         this.handleInputOnTheGround();
@@ -190,6 +193,15 @@ define(
       else {
         this.firePressed = false;
         this.grenadeFireTimer = 0;
+      }
+    },
+    
+    handleInputDuringJump: function () {
+      if (me.input.isKeyPressed("right") && this.direction == "right") {
+        this.doWalk(false);
+      }
+      else if (me.input.isKeyPressed("left") && this.direction == "left") {
+        this.doWalk(true);
       }
     },
     
