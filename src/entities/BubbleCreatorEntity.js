@@ -13,7 +13,14 @@ define(
     delay: 1000,
     
     createSpecificKamikaze: function (x, y) {
-      return new BubbleEntity(x, y);
+      return new BubbleEntity(x, y - 8);
+    },
+    
+    shouldCreate: function () {
+      if (this.vitorc.pos.x > 383) {
+        return false;
+      }
+      return true;
     },
     
   });

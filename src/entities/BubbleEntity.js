@@ -33,13 +33,13 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.pos.y += util.getRandomArbitrary(-32, 32);
+      this.pos.y += util.getRandomArbitrary(-16, 0);
       this.pos.x += util.getRandomArbitrary(0, 32);
     },
     
     updateMovement: function () {
       this.pos.x -= BubbleEntity.SPEED;
-      this.pos.y += 3 * Math.sin(this.pos.x / 20);
+      this.pos.y += util.getRandomArbitrary(1, 3) * Math.sin(this.pos.x / 20);
     },
     
     onCollision: function (res, obj) {

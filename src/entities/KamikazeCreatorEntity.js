@@ -13,6 +13,7 @@ define(
     delay: 5000,
     
     init: function () {
+      this.vitorc = me.game.getEntityByName("vitorc")[0];
       this.createTimer();
     },
     
@@ -29,14 +30,21 @@ define(
     },
     
     createKamikaze: function () {
-      var vitorc = me.game.getEntityByName("vitorc")[0];
-      var harbringer = this.createSpecificKamikaze(512, vitorc.pos.y);
-      me.game.add(harbringer, vitorc.z - 1);
+      if (!this.shouldCreate()) {
+        return;
+      }
+      var kamikaze = this.createSpecificKamikaze(512, this.vitorc.pos.y);
+      me.game.add(kamikaze, this.vitorc.z - 1);
       me.game.sort.defer();
     },
     
     createSpecificKamikaze: function () {
       // should be overriden by subclasses
+    },
+    
+    shouldCreate: function () {
+      // should be overriden by subclasses
+      return true;
     },
     
   });
