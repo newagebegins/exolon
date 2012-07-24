@@ -13,7 +13,7 @@ define(
       settings.image = "blaster_explosion";
       settings.spritewidth = 16;
       
-      this.parent(x, y, settings);
+      this.parent(x, y + 16, settings);
       
       this.addAnimation("default", [0,1,2,3,2,1,2]);
       this.setCurrentAnimation("default", function () { me.game.remove(this); });

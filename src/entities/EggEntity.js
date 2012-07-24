@@ -2,10 +2,12 @@ define(
   [
     "src/util",
     "src/entities/KamikazeEntity",
+    "src/entities/BlasterExplosion",
   ],
   function (
     util,
-    KamikazeEntity
+    KamikazeEntity,
+    BlasterExplosion
   ) {
       
   var EggEntity = KamikazeEntity.extend({
@@ -24,8 +26,8 @@ define(
       this.gravity = 0;
       this.collidable = true;
       this.isDestroyable = true;
-      this.vel.x = util.getRandomArbitrary(-2.5, 1.5) + 0.5;
-      this.vel.y = util.getRandomArbitrary(-0.4, 0.3) + 0.1;
+      this.vel.x = util.getRandomArbitrary(-4, 2) + 1;
+      this.vel.y = util.getRandomArbitrary(-1.5, 1) + 0.5;
     },
     
     updateMovement: function () {
@@ -50,7 +52,7 @@ define(
       this.prevY = this.pos.y;
       
       this.pos.y += this.vel.y;
-      this.pos.y += util.getRandomArbitrary(0.1, 0.5) * Math.sin(this.pos.x / 2);
+      this.pos.y += util.getRandomArbitrary(0.1, 0.5) * Math.sin(this.pos.x / 4);
       
       if (this.bottom > this.bounds.bottom ||
           this.top < this.bounds.top) {
@@ -67,6 +69,10 @@ define(
         this.pos.y = this.prevY;
         this.vel.y = -this.vel.y;
       }
+    },
+    
+    createSpecificExplosion: function (x, y) {
+      return new BlasterExplosion(x, y);
     },
     
   });
