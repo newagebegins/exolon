@@ -13,7 +13,7 @@ define(
     delay: 1000,
     
     createSpecificKamikaze: function (x, y) {
-      return new BubbleEntity(x, y - 8);
+      return new BubbleEntity(x, y);
     },
     
     shouldCreate: function () {
