@@ -1,16 +1,16 @@
 define(
   [
-    "src/me",
     "src/util",
     "src/entities/KamikazeEntity",
   ],
   function (
-    me,
     util,
     KamikazeEntity
   ) {
       
   var BubbleEntity = KamikazeEntity.extend({
+    
+    points: 150,
     
     init: function (x, y) {
       var settings = {};
@@ -40,14 +40,6 @@ define(
     updateMovement: function () {
       this.pos.x -= BubbleEntity.SPEED;
       this.pos.y += util.getRandomArbitrary(1, 3) * Math.sin(this.pos.x / 20);
-    },
-    
-    onCollision: function (res, obj) {
-      if (obj.name == "blaster_bullet") {
-        me.game.remove(this);
-        this.createExplosion();
-        me.game.HUD.updateItemValue("points", 150);
-      }
     },
     
   });

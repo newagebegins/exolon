@@ -177,6 +177,11 @@ define(function () {
       type: "image",
       src: "images/incubator.gif",
     },
+    {
+      name: "egg",
+      type: "image",
+      src: "images/egg.png",
+    },
   ];
   
   return images;
