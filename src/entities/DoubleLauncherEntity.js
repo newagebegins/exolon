@@ -55,7 +55,7 @@ define(
       if (this.vitorc.pos.x > this.pos.x - DoubleLauncherEntity.STOP_FIRE_DISTANCE) {
         return false;
       }
-      if (this.vitorc.pos.y + this.vitorc.height < this.pos.y) {
+      if (!this.vitorcIsInSight()) {
         return false;
       }
       return true;
@@ -76,6 +76,14 @@ define(
       var award = new AwardPointsEntity(DoubleLauncherEntity.POINTS);
       me.game.add(award, 999);
       me.game.sort.defer();
+    },
+    
+    vitorcIsInSight: function () {
+      if (this.vitorc.pos.y + this.vitorc.height < this.pos.y ||
+          this.vitorc.pos.y > this.pos.y + this.height) {
+        return false;
+      }
+      return true;
     },
     
   });
