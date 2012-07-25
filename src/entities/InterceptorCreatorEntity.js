@@ -11,7 +11,7 @@ define(
   var InterceptorCreatorEntity = KamikazeCreatorEntity.extend({
     
     // in sec
-    delay: 1,
+    delay: 1.5,
     
     createSpecificKamikaze: function (x, y) {
       return new InterceptorEntity(x, y);
