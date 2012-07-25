@@ -222,6 +222,11 @@ define(function () {
       type: "image",
       src: "images/jellyfish.gif",
     },
+    {
+      name: "waggon",
+      type: "image",
+      src: "images/waggon.gif",
+    },
   ];
   
   return images;
