@@ -30,12 +30,13 @@ define(
     
     handleCollisions: function () {
       var res = me.game.collide(this);
+      var hitVitorc = res && res.obj.name == "vitorc";
       
-      if (this.pos.x < 0 || (res && res.obj.name == "vitorc")) {
+      if (this.pos.x < 0 || hitVitorc) {
         me.game.remove(this);
       }
       
-      if (res && res.obj.name == "vitorc") {
+      if (hitVitorc) {
         this.createExplosion();
       }
     },
