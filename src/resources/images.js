@@ -217,6 +217,11 @@ define(function () {
       type: "image",
       src: "images/interceptor.gif",
     },
+    {
+      name: "jellyfish",
+      type: "image",
+      src: "images/jellyfish.gif",
+    },
   ];
   
   return images;
