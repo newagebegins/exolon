@@ -237,6 +237,11 @@ define(function () {
       type: "image",
       src: "images/combined_launcher_bottom.gif",
     },
+    {
+      name: "square_light",
+      type: "image",
+      src: "images/square_light.gif",
+    },
   ];
   
   return images;

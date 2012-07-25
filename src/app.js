@@ -28,6 +28,7 @@ define(
     "src/entities/WaggonEntity",
     "src/entities/CombinedLauncherTopEntity",
     "src/entities/CombinedLauncherBottomEntity",
+    "src/entities/SquareLightEntity",
   ],
   function (
     me,
@@ -57,7 +58,8 @@ define(
     JellyfishCreatorEntity,
     WaggonEntity,
     CombinedLauncherTopEntity,
-    CombinedLauncherBottomEntity
+    CombinedLauncherBottomEntity,
+    SquareLightEntity
   ) {
     
   var app = {
@@ -98,6 +100,7 @@ define(
       me.entityPool.add("waggon", WaggonEntity);
       me.entityPool.add("combined_launcher_top", CombinedLauncherTopEntity);
       me.entityPool.add("combined_launcher_bottom", CombinedLauncherBottomEntity);
+      me.entityPool.add("square_light", SquareLightEntity);
       
       me.input.bindKey(me.input.KEY.LEFT, "left");
       me.input.bindKey(me.input.KEY.RIGHT, "right");
