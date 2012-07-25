@@ -17,13 +17,6 @@ define(
       return new BubbleEntity(x, y);
     },
     
-    shouldCreate: function () {
-      if (this.vitorc.pos.x > 350) {
-        return false;
-      }
-      return true;
-    },
-    
   });
   
   return BubbleCreatorEntity;
