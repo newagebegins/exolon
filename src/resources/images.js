@@ -242,6 +242,11 @@ define(function () {
       type: "image",
       src: "images/square_light.gif",
     },
+    {
+      name: "discharge",
+      type: "image",
+      src: "images/discharge.gif",
+    },
   ];
   
   return images;

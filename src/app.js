@@ -29,6 +29,7 @@ define(
     "src/entities/CombinedLauncherTopEntity",
     "src/entities/CombinedLauncherBottomEntity",
     "src/entities/SquareLightEntity",
+    "src/entities/DischargeEntity",
   ],
   function (
     me,
@@ -59,7 +60,8 @@ define(
     WaggonEntity,
     CombinedLauncherTopEntity,
     CombinedLauncherBottomEntity,
-    SquareLightEntity
+    SquareLightEntity,
+    DischargeEntity
   ) {
     
   var app = {
@@ -101,6 +103,7 @@ define(
       me.entityPool.add("combined_launcher_top", CombinedLauncherTopEntity);
       me.entityPool.add("combined_launcher_bottom", CombinedLauncherBottomEntity);
       me.entityPool.add("square_light", SquareLightEntity);
+      me.entityPool.add("discharge", DischargeEntity);
       
       me.input.bindKey(me.input.KEY.LEFT, "left");
       me.input.bindKey(me.input.KEY.RIGHT, "right");
