@@ -26,7 +26,7 @@ define(
     },
     
     createKamikaze: function () {
-      if (!this.shouldCreate()) {
+      if (this.vitorc.isCurrentAnimation("die") || !this.shouldCreate()) {
         return;
       }
       var kamikaze = this.createSpecificKamikaze(512, this.vitorc.pos.y + 2);
