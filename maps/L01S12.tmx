@@ -91,6 +91,7 @@
   <object name="radar" gid="531" x="368" y="288"/>
   <object name="grenade_pack" gid="533" x="448" y="288"/>
   <object name="ammo_pack" gid="658" x="320" y="320"/>
+  <object name="interceptor_creator" gid="764" x="512" y="80"/>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24">
   <object name="missile_guidance" gid="661" x="240" y="240"/>
