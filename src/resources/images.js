@@ -28,6 +28,11 @@ define(function () {
       type: "image",
       src: "images/font_yellow.gif",
     },
+    {
+      name: "font_red",
+      type: "image",
+      src: "images/font_red.gif",
+    },
     
     // tiles
     {
@@ -246,6 +251,13 @@ define(function () {
       name: "discharge",
       type: "image",
       src: "images/discharge.gif",
+    },
+    
+    // other
+    {
+      name: "title",
+      type: "image",
+      src: "images/title.gif",
     },
   ];
   

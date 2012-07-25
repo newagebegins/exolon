@@ -4,6 +4,7 @@ define(
     "src/config",
     "src/resources/resources",
     
+    "src/screens/TitleScreen",
     "src/screens/PlayScreen",
     
     "src/entities/VitorcEntity",
@@ -36,6 +37,7 @@ define(
     config,
     resources,
     
+    TitleScreen,
     PlayScreen,
     
     VitorcEntity,
@@ -78,6 +80,7 @@ define(
     },
     
     loaded: function () {
+      me.state.set(me.state.MENU, new TitleScreen());
       me.state.set(me.state.PLAY, new PlayScreen());
       
       me.entityPool.add("vitorc", VitorcEntity);
@@ -111,7 +114,7 @@ define(
       me.input.bindKey(me.input.KEY.DOWN, "duck");
       me.input.bindKey(me.input.KEY.SPACE, "fire");
       
-      me.state.change(me.state.PLAY);
+      me.state.change(me.state.MENU);
     },
     
   };
