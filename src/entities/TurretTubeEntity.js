@@ -17,7 +17,7 @@ define(
       settings.image = "turret_tube";
       settings.spritewidth = TurretTubeEntity.WIDTH;
       
-      this.parent(x, y, settings);
+      this.parent(x, y + TurretTubeEntity.HEIGHT, settings);
       
       this.turret = turret;
       this.collidable = true;
@@ -68,6 +68,7 @@ define(
   });
   
   TurretTubeEntity.WIDTH = 32;
+  TurretTubeEntity.HEIGHT = 16;
   
   return TurretTubeEntity;
   

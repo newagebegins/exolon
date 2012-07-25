@@ -10,20 +10,18 @@ define(
     TurretTubeEntity
   ) {
       
-  var TurretEntity = ObstacleEntity.extend({
+  var CombinedLauncherTopEntity = ObstacleEntity.extend({
     
     init: function (x, y, settings) {
-      settings.image = "turret_body";
-      settings.spritewidth = 64;
-      this.parent(x + 32, y, settings);
+      settings.image = "combined_launcher_top";
+      this.parent(x, y, settings);
       
-      this.updateColRect(8, 48, -1, 0);
       this.tube = null;
       this.createTube(settings.z);
     },
     
     createTube: function (z) {
-      this.tube = new TurretTubeEntity(this.pos.x - TurretTubeEntity.WIDTH, this.pos.y + 16, this);
+      this.tube = new TurretTubeEntity(this.pos.x - 16, this.pos.y, this);
       me.game.add(this.tube, z);
       me.game.sort.defer();
     },
@@ -34,6 +32,6 @@ define(
     
   });
   
-  return TurretEntity;
+  return CombinedLauncherTopEntity;
   
 });

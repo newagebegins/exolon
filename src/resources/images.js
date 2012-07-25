@@ -227,6 +227,16 @@ define(function () {
       type: "image",
       src: "images/waggon.gif",
     },
+    {
+      name: "combined_launcher_top",
+      type: "image",
+      src: "images/combined_launcher_top.gif",
+    },
+    {
+      name: "combined_launcher_bottom",
+      type: "image",
+      src: "images/combined_launcher_bottom.gif",
+    },
   ];
   
   return images;
