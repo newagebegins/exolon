@@ -35,7 +35,11 @@ define(
     },
     
     updateMovement: function () {
-      this.pos.x += this.vel.x;
+      this.prevX = this.pos.x;
+      this.prevY = this.pos.y;
+      
+      this.pos.add(this.vel);
+      this.pos.y += util.getRandomArbitrary(0.1, 0.5) * Math.sin(this.pos.x / 4);
       
       if (this.right > this.bounds.right ||
           this.left < this.bounds.left) {
@@ -49,14 +53,9 @@ define(
           }
         }
         
-        this.pos.x -= this.vel.x;
+        this.pos.x = this.prevX;
         this.vel.x = -this.vel.x;
       }
-      
-      this.prevY = this.pos.y;
-      
-      this.pos.y += this.vel.y;
-      this.pos.y += util.getRandomArbitrary(0.1, 0.5) * Math.sin(this.pos.x / 4);
       
       if (this.bottom > this.bounds.bottom ||
           this.top < this.bounds.top) {
@@ -72,6 +71,19 @@ define(
         
         this.pos.y = this.prevY;
         this.vel.y = -this.vel.y;
+      }
+      
+      var res = this.collisionMap.checkCollision(this.collisionBox, this.vel);
+      
+      if (res) {
+        this.pos.sub(res);
+        
+        if (res.y) {
+          this.vel.y = -this.vel.y;
+        }
+        if (res.x) {
+          this.vel.x = -this.vel.x;
+        }
       }
     },
     
