@@ -11,7 +11,7 @@ define(
   var JellyfishCreatorEntity = KamikazeCreatorEntity.extend({
     
     // in sec
-    delay: 1.5,
+    delay: 1,
     
     createSpecificKamikaze: function (x, y) {
       return new JellyfishEntity(x, y);

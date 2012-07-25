@@ -35,41 +35,41 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.pos.y += util.getRandomArbitrary(-4, 0);
-      this.pos.x += util.getRandomArbitrary(0, 32);
-      
-      this.swing = true;
-      this.vel.x = JellyfishEntity.SPEED_NORMAL;
-      
-      this.straightFlyTimer = 0;
-      this.straightFlyDuration = 40;
+      this.pos.y += util.getRandomArbitrary(-16, 16);
+      this.moveType = "straight_1";
+      this.moveAngle = Math.PI;
     },
     
     updateMovement: function () {
-      if (this.pos.x < 336) {
-        this.swing = false;
+      if (this.moveType == "straight_1" && this.pos.x < JellyfishEntity.START_CIRCULAR_MOTION_X) {
+        this.moveType = "circular";
       }
       
-      if (this.swing) {
-        this.pos.y += util.getRandomArbitrary(1, 3) * Math.sin(this.pos.x / 20);
+      if (this.moveType == "straight_1" || this.moveType == "straight_2") {
+        this.pos.x -= JellyfishEntity.SPEED;
       }
-      else {
-        this.straightFlyTimer++;
-        if (this.straightFlyTimer > this.straightFlyDuration) {
-          this.vel.x = JellyfishEntity.SPEED_FAST;
+      else if (this.moveType == "circular") {
+        var x = Math.cos(this.moveAngle) * JellyfishEntity.CIRCULAR_MOTION_RADIUS;
+        var y = Math.sin(this.moveAngle) * JellyfishEntity.CIRCULAR_MOTION_RADIUS;
+        
+        this.pos.x += x / 20;
+        this.pos.y += y / 18;
+        
+        this.moveAngle += 0.05;
+        
+        if (this.moveAngle >=  3 * Math.PI)  {
+          this.moveType = "straight_2";
         }
       }
-      
-      this.pos.x -= this.vel.x;
-      
     },
     
   });
   
   JellyfishEntity.WIDTH = 32;
   JellyfishEntity.HEIGHT = 32;
-  JellyfishEntity.SPEED_NORMAL = 1.5;
-  JellyfishEntity.SPEED_FAST = 4;
+  JellyfishEntity.SPEED = 3;
+  JellyfishEntity.START_CIRCULAR_MOTION_X = 220;
+  JellyfishEntity.CIRCULAR_MOTION_RADIUS = 64;
   
   return JellyfishEntity;
   
