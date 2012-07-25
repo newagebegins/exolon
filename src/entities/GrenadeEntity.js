@@ -70,9 +70,9 @@ define(
   GrenadeEntity.WIDTH = 16;
   
   GrenadeEntity.VEL_Y = 3.6;
-  GrenadeEntity.UP_VEL_X = 1.3;
+  GrenadeEntity.UP_VEL_X = 1.5;
   GrenadeEntity.UP_GRAVITY = 0.2;
-  GrenadeEntity.DOWN_VEL_X = 5.5;
+  GrenadeEntity.DOWN_VEL_X = 5;
   GrenadeEntity.DOWN_GRAVITY = 0.1;
   
   return GrenadeEntity;

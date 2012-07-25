@@ -55,7 +55,7 @@ define(
     },
     
     resetFireDurationAndTimer: function () {
-      this.fireDuration = util.getRandomInt(20, 200);
+      this.fireDuration = util.getRandomInt(50, 300);
       this.fireTimer = 0;
     },
     

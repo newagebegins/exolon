@@ -453,10 +453,10 @@ define(
   VitorcEntity.BLASTER_BULLET_OFFSET_Y = 30;
   
   VitorcEntity.GRENADE_OFFSET_X = 20;
-  VitorcEntity.GRENADE_OFFSET_Y = 7;
+  VitorcEntity.GRENADE_OFFSET_Y = 12;
   
   VitorcEntity.GRENADE_TRACE_OFFSET_X = 4;
-  VitorcEntity.GRENADE_TRACE_OFFSET_Y = 5;
+  VitorcEntity.GRENADE_TRACE_OFFSET_Y = 10;
   
   VitorcEntity.INVINCIBILITY_DURATION = 1500;
   

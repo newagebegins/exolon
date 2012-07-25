@@ -17,12 +17,15 @@ define(
     points: 0,
     
     init: function (x, y, settings) {
-      this.vitorc = me.game.getEntityByName("vitorc")[0];
+      this.vitorc = null;
       settings.image = "missile_guidance";
       this.parent(x, y, settings);
     },
     
     update: function () {
+      if (this.vitorc == null) {
+        this.vitorc = me.game.getEntityByName("vitorc")[0];
+      }
       if (me.gamestat.getItemValue("aliveMissilesCount") > 0 ||
           !this.alive ||
           this.vitorc.isCurrentAnimation("die")

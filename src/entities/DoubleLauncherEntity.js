@@ -20,11 +20,14 @@ define(
       
       this.collidable = true;
       this.captured = false;
-      this.vitorc = me.game.getEntityByName("vitorc")[0];
+      this.vitorc = null;
       this.resetFireDurationAndTimer();
     },
     
     update: function () {
+      if (this.vitorc == null) {
+        this.vitorc = me.game.getEntityByName("vitorc")[0];
+      }
       this.fireTimer++;
       if (this.fireTimer > this.fireDuration) {
         this.resetFireDurationAndTimer();

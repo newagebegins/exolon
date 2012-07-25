@@ -12,11 +12,14 @@ define(
     delay: 5,
     
     init: function () {
-      this.vitorc = me.game.getEntityByName("vitorc")[0];
+      this.vitorc = null;
       this.timer = 0;
     },
     
     update: function () {
+      if (this.vitorc == null) {
+        this.vitorc = me.game.getEntityByName("vitorc")[0];
+      }
       this.timer +=  me.timer.tick / me.sys.fps;
       if (this.timer > this.delay) {
         this.timer = 0;
