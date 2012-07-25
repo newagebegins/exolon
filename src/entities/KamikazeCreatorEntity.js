@@ -20,6 +20,9 @@ define(
       if (this.vitorc == null) {
         this.vitorc = me.game.getEntityByName("vitorc")[0];
       }
+      if (this.vitorc.isCurrentAnimation("die")) {
+        this.timer = 0;
+      }
       this.timer +=  me.timer.tick / me.sys.fps;
       if (this.timer > this.delay) {
         this.timer = 0;
@@ -29,7 +32,7 @@ define(
     },
     
     createKamikaze: function () {
-      if (this.vitorc.isCurrentAnimation("die") || !this.shouldCreate()) {
+      if (!this.shouldCreate()) {
         return;
       }
       var kamikaze = this.createSpecificKamikaze(512, this.vitorc.pos.y + 2);
