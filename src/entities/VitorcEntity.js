@@ -57,6 +57,8 @@ define(
       
       this.insideTeleport = false;
       this.thisTeleportGUID = null;
+      
+      this.jumpDistance = 0;
     },
     
     update: function () {
@@ -74,8 +76,19 @@ define(
     },
     
     updateJump: function () {
-      if (this.isCurrentAnimation("jump") && this.isOnTheGround()) {
+      if (!this.isCurrentAnimation("jump")) {
+        return;
+      }
+      if (this.vel.x != 0 && this.falling) {
+        this.jumpDistance += Math.abs(this.vel.x);
+        if (this.jumpDistance > VitorcEntity.JUMP_DISTANCE) {
+          this.setCurrentAnimation("fall");
+          this.jumpDistance = 0;
+        }
+      }
+      if (this.isOnTheGround()) {
         this.setCurrentAnimation("stand");
+        this.jumpDistance = 0;
       }
     },
     
@@ -459,6 +472,7 @@ define(
   VitorcEntity.GRENADE_TRACE_OFFSET_Y = 10;
   
   VitorcEntity.INVINCIBILITY_DURATION = 1500;
+  VitorcEntity.JUMP_DISTANCE = 50;
   
   return VitorcEntity;
   
