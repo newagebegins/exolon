@@ -111,6 +111,11 @@ define(function () {
       type: "tmx",
       src: "maps/L01S22.tmx",
     },
+    {
+      name: "L01S23",
+      type: "tmx",
+      src: "maps/L01S23.tmx",
+    },
   ];
   
   return maps;
