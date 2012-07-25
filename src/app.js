@@ -19,6 +19,7 @@ define(
     "src/entities/PistonEntity",
     "src/entities/BubbleCreatorEntity",
     "src/entities/IncubatorEntity",
+    "src/entities/EggEntity",
     "src/entities/DoubleLauncherEntity",
     "src/entities/MineEntity",
     "src/entities/MissileGuidanceEntity",
@@ -45,6 +46,7 @@ define(
     PistonEntity,
     BubbleCreatorEntity,
     IncubatorEntity,
+    EggEntity,
     DoubleLauncherEntity,
     MineEntity,
     MissileGuidanceEntity,
@@ -81,6 +83,7 @@ define(
       me.entityPool.add("piston", PistonEntity);
       me.entityPool.add("bubble_creator", BubbleCreatorEntity);
       me.entityPool.add("incubator", IncubatorEntity);
+      me.entityPool.add("egg", EggEntity);
       me.entityPool.add("double_launcher", DoubleLauncherEntity);
       me.entityPool.add("mine", MineEntity);
       me.entityPool.add("missile_guidance", MissileGuidanceEntity);

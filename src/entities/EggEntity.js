@@ -1,10 +1,12 @@
 define(
   [
+    "src/me",
     "src/util",
     "src/entities/KamikazeEntity",
     "src/entities/BlasterExplosion",
   ],
   function (
+    me,
     util,
     KamikazeEntity,
     BlasterExplosion
@@ -14,14 +16,16 @@ define(
     
     points: 50,
     
-    init: function (x, y, bounds) {
-      var settings = {};
+    init: function (x, y, settings) {
       settings.image = "egg";
       settings.spritewidth = EggEntity.WIDTH;
       this.parent(x, y + EggEntity.HEIGHT, settings);
       
-      this.bounds = bounds;
-      this.increaseBounds = false;
+      if (!settings.bounds) {
+        settings.bounds = {x: x, y: y + EggEntity.HEIGHT , w: EggEntity.WIDTH, h: EggEntity.HEIGHT};
+      }
+      this.bounds = new me.Rect(new me.Vector2d(settings.bounds.x, settings.bounds.y), settings.bounds.w, settings.bounds.h);;
+      this.increaseBounds = settings.increaseBounds ? settings.increaseBounds : false;
       this.animationspeed = 1;
       this.gravity = 0;
       this.collidable = true;
