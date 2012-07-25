@@ -14,14 +14,20 @@ define(
       
   var DoubleLauncherEntity = me.ObjectEntity.extend({
     
+    points: 2000,
+    
     init: function (x, y, settings) {
-      settings.image = "double_launcher";
+      settings.image = this.getSpriteImage();
       this.parent(x, y, settings);
       
       this.collidable = true;
       this.captured = false;
       this.vitorc = null;
       this.resetFireDurationAndTimer();
+    },
+    
+    getSpriteImage: function () {
+      return "double_launcher";
     },
     
     update: function () {
@@ -44,11 +50,17 @@ define(
       if (!this.shouldFire()) {
         return;
       }
-      var x = this.pos.x - DoubleLauncherBulletEntity.WIDTH;
-      var y = util.arrayRandomElement([this.pos.y, this.pos.y + 16]);
-      var bullet = new DoubleLauncherBulletEntity(x, y);
+      var pos = this.getBulletPosition();
+      var bullet = new DoubleLauncherBulletEntity(pos.x, pos.y);
       me.game.add(bullet, this.z);
       me.game.sort.defer();
+    },
+    
+    getBulletPosition: function () {
+      var pos = {};
+      pos.x = this.pos.x - DoubleLauncherBulletEntity.WIDTH;
+      pos.y = util.arrayRandomElement([this.pos.y, this.pos.y + 16]);
+      return pos;
     },
     
     shouldFire: function () {
@@ -73,7 +85,7 @@ define(
       }
       this.captured = true;
       
-      var award = new AwardPointsEntity(DoubleLauncherEntity.POINTS);
+      var award = new AwardPointsEntity(this.points);
       me.game.add(award, 999);
       me.game.sort.defer();
     },
@@ -88,8 +100,7 @@ define(
     
   });
   
-  DoubleLauncherEntity.STOP_FIRE_DISTANCE = 80;
-  DoubleLauncherEntity.POINTS = 2000;
+  DoubleLauncherEntity.STOP_FIRE_DISTANCE = 100;
   
   return DoubleLauncherEntity;
   
