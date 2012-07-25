@@ -32,7 +32,7 @@ define(
     
     onDestroyEvent: function () {
       for (var i in this.eggs) {
-        this.eggs[i].increaseBounds = true;
+        this.eggs[i].bounds = null;
       }
     },
     
