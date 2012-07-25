@@ -68,7 +68,7 @@ define(
   
   BlasterBulletEntity.SPEED = 6;
   BlasterBulletEntity.WIDTH = 16;
-  BlasterBulletEntity.RANGE = 160;
+  BlasterBulletEntity.RANGE = 210;
   
   return BlasterBulletEntity;
   
