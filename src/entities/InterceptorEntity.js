@@ -51,7 +51,7 @@ define(
       }
       
       if (this.swing) {
-        this.pos.y += util.getRandomArbitrary(1, 3) * Math.sin(this.pos.x / 14);
+        this.pos.y += util.getRandomArbitrary(1, 3) * Math.sin(this.pos.x / 20);
       }
       else {
         this.straightFlyTimer++;
