@@ -39,6 +39,14 @@ define(
       }
     },
     
+    destroy: function () {
+      // If player left the screen before all points were added, add remaining
+      // points.
+      if (this.points > 0) {
+        util.updatePoints(this.points);
+      }
+    },
+    
   });
   
   return AwardPointsEntity;
