@@ -1,9 +1,11 @@
 define(
   [
     "src/me",
+    "src/util",
   ],
   function (
-    me
+    me,
+    util
   ) {
       
   var BonusScreen = me.ScreenObject.extend({
@@ -25,6 +27,8 @@ define(
       
       this.fontCyan = new me.BitmapFont("font_cyan", 16);
       this.fontCyan.set("left");
+      
+      this.points = [0, 1000, 0, 3000, 0, 5000, 0, 7000];
     },
     
     update: function () {
@@ -37,6 +41,20 @@ define(
       context.drawImage(this.titleImg, 128, 48);
       this.fontWhite.draw(context, "EXOLON BONUS SCREEN!", 96, 128);
       this.fontGreen.draw(context, "PRESS FIRE TO STOP POINTER", 48, 160);
+      this.drawPoints(context);
+    },
+    
+    drawPoints: function (context) {
+      var font = this.fontCyan;
+      
+      for (var i in this.points) {
+        font = font === this.fontCyan ? this.fontYellow : this.fontCyan;
+        
+        var str = util.strlpad(this.points[i], "0", 5);
+        str += " POINTS";
+        
+        font.draw(context, str, 144, 208 + i * 16);
+      }
     },
     
   });
