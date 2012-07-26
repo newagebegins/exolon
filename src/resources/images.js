@@ -252,6 +252,11 @@ define(function () {
       type: "image",
       src: "images/discharge.gif",
     },
+    {
+      name: "level_complete_window",
+      type: "image",
+      src: "images/level_complete_window.gif",
+    },
     
     // other
     {

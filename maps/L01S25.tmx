@@ -111,6 +111,7 @@
   <object name="vitorc" gid="518" x="0" y="304"/>
   <object name="cocoon" gid="530" x="432" y="304"/>
   <object name="discharge" gid="820" x="224" y="96"/>
+  <object name="exit" x="240" y="160" width="32" height="128"/>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24">
   <object name="square_light" gid="803" x="144" y="272"/>
