@@ -101,8 +101,10 @@ define(
       var x = vitorc.pos.x;
       var y = vitorc.pos.y;
       
-      // find nearest ground tile
-      while (!me.game.collisionMap.getTile(x, y + vitorc.height)) {
+      // find nearest ground tiles
+      while (!me.game.collisionMap.getTile(x, y + vitorc.height) &&
+             !me.game.collisionMap.getTile(x+16, y + vitorc.height) &&
+             !me.game.collisionMap.getTile(x+32, y + vitorc.height)) {
         y++;
       }
       
