@@ -12,6 +12,7 @@ define(
     
     onCollision: function (res, obj) {
       if (obj.name == "vitorc") {
+        me.game.remove(obj);
         this.createLevelCompleteWindow();
       }
     },
