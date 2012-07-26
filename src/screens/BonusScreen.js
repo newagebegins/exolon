@@ -1,12 +1,16 @@
 define(
   [
     "src/me",
+    "src/config",
     "src/util",
+    "src/global",
     "src/screens",
   ],
   function (
     me,
+    config,
     util,
+    global,
     screens
   ) {
       
@@ -72,12 +76,23 @@ define(
         if (!this.firePressed) {
           this.firePressed = true;
           this.active = false;
-          util.executeWithDelay(function () { me.state.change(screens.PLAY); }, 1000);
+          util.executeWithDelay(this.nextLevel.bind(this), 1000);
         }
       }
       else {
         this.firePressed = false;
       }
+    },
+    
+    nextLevel: function () {
+      util.updatePoints(this.points[this.pointer]);
+      util.updateZones(1);
+      
+      if (global.lives < config.maxLives) {
+        util.updateLives(1);
+      }
+      
+      me.state.change(screens.PLAY);
     },
     
     draw: function (context) {

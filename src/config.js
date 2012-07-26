@@ -1,6 +1,8 @@
 define(function () {
   
   var config = {
+    maxLives: 9,
+    
     initialAmmo: 99,
     initialGrenades: 10,
     initialPoints: 0,
