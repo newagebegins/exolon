@@ -269,6 +269,11 @@ define(function () {
       type: "image",
       src: "images/bonus_screen.gif",
     },
+    {
+      name: "arrow",
+      type: "image",
+      src: "images/arrow.gif",
+    },
   ];
   
   return images;
