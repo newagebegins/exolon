@@ -35,6 +35,7 @@ define(
     "src/entities/DischargeEntity",
     "src/entities/ExitEntity",
     "src/entities/FungusEntity",
+    "src/entities/LouseCreatorEntity",
   ],
   function (
     me,
@@ -71,7 +72,8 @@ define(
     SquareLightEntity,
     DischargeEntity,
     ExitEntity,
-    FungusEntity
+    FungusEntity,
+    LouseCreatorEntity
   ) {
     
   var app = {
@@ -118,6 +120,7 @@ define(
       me.entityPool.add("discharge", DischargeEntity);
       me.entityPool.add("exit", ExitEntity);
       me.entityPool.add("fungus", FungusEntity);
+      me.entityPool.add("louse_creator", LouseCreatorEntity);
       
       me.input.bindKey(me.input.KEY.LEFT, "left");
       me.input.bindKey(me.input.KEY.RIGHT, "right");

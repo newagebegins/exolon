@@ -262,6 +262,11 @@ define(function () {
       type: "image",
       src: "images/fungus.gif",
     },
+    {
+      name: "louse",
+      type: "image",
+      src: "images/louse.gif",
+    },
     
     // other
     {
