@@ -64,7 +64,7 @@ define(
     },
     
     shouldFire: function () {
-      if (this.vitorc.pos.x > this.pos.x - DoubleLauncherEntity.STOP_FIRE_DISTANCE) {
+      if (this.vitorcTooClose()) {
         return false;
       }
       if (!this.vitorcIsInSight()) {
@@ -90,6 +90,10 @@ define(
       me.game.sort.defer();
     },
     
+    vitorcTooClose: function () {
+      return this.vitorc.pos.x > this.pos.x - DoubleLauncherEntity.STOP_FIRE_DISTANCE
+    },
+    
     vitorcIsInSight: function () {
       if (this.vitorc.pos.y + this.vitorc.height < this.pos.y ||
           this.vitorc.pos.y > this.pos.y + this.height) {
@@ -100,7 +104,7 @@ define(
     
   });
   
-  DoubleLauncherEntity.STOP_FIRE_DISTANCE = 100;
+  DoubleLauncherEntity.STOP_FIRE_DISTANCE = 110;
   
   return DoubleLauncherEntity;
   
