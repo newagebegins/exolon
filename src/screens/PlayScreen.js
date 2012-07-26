@@ -1,8 +1,10 @@
 define(
   [
     "src/me",
+    "src/config",
     "src/global",
     "src/util",
+    "src/screens",
     
     "src/hud/AmmoHUD",
     "src/hud/GrenadesHUD",
@@ -11,11 +13,14 @@ define(
     "src/hud/ZonesHUD",
     
     "src/entities/HarbringerCreatorEntity",
+    "src/entities/GameOverWindow",
   ],
   function (
     me,
+    config,
     global,
     util,
+    screens,
     
     AmmoHUD,
     GrenadesHUD,
@@ -23,7 +28,8 @@ define(
     LivesHUD,
     ZonesHUD,
     
-    HarbringerCreatorEntity
+    HarbringerCreatorEntity,
+    GameOverWindow
   ) {
       
   var PlayScreen = me.ScreenObject.extend({
@@ -58,6 +64,28 @@ define(
       this.setVitorcRespawnPosition(vitorc);
       
       util.updateZones(1);
+    },
+    
+    gameOver: function () {
+      var window = new GameOverWindow();
+      me.game.add(window, 10);
+      me.game.sort();
+      
+      me.state.pause();
+      
+      global.nextLevel = config.initialLevel;
+      
+      global.ammo = config.initialAmmo;
+      global.grenades = config.initialGrenades;
+      global.points = config.initialPoints;
+      global.lives = config.initialLives;
+      global.zones = config.initialZones;
+      
+      global.aliveBlasterBulletCount = 0;
+      global.aliveGrenadesCount = 0;
+      global.aliveMissilesCount = 0;
+      
+      setTimeout(function () { me.state.change(screens.TITLE); }, 3000);
     },
     
     restoreVitorcProperties: function (vitorc, prevLevelVitorc) {

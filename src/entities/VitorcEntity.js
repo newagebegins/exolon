@@ -103,20 +103,22 @@ define(
       }
       this.dieTimer++;
       if (this.dieTimer > this.dieDuration) {
-        this.dieTimer = 0;
+        if (global.lives > 0) {
+          util.updateLives(-1);
+        }
         
         if (global.lives == 0) {
-          // game over
+          me.state.current().gameOver();
+          return;
         }
-        else {
-          this.setCurrentAnimation("stand");
-          this.respawn();
-          this.makeTemporarilyInvincible();
-          
-          util.updateLives(-1);
-          util.setAmmo(config.initialAmmo);
-          util.setGrenades(config.initialGrenades);
-        }
+        
+        this.dieTimer = 0;
+        this.setCurrentAnimation("stand");
+        this.respawn();
+        this.makeTemporarilyInvincible();
+        
+        util.setAmmo(config.initialAmmo);
+        util.setGrenades(config.initialGrenades);
       }
     },
     
