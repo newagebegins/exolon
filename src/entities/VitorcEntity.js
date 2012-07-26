@@ -44,7 +44,7 @@ define(
       this.setVelocity(1.5, 2.75);
       this.gravity = 0.1;
       
-      this.firePressed = false;
+      this.firePressed = me.input.isKeyPressed('fire');
       this.jumpPressed = false;
       
       this.grenadeFireDuration = 35;
