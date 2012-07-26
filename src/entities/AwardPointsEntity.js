@@ -45,6 +45,9 @@ define(
       if (this.points > 0) {
         util.updatePoints(this.points);
       }
+      
+      // return true to remove this entity from the game manager
+      return true;
     },
     
   });
