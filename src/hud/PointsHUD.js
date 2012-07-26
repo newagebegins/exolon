@@ -14,10 +14,10 @@ define(
       this.parent(x, y, val);
       
       this.fontGreen = new me.BitmapFont("font_green", 16);
-      this.fontGreen.set("left")
+      this.fontGreen.set("left");
       
       this.fontCyan = new me.BitmapFont("font_cyan", 16);
-      this.fontCyan.set("left")
+      this.fontCyan.set("left");
     },
       
     draw: function (context, x, y) {
