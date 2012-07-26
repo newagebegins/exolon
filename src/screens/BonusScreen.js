@@ -36,6 +36,7 @@ define(
       context.drawImage(this.bgImg, 0, 0);
       context.drawImage(this.titleImg, 128, 48);
       this.fontWhite.draw(context, "EXOLON BONUS SCREEN!", 96, 128);
+      this.fontGreen.draw(context, "PRESS FIRE TO STOP POINTER", 48, 160);
     },
     
   });
