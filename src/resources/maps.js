@@ -1,6 +1,7 @@
 define(function () {
   
   var maps = [
+    // Level 1
     {
       name: "L01S01",
       type: "tmx",
@@ -125,6 +126,13 @@ define(function () {
       name: "L01S25",
       type: "tmx",
       src: "maps/L01S25.tmx",
+    },
+    
+    // Level 2
+    {
+      name: "L02S01",
+      type: "tmx",
+      src: "maps/L02S01.tmx",
     },
   ];
   

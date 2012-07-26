@@ -1,7 +1,6 @@
 define(
   [
     "src/me",
-    "src/config",
     "src/global",
     "src/util",
     
@@ -15,7 +14,6 @@ define(
   ],
   function (
     me,
-    config,
     global,
     util,
     
@@ -31,7 +29,7 @@ define(
   var PlayScreen = me.ScreenObject.extend({
     
     onResetEvent: function () {
-      this.loadLevel(config.initialScreen);
+      this.loadLevel(global.nextLevel);
       
       var vitorc = me.game.getEntityByName("vitorc")[0];
       this.setVitorcRespawnPosition(vitorc);
@@ -46,6 +44,7 @@ define(
     
     loadLevel: function (level) {
       me.levelDirector.loadLevel(level);
+      global.nextLevel = me.game.currentLevel.nextLevel;
       this.addStars();
       this.addHarbringerCreator();
     },
