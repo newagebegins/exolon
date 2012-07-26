@@ -9,7 +9,7 @@ define(function () {
     initialLives: 9,
     initialZones: 0,
     
-    initialScreen: "L01S01",
+    initialLevel: "L01S01",
     
     // debug
     renderHitBox: false,
