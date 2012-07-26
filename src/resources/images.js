@@ -257,6 +257,11 @@ define(function () {
       type: "image",
       src: "images/level_complete_window.gif",
     },
+    {
+      name: "fungus",
+      type: "image",
+      src: "images/fungus.gif",
+    },
     
     // other
     {
