@@ -1,9 +1,11 @@
 define(
   [
     "src/me",
+    "src/screens",
   ],
   function (
-    me
+    me,
+    screens
   ) {
       
   var LevelCompleteWindowEntity = Object.extend({
@@ -34,7 +36,10 @@ define(
     },
     
     update: function () {
-      
+      if (me.input.isKeyPressed('fire')) {
+        me.state.change(screens.BONUS);
+      }
+      return true;
     },
     
     draw: function (context) {

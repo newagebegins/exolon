@@ -2,10 +2,12 @@ define(
   [
     "src/me",
     "src/config",
+    "src/screens",
     "src/resources/resources",
     
     "src/screens/TitleScreen",
     "src/screens/PlayScreen",
+    "src/screens/BonusScreen",
     
     "src/entities/VitorcEntity",
     "src/entities/TurretEntity",
@@ -36,10 +38,12 @@ define(
   function (
     me,
     config,
+    screens,
     resources,
     
     TitleScreen,
     PlayScreen,
+    BonusScreen,
     
     VitorcEntity,
     TurretEntity,
@@ -82,8 +86,9 @@ define(
     },
     
     loaded: function () {
-      me.state.set(me.state.MENU, new TitleScreen());
-      me.state.set(me.state.PLAY, new PlayScreen());
+      me.state.set(screens.TITLE, new TitleScreen());
+      me.state.set(screens.PLAY, new PlayScreen());
+      me.state.set(screens.BONUS, new BonusScreen());
       
       me.entityPool.add("vitorc", VitorcEntity);
       me.entityPool.add("turret", TurretEntity);
@@ -117,7 +122,7 @@ define(
       me.input.bindKey(me.input.KEY.DOWN, "duck");
       me.input.bindKey(me.input.KEY.SPACE, "fire");
       
-      me.state.change(me.state.MENU);
+      me.state.change(screens.TITLE);
     },
     
   };

@@ -264,6 +264,11 @@ define(function () {
       type: "image",
       src: "images/title.gif",
     },
+    {
+      name: "bonus_screen",
+      type: "image",
+      src: "images/bonus_screen.gif",
+    },
   ];
   
   return images;

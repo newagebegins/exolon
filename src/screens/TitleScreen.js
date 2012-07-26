@@ -1,13 +1,11 @@
 define(
   [
     "src/me",
-    "src/config",
-    "src/util",
+    "src/screens",
   ],
   function (
     me,
-    config,
-    util
+    screens
   ) {
       
   var TitleScreen = me.ScreenObject.extend({
@@ -33,7 +31,7 @@ define(
     
     update: function () {
       if (me.input.isKeyPressed('enter')) {
-        me.state.change(me.state.PLAY);
+        me.state.change(screens.PLAY);
       }
       return true;
     },
