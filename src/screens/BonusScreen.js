@@ -35,7 +35,7 @@ define(
       me.video.clearSurface(context, "black");
       context.drawImage(this.bgImg, 0, 0);
       context.drawImage(this.titleImg, 128, 48);
-//      this.fontGreen.draw(context, "BY  RAFFAELE CECCO", 112, 112);
+      this.fontWhite.draw(context, "EXOLON BONUS SCREEN!", 96, 128);
     },
     
   });
