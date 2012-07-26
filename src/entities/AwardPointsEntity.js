@@ -8,9 +8,9 @@ define(
       
   var AwardPointsEntity = Object.extend({
     
-    init: function (points) {
+    init: function (points, step) {
       this.points = points;
-      this.step = 25;
+      this.step = step !== undefined ? step : 25;
       this.timer = 0;
       this.delay = 0.04;
     },

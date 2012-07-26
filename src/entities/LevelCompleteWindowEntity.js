@@ -8,7 +8,11 @@ define(
       
   var LevelCompleteWindowEntity = Object.extend({
     
-    init: function () {
+    /**
+     * @param bonus - see ExitEntity#createBonus
+     */
+    init: function (bonus) {
+      this.bonus = bonus;
       this.visible = true;
       
       this.bgImg = me.loader.getImage("level_complete_window");
@@ -36,9 +40,9 @@ define(
     draw: function (context) {
       context.drawImage(this.bgImg, 112, 48);
       this.fontPurple.draw(context, "BRAVERY BONUS", 160, 96);
-      this.fontWhite.draw(context, "10000", 224, 128);
+      this.fontWhite.draw(context, this.bonus.bravery, 224, 128);
       this.fontGreen.draw(context, "LIVES BONUS", 176, 160);
-      this.fontYellow.draw(context, "7 X 1000", 208, 192);
+      this.fontYellow.draw(context, this.bonus.lives + " X " + this.bonus.lifePrice, 208, 192);
       this.fontCyan.draw(context, "PRESS FIRE TO", 160, 224);
       this.fontCyan.draw(context, "RESUME PLAY", 176, 256);
     },
