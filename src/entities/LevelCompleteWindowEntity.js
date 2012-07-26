@@ -11,11 +11,12 @@ define(
   var LevelCompleteWindowEntity = Object.extend({
     
     /**
-     * @param bonus - see ExitEntity#createBonus
+     * @param {Object} bonus see ExitEntity#createBonus for details
      */
     init: function (bonus) {
       this.bonus = bonus;
       this.visible = true;
+      this.listenKeys = false;
       
       this.bgImg = me.loader.getImage("level_complete_window");
       
@@ -36,7 +37,7 @@ define(
     },
     
     update: function () {
-      if (me.input.isKeyPressed('fire')) {
+      if (this.listenKeys && me.input.isKeyPressed('fire')) {
         me.state.change(screens.BONUS);
       }
       return true;
@@ -50,6 +51,10 @@ define(
       this.fontYellow.draw(context, this.bonus.lives + " X " + this.bonus.lifePrice, 208, 192);
       this.fontCyan.draw(context, "PRESS FIRE TO", 160, 224);
       this.fontCyan.draw(context, "RESUME PLAY", 176, 256);
+    },
+    
+    onAwardComplete: function () {
+      this.listenKeys = true;
     },
     
   });

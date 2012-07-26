@@ -13,6 +13,7 @@ define(
       this.step = step !== undefined ? step : 25;
       this.timer = 0;
       this.delay = 0.04;
+      this.onComplete = null;
     },
     
     update: function () {
@@ -29,6 +30,9 @@ define(
       me.game.HUD.updateItemValue("points", this.step);
       
       if (this.points <= 0) {
+        if (this.onComplete) {
+          this.onComplete();
+        }
         me.game.remove(this);
       }
     },
