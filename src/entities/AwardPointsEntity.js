@@ -1,9 +1,11 @@
 define(
   [
     "src/me",
+    "src/util",
   ],
   function (
-    me
+    me,
+    util
   ) {
       
   var AwardPointsEntity = Object.extend({
@@ -27,7 +29,7 @@ define(
     
     award: function () {
       this.points -= this.step;
-      me.game.HUD.updateItemValue("points", this.step);
+      util.updatePoints(this.step);
       
       if (this.points <= 0) {
         if (this.onComplete) {

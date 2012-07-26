@@ -1,10 +1,12 @@
 define(
   [
     "src/me",
+    "src/util",
     "src/explosion",
   ],
   function (
     me,
+    util,
     explosion
   ) {
       
@@ -24,7 +26,7 @@ define(
         explosion.create(this.pos.x + this.width / 2 - 8, this.pos.y + this.height / 2, 50);
         me.game.remove(this);
         this.alive = false;
-        me.game.HUD.updateItemValue("points", this.points);
+        util.updatePoints(this.points);
       }
     },
     

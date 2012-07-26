@@ -1,9 +1,11 @@
 define(
   [
     "src/me",
+    "src/global",
   ],
   function (
-    me
+    me,
+    global
   ) {
       
   var GrenadeEntity = me.ObjectEntity.extend({
@@ -62,7 +64,7 @@ define(
     },
     
     onDestroyEvent: function () {
-      me.gamestat.updateValue("aliveGrenadesCount", -1);
+      global.aliveGrenadesCount--;
     },
     
   });

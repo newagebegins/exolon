@@ -2,10 +2,12 @@ define(
   [
     "src/me",
     "src/config",
+    "src/util",
   ],
   function (
     me,
-    config
+    config,
+    util
   ) {
       
   var GrenadePackEntity = me.CollectableEntity.extend({
@@ -23,7 +25,7 @@ define(
       }
       this.collidable = false;
       me.game.remove(this);
-      me.game.HUD.setItemValue("grenades", config.initialGrenades);
+      util.setGrenades(config.initialGrenades);
     },
     
   });

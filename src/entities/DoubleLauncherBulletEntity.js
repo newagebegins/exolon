@@ -1,10 +1,12 @@
 define(
   [
     "src/me",
+    "src/util",
     "src/entities/BlasterExplosion",
   ],
   function (
     me,
+    util,
     BlasterExplosion
   ) {
       
@@ -45,7 +47,7 @@ define(
       if (obj.name == "blaster_bullet") {
         me.game.remove(this);
         this.createExplosion();
-        me.game.HUD.updateItemValue("points", 50);
+        util.updatePoints(50);
       }
     },
     

@@ -1,10 +1,12 @@
 define(
   [
     "src/me",
+    "src/global",
     "src/entities/BlasterExplosion",
   ],
   function (
     me,
+    global,
     BlasterExplosion
   ) {
       
@@ -61,7 +63,7 @@ define(
     },
     
     onDestroyEvent: function () {
-      me.gamestat.updateValue("aliveBlasterBulletCount", -1);
+      global.aliveBlasterBulletCount--;
     },
     
   });

@@ -1,10 +1,12 @@
 define(
   [
     "src/me",
+    "src/global",
     "src/entities/CircularExplosionEntity",
   ],
   function (
     me,
+    global,
     CircularExplosionEntity
   ) {
       
@@ -27,7 +29,7 @@ define(
       this.setCurrentAnimation("normal");
       this.vel.x = -MissileEntity.SPEED_X_NORMAL;
       
-      me.gamestat.updateValue("aliveMissilesCount", 1);
+      global.aliveMissilesCount++;
     },
     
     update: function () {
@@ -78,7 +80,7 @@ define(
     },
     
     onDestroyEvent: function () {
-      me.gamestat.updateValue("aliveMissilesCount", -1);
+      global.aliveMissilesCount--;
     },
     
   });

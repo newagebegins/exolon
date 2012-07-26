@@ -3,6 +3,7 @@ define(
     "src/me",
     "src/util",
     "src/config",
+    "src/global",
     "src/entities/BlasterBulletEntity",
     "src/entities/GrenadeEntity",
     "src/entities/GrenadeTraceEntity",
@@ -12,6 +13,7 @@ define(
     me,
     util,
     config,
+    global,
     BlasterBulletEntity,
     GrenadeEntity,
     GrenadeTraceEntity,
@@ -103,7 +105,7 @@ define(
       if (this.dieTimer > this.dieDuration) {
         this.dieTimer = 0;
         
-        if (me.game.HUD.getItemValue("lives") == 0) {
+        if (global.lives == 0) {
           // game over
         }
         else {
@@ -111,9 +113,9 @@ define(
           this.respawn();
           this.makeTemporarilyInvincible();
           
-          me.game.HUD.updateItemValue("lives", -1);
-          me.game.HUD.setItemValue("ammo", config.initialAmmo);
-          me.game.HUD.setItemValue("grenades", config.initialGrenades);
+          util.updateLives(-1);
+          util.setAmmo(config.initialAmmo);
+          util.setGrenades(config.initialGrenades);
         }
       }
     },
@@ -281,11 +283,8 @@ define(
       me.game.add(bullet, this.z);
       me.game.sort.defer();
       
-      me.gamestat.updateValue("aliveBlasterBulletCount", 1);
-      
-      if (me.game.HUD.getItemValue("ammo") > 0) {
-        me.game.HUD.updateItemValue("ammo", -1);
-      }
+      global.aliveBlasterBulletCount++;
+      util.updateAmmo(-1);
     },
     
     fireGrenade: function () {
@@ -302,11 +301,8 @@ define(
       
       me.game.sort.defer();
       
-      me.gamestat.updateValue("aliveGrenadesCount", 1);
-      
-      if (me.game.HUD.getItemValue("grenades") > 0) {
-        me.game.HUD.updateItemValue("grenades", -1);
-      }
+      global.aliveGrenadesCount++;
+      util.updateGrenades(-1);
     },
     
     duck: function () {
@@ -436,23 +432,23 @@ define(
     },
     
     canFireBlaster: function () {
-      if (this.firePressed || me.game.HUD.getItemValue("ammo") == 0) {
+      if (this.firePressed || global.ammo == 0) {
         return false;
       }
       return true;
     },
     
     canFireGrenade: function () {
-      if (me.gamestat.getItemValue("aliveBlasterBulletCount") > 0) {
+      if (global.aliveBlasterBulletCount > 0) {
         return false;
       }
-      if (me.gamestat.getItemValue("aliveGrenadesCount") > 0) {
+      if (global.aliveGrenadesCount > 0) {
         return false;
       }
       if (this.grenadeFireTimer < this.grenadeFireDuration) {
         return false;
       }
-      if (me.game.HUD.getItemValue("grenades") == 0) {
+      if (global.grenades == 0) {
         return false;
       }
       return true;

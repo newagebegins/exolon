@@ -1,11 +1,13 @@
 define(
   [
     "src/me",
+    "src/global",
     "src/entities/LevelCompleteWindowEntity",
     "src/entities/AwardPointsEntity",
   ],
   function (
     me,
+    global,
     LevelCompleteWindowEntity,
     AwardPointsEntity
   ) {
@@ -25,7 +27,7 @@ define(
     createBonus: function () {
       this.bonus = {};
       this.bonus.bravery = 10000;
-      this.bonus.lives = me.game.HUD.getItemValue("lives");
+      this.bonus.lives = global.lives;
       this.bonus.lifePrice = 1000;
       this.bonus.total = this.bonus.bravery + this.bonus.lives * this.bonus.lifePrice;
     },
