@@ -18,15 +18,15 @@ define(
       if (obj.name == "vitorc") {
         this.collidable = false;
         me.game.remove(obj);
-        this.createBonus();
+        this.createBonus(obj);
         this.createLevelCompleteWindow();
         this.awardPoints();
       }
     },
     
-    createBonus: function () {
+    createBonus: function (vitorc) {
       this.bonus = {};
-      this.bonus.bravery = 10000;
+      this.bonus.bravery = vitorc.outfit == "vitorc" ? 10000 : 0;
       this.bonus.lives = global.lives;
       this.bonus.lifePrice = 1000;
       this.bonus.total = this.bonus.bravery + this.bonus.lives * this.bonus.lifePrice;

@@ -1,10 +1,12 @@
 define(
   [
     "src/me",
+    "src/util",
     "src/screens",
   ],
   function (
     me,
+    util,
     screens
   ) {
       
@@ -46,7 +48,7 @@ define(
     draw: function (context) {
       context.drawImage(this.bgImg, 112, 48);
       this.fontPurple.draw(context, "BRAVERY BONUS", 160, 96);
-      this.fontWhite.draw(context, this.bonus.bravery, 224, 128);
+      this.fontWhite.draw(context, util.strlpad(this.bonus.bravery, "0", 5), 224, 128);
       this.fontGreen.draw(context, "LIVES BONUS", 176, 160);
       this.fontYellow.draw(context, this.bonus.lives + " X " + this.bonus.lifePrice, 208, 192);
       this.fontCyan.draw(context, "PRESS FIRE TO", 160, 224);
