@@ -121,6 +121,11 @@
  </layer>
  <objectgroup color="#a41e0c" name="Object Layer 1" width="35" height="24">
   <object name="vitorc" gid="518" x="0" y="128"/>
+  <object name="interceptor_creator" gid="764" x="512" y="64">
+   <properties>
+    <property name="behavior" value="acceleration"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24"/>
  <layer name="Tile Layer 2" width="35" height="24">

@@ -3,18 +3,20 @@ define(
     "src/util",
     "src/entities/KamikazeEntity",
     "src/behaviors/SwingAndAccelerationMovementBehavior",
+    "src/behaviors/AccelerationMovementBehavior",
   ],
   function (
     util,
     KamikazeEntity,
-    SwingAndAccelerationMovementBehavior
+    SwingAndAccelerationMovementBehavior,
+    AccelerationMovementBehavior
   ) {
       
   var InterceptorEntity = KamikazeEntity.extend({
     
     points: 150,
     
-    init: function (x, y) {
+    init: function (x, y, behavior) {
       var settings = {};
       settings.image = "interceptor";
       settings.spritewidth = InterceptorEntity.WIDTH;
@@ -35,7 +37,12 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.behavior = new SwingAndAccelerationMovementBehavior(this);
+      if (behavior == "acceleration") {
+        this.behavior = new AccelerationMovementBehavior(this);
+      }
+      else {
+        this.behavior = new SwingAndAccelerationMovementBehavior(this);
+      }
     },
     
     updateMovement: function () {

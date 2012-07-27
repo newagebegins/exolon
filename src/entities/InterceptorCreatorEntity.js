@@ -14,7 +14,7 @@ define(
     delay: 1.5,
     
     createSpecificKamikaze: function (x, y) {
-      return new InterceptorEntity(x, y);
+      return new InterceptorEntity(x, y, this.behavior);
     },
     
   });
