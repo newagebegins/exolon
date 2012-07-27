@@ -11,6 +11,9 @@ define(function () {
     
     initialLevel: "L01S01",
     
+     // "vitorc" or "exolon"
+    initialVitorcOutfit: "exolon",
+    
     // debug
     renderHitBox: false,
     renderCollisionMap: false,

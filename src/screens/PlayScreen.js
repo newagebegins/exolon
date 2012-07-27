@@ -39,6 +39,7 @@ define(
       
       var vitorc = me.game.getEntityByName("vitorc")[0];
       this.setVitorcRespawnPosition(vitorc);
+      vitorc.outfit = config.initialVitorcOutfit;
       
       me.game.addHUD(0, 352, 512, 32);
       me.game.HUD.addItem("ammo", new AmmoHUD(0, 0, global.ammo));
