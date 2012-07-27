@@ -1,13 +1,13 @@
 define(
   [
-    "src/me",
     "src/util",
     "src/entities/KamikazeEntity",
+    "src/behaviors/CircularMovementBehavior",
   ],
   function (
-    me,
     util,
-    KamikazeEntity
+    KamikazeEntity,
+    CircularMovementBehavior
   ) {
       
   var JellyfishEntity = KamikazeEntity.extend({
@@ -35,41 +35,17 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.pos.y += util.getRandomArbitrary(-16, 16);
-      this.moveType = "straight_1";
-      this.moveAngle = Math.PI;
+      this.behavior = new CircularMovementBehavior(this);
     },
     
     updateMovement: function () {
-      if (this.moveType == "straight_1" && this.pos.x < JellyfishEntity.START_CIRCULAR_MOTION_X) {
-        this.moveType = "circular";
-      }
-      
-      if (this.moveType == "straight_1" || this.moveType == "straight_2") {
-        this.pos.x -= JellyfishEntity.SPEED;
-      }
-      else if (this.moveType == "circular") {
-        var x = Math.cos(this.moveAngle) * JellyfishEntity.CIRCULAR_MOTION_RADIUS;
-        var y = Math.sin(this.moveAngle) * JellyfishEntity.CIRCULAR_MOTION_RADIUS;
-        
-        this.pos.x += x / 20;
-        this.pos.y += y / 18;
-        
-        this.moveAngle += 0.05;
-        
-        if (this.moveAngle >=  3 * Math.PI)  {
-          this.moveType = "straight_2";
-        }
-      }
+      this.behavior.update();
     },
     
   });
   
   JellyfishEntity.WIDTH = 32;
   JellyfishEntity.HEIGHT = 32;
-  JellyfishEntity.SPEED = 3;
-  JellyfishEntity.START_CIRCULAR_MOTION_X = 220;
-  JellyfishEntity.CIRCULAR_MOTION_RADIUS = 64;
   
   return JellyfishEntity;
   
