@@ -225,6 +225,9 @@ define(
       }
       
       if (obj.isLethal) {
+        if (obj.name == "piston" && this.outfit == "exolon") {
+          return;
+        }
         this.die();
       }
     },
