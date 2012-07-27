@@ -2,17 +2,21 @@ define(
   [
     "src/util",
     "src/entities/KamikazeEntity",
+    "src/behaviors/SwingMovementBehavior",
+    "src/behaviors/CircularMovementBehavior",
   ],
   function (
     util,
-    KamikazeEntity
+    KamikazeEntity,
+    SwingMovementBehavior,
+    CircularMovementBehavior
   ) {
       
   var BubbleEntity = KamikazeEntity.extend({
     
     points: 150,
     
-    init: function (x, y) {
+    init: function (x, y, behavior) {
       var settings = {};
       settings.image = "bubble";
       settings.spritewidth = BubbleEntity.WIDTH;
@@ -33,20 +37,22 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.pos.y += util.getRandomArbitrary(-16, 0);
-      this.pos.x += util.getRandomArbitrary(0, 32);
+      if (behavior == "circular") {
+        this.behavior = new CircularMovementBehavior(this);
+      }
+      else {
+        this.behavior = new SwingMovementBehavior(this);
+      }
     },
     
     updateMovement: function () {
-      this.pos.x -= BubbleEntity.SPEED;
-      this.pos.y += util.getRandomArbitrary(1, 3) * Math.sin(this.pos.x / 20);
+      this.behavior.update();
     },
     
   });
   
   BubbleEntity.WIDTH = 32;
   BubbleEntity.HEIGHT = 32;
-  BubbleEntity.SPEED = 1.7;
   
   return BubbleEntity;
   
