@@ -117,7 +117,11 @@
   <object name="vitorc" gid="518" x="0" y="304"/>
   <object name="waggon" gid="799" x="176" y="304"/>
   <object name="waggon" gid="799" x="272" y="304"/>
-  <object name="louse_creator" gid="854" x="496" y="80"/>
+  <object name="louse_creator" gid="854" x="496" y="80">
+   <properties>
+    <property name="behavior" value="acceleration"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24"/>
  <layer name="Tile Layer 2" width="35" height="24">

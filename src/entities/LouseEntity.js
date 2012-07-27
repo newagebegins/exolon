@@ -3,18 +3,20 @@ define(
     "src/util",
     "src/entities/KamikazeEntity",
     "src/behaviors/AccelerationMovementBehavior",
+    "src/behaviors/CircularMovementBehavior",
   ],
   function (
     util,
     KamikazeEntity,
-    AccelerationMovementBehavior
+    AccelerationMovementBehavior,
+    CircularMovementBehavior
   ) {
       
   var LouseEntity = KamikazeEntity.extend({
     
     points: 150,
     
-    init: function (x, y) {
+    init: function (x, y, behavior) {
       var settings = {};
       settings.image = "louse";
       settings.spritewidth = LouseEntity.WIDTH;
@@ -35,7 +37,12 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.behavior = new AccelerationMovementBehavior(this);
+      if (behavior == "acceleration") {
+        this.behavior = new AccelerationMovementBehavior(this);
+      }
+      else if (behavior == "circular") {
+        this.behavior = new CircularMovementBehavior(this);
+      }
     },
     
     updateMovement: function () {
