@@ -95,6 +95,7 @@ define(
       vitorc.setCurrentAnimation(prevLevelVitorc.current.name);
       vitorc.falling = prevLevelVitorc.falling;
       vitorc.jumping = prevLevelVitorc.jumping;
+      vitorc.outfit = prevLevelVitorc.outfit;
     },
     
     setVitorcRespawnPosition: function (vitorc) {
