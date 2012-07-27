@@ -179,6 +179,7 @@ define(
       this.handleCollisionWithTeleport(res, res.obj);
       this.handleCollisionWithMine(res, res.obj);
       this.handleCollisionWithCapsule(res, res.obj);
+      this.handleCollisionWithLethalEntities(res, res.obj);
     },
     
     handleCollisionWithSolidObject: function (res, obj) {
@@ -218,7 +219,7 @@ define(
       }
     },
     
-    onCollision: function (res, obj) {
+    handleCollisionWithLethalEntities: function (res, obj) {
       if (this._isCurrentAnimation("die")) {
         return;
       }
@@ -226,6 +227,10 @@ define(
       if (obj.isLethal) {
         this.die();
       }
+    },
+    
+    onCollision: function (res, obj) {
+      this.handleCollisionWithLethalEntities(res, obj);
     },
     
     handleFallFromPlatform: function () {

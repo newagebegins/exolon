@@ -272,6 +272,11 @@ define(function () {
       type: "image",
       src: "images/louse.gif",
     },
+    {
+      name: "beam",
+      type: "image",
+      src: "images/beam.gif",
+    },
     
     // other
     {
