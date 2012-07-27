@@ -1,13 +1,13 @@
 define(
   [
-    "src/me",
     "src/util",
     "src/entities/KamikazeEntity",
+    "src/behaviors/AccelerationMovementBehavior",
   ],
   function (
-    me,
     util,
-    KamikazeEntity
+    KamikazeEntity,
+    AccelerationMovementBehavior
   ) {
       
   var LouseEntity = KamikazeEntity.extend({
@@ -35,23 +35,17 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.vel.x = LouseEntity.SPEED_NORMAL;
-      this.pos.y += util.getRandomArbitrary(-32, 32);
+      this.behavior = new AccelerationMovementBehavior(this);
     },
     
     updateMovement: function () {
-      if (this.pos.x < 304) {
-        this.vel.x = LouseEntity.SPEED_FAST;
-      }
-      this.pos.x -= this.vel.x;
+      this.behavior.update();
     },
     
   });
   
   LouseEntity.WIDTH = 32;
   LouseEntity.HEIGHT = 32;
-  LouseEntity.SPEED_NORMAL = 1.5;
-  LouseEntity.SPEED_FAST = 4;
   
   return LouseEntity;
   
