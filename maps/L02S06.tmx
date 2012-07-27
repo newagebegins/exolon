@@ -116,7 +116,7 @@
   </data>
  </layer>
  <objectgroup color="#a41e0c" name="Object Layer 1" width="35" height="24">
-  <object name="vitorc" gid="518" x="0" y="96"/>
+  <object name="vitorc" gid="518" x="0" y="288"/>
   <object name="ship_fire" gid="494" x="112" y="208"/>
   <object name="turret" gid="529" x="304" y="160"/>
   <object name="interceptor_creator" gid="764" x="512" y="160"/>
