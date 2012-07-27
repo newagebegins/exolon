@@ -114,7 +114,7 @@
   </data>
  </layer>
  <objectgroup color="#a41e0c" name="Object Layer 1" width="35" height="24">
-  <object name="vitorc" gid="518" x="0" y="304"/>
+  <object name="vitorc" gid="518" x="0" y="144"/>
   <object name="ammo_pack" gid="658" x="336" y="144"/>
   <object name="grenade_pack" gid="533" x="400" y="144"/>
   <object name="egg" gid="797" x="240" y="272">
@@ -177,6 +177,7 @@
     <property name="increaseBounds" value="true"/>
    </properties>
   </object>
+  <object name="capsule" x="224" y="32" width="32" height="80"/>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24"/>
  <layer name="Tile Layer 2" width="35" height="24">

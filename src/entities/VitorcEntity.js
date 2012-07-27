@@ -23,21 +23,31 @@ define(
   var VitorcEntity = me.ObjectEntity.extend({
     
     init: function (x, y, settings) {
-      settings.image = "vitorc";
+      settings.image = "vitorc2";
       settings.spritewidth = 48;
+      settings.spriteheight = 64;
       
       this.parent(x, y, settings);
       
       this.collidable = true;
       
-      this.addAnimation("stand", [0]);
-      this.addAnimation("move", [0,1,2,3,4,0,5,6,7,8]);
-      this.addAnimation("jump", [3]);
-      this.addAnimation("duck", [9]);
-      this.addAnimation("die", [10]);
-      this.addAnimation("fall", [8]);
+      this.outfit = "vitorc";
       
-      this.setCurrentAnimation("stand");
+      this.addAnimation("vitorc_stand", [0]);
+      this.addAnimation("vitorc_move", [0,1,2,3,4,0,5,6,7,8]);
+      this.addAnimation("vitorc_jump", [3]);
+      this.addAnimation("vitorc_duck", [9]);
+      this.addAnimation("vitorc_die", [10]);
+      this.addAnimation("vitorc_fall", [8]);
+      
+      this.addAnimation("exolon_stand", [11]);
+      this.addAnimation("exolon_move", [11,12,13,14,15,11,16,17,18,19]);
+      this.addAnimation("exolon_jump", [14]);
+      this.addAnimation("exolon_duck", [20]);
+      this.addAnimation("exolon_die", [21]);
+      this.addAnimation("exolon_fall", [19]);
+      
+      this._setCurrentAnimation("stand");
       
       this.animationspeed = 2;
       
@@ -60,7 +70,17 @@ define(
       this.insideTeleport = false;
       this.thisTeleportGUID = null;
       
+      this.insideCapsule = false;
+      
       this.jumpDistance = 0;
+    },
+    
+    _setCurrentAnimation: function (animation) {
+      this.setCurrentAnimation(this.outfit + "_" + animation);
+    },
+    
+    _isCurrentAnimation: function (animation) {
+      return this.isCurrentAnimation(this.outfit + "_" + animation);
     },
     
     update: function () {
@@ -78,24 +98,24 @@ define(
     },
     
     updateJump: function () {
-      if (!this.isCurrentAnimation("jump")) {
+      if (!this._isCurrentAnimation("jump")) {
         return;
       }
       if (this.vel.x != 0 && this.falling) {
         this.jumpDistance += Math.abs(this.vel.x);
         if (this.jumpDistance > VitorcEntity.JUMP_DISTANCE) {
-          this.setCurrentAnimation("fall");
+          this._setCurrentAnimation("fall");
           this.jumpDistance = 0;
         }
       }
       if (this.isOnTheGround()) {
-        this.setCurrentAnimation("stand");
+        this._setCurrentAnimation("stand");
         this.jumpDistance = 0;
       }
     },
     
     updateDieTimer: function () {
-      if (!this.isCurrentAnimation("die")) {
+      if (!this._isCurrentAnimation("die")) {
         return;
       }
       if (!this.isOnTheGround()) {
@@ -113,7 +133,7 @@ define(
         }
         
         this.dieTimer = 0;
-        this.setCurrentAnimation("stand");
+        this._setCurrentAnimation("stand");
         this.respawn();
         this.makeTemporarilyInvincible();
         
@@ -123,7 +143,7 @@ define(
     },
     
     handleInput: function () {
-      if (this.isCurrentAnimation("die")) {
+      if (this._isCurrentAnimation("die")) {
         return;
       }
       
@@ -132,7 +152,7 @@ define(
       if (this.falling) {
         return;
       }
-      else if (this.isCurrentAnimation("jump")) {
+      else if (this._isCurrentAnimation("jump")) {
         this.handleInputDuringJump();
       }
       else {
@@ -141,13 +161,14 @@ define(
     },
     
     handleCollisionsWithCollisionMap: function (res) {
-      if (!this.isCurrentAnimation("jump") && res.x) {
-        this.setCurrentAnimation("stand");
+      if (!this._isCurrentAnimation("jump") && res.x) {
+        this._setCurrentAnimation("stand");
       }
     },
     
     handleCollisionsWithEntities: function () {
       this.insideTeleport = false;
+      this.insideCapsule = false;
       
       var res = me.game.collide(this);
       if (!res) {
@@ -157,6 +178,7 @@ define(
       this.handleCollisionWithSolidObject(res, res.obj);
       this.handleCollisionWithTeleport(res, res.obj);
       this.handleCollisionWithMine(res, res.obj);
+      this.handleCollisionWithCapsule(res, res.obj);
     },
     
     handleCollisionWithSolidObject: function (res, obj) {
@@ -173,7 +195,7 @@ define(
       
       if (res.x && this.isOnTheGround()) {
         this.vel.x = 0;
-        this.setCurrentAnimation("stand");
+        this._setCurrentAnimation("stand");
       }
     },
     
@@ -190,8 +212,14 @@ define(
       }
     },
     
+    handleCollisionWithCapsule: function (res, obj) {
+      if (obj.name == "capsule") {
+        this.insideCapsule = true;
+      }
+    },
+    
     onCollision: function (res, obj) {
-      if (this.isCurrentAnimation("die")) {
+      if (this._isCurrentAnimation("die")) {
         return;
       }
       
@@ -201,9 +229,9 @@ define(
     },
     
     handleFallFromPlatform: function () {
-      if (!this.isCurrentAnimation("jump") && !this.isCurrentAnimation("die") && this.falling) {
+      if (!this._isCurrentAnimation("jump") && !this._isCurrentAnimation("die") && this.falling) {
         this.vel.x = 0;
-        this.setCurrentAnimation("fall");
+        this._setCurrentAnimation("fall");
       }
     },
     
@@ -245,12 +273,12 @@ define(
       
       if (me.input.isKeyPressed("right")) {
         this.direction = "right";
-        this.setCurrentAnimation("move");
+        this._setCurrentAnimation("move");
         this.doWalk(false);
       }
       else if (me.input.isKeyPressed("left")) {
         this.direction = "left";
-        this.setCurrentAnimation("move");
+        this._setCurrentAnimation("move");
         this.doWalk(true);
       }
       
@@ -268,8 +296,13 @@ define(
           this.doTeleport();
         }
       }
+      else if (this.insideCapsule) {
+        if (!this.jumpPressed) {
+          this.doChangeOutfit();
+        }
+      }
       else {
-        this.setCurrentAnimation("jump");
+        this._setCurrentAnimation("jump");
         this.doJump();
       }
       
@@ -283,6 +316,12 @@ define(
       var pos = this.getBlasterBulletPosition();
       var bullet = new BlasterBulletEntity(pos.x, pos.y, this.direction);
       me.game.add(bullet, this.z);
+      
+      if (this.outfit == "exolon") {
+        var bullet2 = new BlasterBulletEntity(pos.x, pos.y + 12, this.direction);
+        me.game.add(bullet2, this.z);
+      }
+      
       me.game.sort.defer();
       
       global.aliveBlasterBulletCount++;
@@ -308,13 +347,13 @@ define(
     },
     
     duck: function () {
-      this.setCurrentAnimation("duck");
+      this._setCurrentAnimation("duck");
       this.vel.x = 0;
       this.updateColRect(-1, 0, 11, 53);
     },
     
     stand: function () {
-      this.setCurrentAnimation("stand");
+      this._setCurrentAnimation("stand");
       this.vel.x = 0;
       this.updateColRect(-1, 0, 0, 64);
     },
@@ -324,7 +363,7 @@ define(
         return;
       }
       
-      this.setCurrentAnimation("die");
+      this._setCurrentAnimation("die");
       this.vel.x = 0;
       this.forceJump();
     },
@@ -348,6 +387,10 @@ define(
       var otherTeleport = this.getOtherTeleport(teleports);
       this.pos.x = otherTeleport.pos.x;
       this.pos.y = otherTeleport.pos.y + 32;
+    },
+    
+    doChangeOutfit: function () {
+      this.outfit = this.outfit == "vitorc" ? "exolon" : "vitorc";
     },
     
     createTeleportFlashes: function (teleports) {
@@ -379,7 +422,7 @@ define(
         pos.x = this.pos.x - BlasterBulletEntity.WIDTH - VitorcEntity.BLASTER_BULLET_OFFSET_X;
       }
       
-      if (this.isCurrentAnimation("duck")) {
+      if (this._isCurrentAnimation("duck")) {
         pos.y = this.pos.y + VitorcEntity.BLASTER_BULLET_OFFSET_Y + VitorcEntity.DUCK_OFFSET;
       }
       else {
@@ -399,7 +442,7 @@ define(
         pos.x = this.pos.x + this.width - GrenadeEntity.WIDTH - VitorcEntity.GRENADE_OFFSET_X;
       }
       
-      if (this.isCurrentAnimation("duck")) {
+      if (this._isCurrentAnimation("duck")) {
         pos.y = this.pos.y + VitorcEntity.GRENADE_OFFSET_Y + VitorcEntity.DUCK_OFFSET;
       }
       else {
@@ -419,7 +462,7 @@ define(
         pos.x = this.pos.x + this.width - GrenadeTraceEntity.WIDTH - VitorcEntity.GRENADE_TRACE_OFFSET_X;
       }
       
-      if (this.isCurrentAnimation("duck")) {
+      if (this._isCurrentAnimation("duck")) {
         pos.y = this.pos.y + VitorcEntity.GRENADE_TRACE_OFFSET_Y + VitorcEntity.DUCK_OFFSET;
       }
       else {

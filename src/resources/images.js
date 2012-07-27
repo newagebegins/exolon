@@ -68,6 +68,11 @@ define(function () {
       src: "images/vitorc.gif",
     },
     {
+      name: "vitorc2",
+      type: "image",
+      src: "images/vitorc2.gif",
+    },
+    {
       name: "blaster_bullet",
       type: "image",
       src: "images/blaster_bullet.gif",
