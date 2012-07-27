@@ -1,13 +1,13 @@
 define(
   [
     "src/me",
-    "src/util",
     "src/explosion",
+    "src/entities/AwardPointsEntity",
   ],
   function (
     me,
-    util,
-    explosion
+    explosion,
+    AwardPointsEntity
   ) {
       
   var BeamEntity = me.ObjectEntity.extend({
@@ -33,7 +33,10 @@ define(
         if (this.hitPoints <= 0) {
           explosion.create(this.pos.x + this.width / 2 - 8, this.pos.y + this.height / 2, 50);
           me.game.remove(this);
-          util.updatePoints(this.points);
+          
+          var award = new AwardPointsEntity(this.points);
+          me.game.add(award, 999);
+          me.game.sort.defer();
         }
       }
     },
