@@ -207,7 +207,7 @@ define(
     },
     
     handleCollisionWithMine: function (res, obj) {
-      if (obj.name == "mine") {
+      if (obj.name == "mine" && this.outfit == "vitorc") {
         this.die();
       }
     },

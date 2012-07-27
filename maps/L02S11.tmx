@@ -114,7 +114,7 @@
   </data>
  </layer>
  <objectgroup color="#a41e0c" name="Object Layer 1" width="35" height="24">
-  <object name="vitorc" gid="518" x="0" y="144"/>
+  <object name="vitorc" gid="518" x="0" y="304"/>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24"/>
  <layer name="Tile Layer 2" width="35" height="24">
