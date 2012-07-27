@@ -11,7 +11,11 @@ define(
     // in sec
     delay: 5,
     
-    init: function () {
+    init: function (x, y, settings) {
+      if (settings && settings.behavior) {
+        this.behavior = settings.behavior;
+      }
+      
       this.vitorc = null;
       this.timer = 0;
     },

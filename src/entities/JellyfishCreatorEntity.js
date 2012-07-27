@@ -14,7 +14,7 @@ define(
     delay: 1,
     
     createSpecificKamikaze: function (x, y) {
-      return new JellyfishEntity(x, y);
+      return new JellyfishEntity(x, y, this.behavior);
     },
     
   });

@@ -120,7 +120,11 @@
   <object name="ship_fire" gid="494" x="288" y="144"/>
   <object name="ship_fire" gid="494" x="160" y="144"/>
   <object name="incubator" gid="657" x="432" y="320"/>
-  <object name="jellyfish_creator" gid="782" x="496" y="96"/>
+  <object name="jellyfish_creator" gid="782" x="496" y="96">
+   <properties>
+    <property name="behavior" value="circular"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24">
   <object name="double_launcher" gid="659" x="256" y="320"/>

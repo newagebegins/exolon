@@ -91,7 +91,11 @@
  </layer>
  <objectgroup color="#a41e0c" name="Object Layer 1" width="35" height="24">
   <object name="vitorc" gid="518" x="0" y="192"/>
-  <object name="jellyfish_creator" gid="782" x="512" y="96"/>
+  <object name="jellyfish_creator" gid="782" x="512" y="96">
+   <properties>
+    <property name="behavior" value="circular"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24">
   <object name="missile_guidance" gid="661" x="384" y="240"/>

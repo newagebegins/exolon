@@ -120,6 +120,11 @@
   <object name="vitorc" gid="518" x="0" y="288"/>
   <object name="waggon" gid="799" x="96" y="288"/>
   <object name="waggon" gid="799" x="192" y="288"/>
+  <object name="jellyfish_creator" gid="782" x="512" y="80">
+   <properties>
+    <property name="behavior" value="swing_and_acceleration"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24">
   <object name="teleport" gid="534" x="288" y="288"/>

@@ -3,18 +3,20 @@ define(
     "src/util",
     "src/entities/KamikazeEntity",
     "src/behaviors/CircularMovementBehavior",
+    "src/behaviors/SwingAndAccelerationMovementBehavior",
   ],
   function (
     util,
     KamikazeEntity,
-    CircularMovementBehavior
+    CircularMovementBehavior,
+    SwingAndAccelerationMovementBehavior
   ) {
       
   var JellyfishEntity = KamikazeEntity.extend({
     
     points: 150,
     
-    init: function (x, y) {
+    init: function (x, y, behavior) {
       var settings = {};
       settings.image = "jellyfish";
       settings.spritewidth = JellyfishEntity.WIDTH;
@@ -35,7 +37,12 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.behavior = new CircularMovementBehavior(this);
+      if (behavior == "circular") {
+        this.behavior = new CircularMovementBehavior(this);
+      }
+      else if (behavior == "swing_and_acceleration") {
+        this.behavior = new SwingAndAccelerationMovementBehavior(this);
+      }
     },
     
     updateMovement: function () {
