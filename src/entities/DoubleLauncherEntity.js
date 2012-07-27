@@ -23,6 +23,10 @@ define(
       this.collidable = true;
       this.captured = false;
       this.vitorc = null;
+      
+      this.fireDurationMin = settings.fireDurationMin ? settings.fireDurationMin : 20;
+      this.fireDurationMax = settings.fireDurationMax ? settings.fireDurationMax : 160;
+      
       this.resetFireDurationAndTimer();
     },
     
@@ -42,7 +46,7 @@ define(
     },
     
     resetFireDurationAndTimer: function () {
-      this.fireDuration = util.getRandomInt(20, 160);
+      this.fireDuration = util.getRandomInt(this.fireDurationMin, this.fireDurationMax);
       this.fireTimer = 0;
     },
     
@@ -67,9 +71,6 @@ define(
       if (this.vitorcTooClose()) {
         return false;
       }
-      if (!this.vitorcIsInSight()) {
-        return false;
-      }
       return true;
     },
     
@@ -92,14 +93,6 @@ define(
     
     vitorcTooClose: function () {
       return this.vitorc.pos.x > this.pos.x - DoubleLauncherEntity.STOP_FIRE_DISTANCE
-    },
-    
-    vitorcIsInSight: function () {
-      if (this.vitorc.pos.y + this.vitorc.height < this.pos.y ||
-          this.vitorc.pos.y > this.pos.y + this.height) {
-        return false;
-      }
-      return true;
     },
     
   });

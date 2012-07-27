@@ -134,7 +134,12 @@
  <objectgroup name="Object Layer 2" width="35" height="24">
   <object name="teleport" gid="534" x="336" y="128"/>
   <object name="teleport" gid="534" x="240" y="304"/>
-  <object name="double_launcher" gid="659" x="448" y="304"/>
+  <object name="double_launcher" gid="659" x="448" y="304">
+   <properties>
+    <property name="fireDurationMax" value="70"/>
+    <property name="fireDurationMin" value="20"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Tile Layer 2" width="35" height="24">
   <data encoding="base64">
