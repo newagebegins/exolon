@@ -254,6 +254,13 @@ define(function () {
       type: "tmx",
       src: "maps/L02S25.tmx",
     },
+    
+    // Level 3
+    {
+      name: "L03S01",
+      type: "tmx",
+      src: "maps/L03S01.tmx",
+    },
   ];
   
   return maps;

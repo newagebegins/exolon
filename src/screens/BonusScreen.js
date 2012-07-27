@@ -92,6 +92,9 @@ define(
         util.updateLives(1);
       }
       
+      global.ammo = config.initialAmmo;
+      global.grenades = config.initialGrenades;
+      
       me.state.change(screens.PLAY);
     },
     
