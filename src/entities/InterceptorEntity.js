@@ -1,13 +1,13 @@
 define(
   [
-    "src/me",
     "src/util",
     "src/entities/KamikazeEntity",
+    "src/behaviors/SwingAndAccelerationMovementBehavior",
   ],
   function (
-    me,
     util,
-    KamikazeEntity
+    KamikazeEntity,
+    SwingAndAccelerationMovementBehavior
   ) {
       
   var InterceptorEntity = KamikazeEntity.extend({
@@ -35,41 +35,17 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.pos.y += util.getRandomArbitrary(-4, 0);
-      this.pos.x += util.getRandomArbitrary(0, 32);
-      
-      this.swing = true;
-      this.vel.x = InterceptorEntity.SPEED_NORMAL;
-      
-      this.straightFlyTimer = 0;
-      this.straightFlyDuration = 40;
+      this.behavior = new SwingAndAccelerationMovementBehavior(this);
     },
     
     updateMovement: function () {
-      if (this.pos.x < 336) {
-        this.swing = false;
-      }
-      
-      if (this.swing) {
-        this.pos.y += util.getRandomArbitrary(1, 3) * Math.sin(this.pos.x / 20);
-      }
-      else {
-        this.straightFlyTimer++;
-        if (this.straightFlyTimer > this.straightFlyDuration) {
-          this.vel.x = InterceptorEntity.SPEED_FAST;
-        }
-      }
-      
-      this.pos.x -= this.vel.x;
-      
+      this.behavior.update();
     },
     
   });
   
   InterceptorEntity.WIDTH = 32;
   InterceptorEntity.HEIGHT = 32;
-  InterceptorEntity.SPEED_NORMAL = 1.5;
-  InterceptorEntity.SPEED_FAST = 4;
   
   return InterceptorEntity;
   
