@@ -12,7 +12,7 @@ define(function () {
     initialLevel: "L01S01",
     
      // "vitorc" or "exolon"
-    initialVitorcOutfit: "exolon",
+    initialVitorcOutfit: "vitorc",
     
     // debug
     renderHitBox: false,

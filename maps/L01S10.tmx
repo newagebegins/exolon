@@ -91,6 +91,7 @@
   <object name="grenade_pack" gid="534" x="464" y="288"/>
   <object name="ammo_pack" gid="659" x="288" y="288"/>
   <object name="vitorc" gid="519" x="0" y="320"/>
+  <object name="capsule" x="368" y="176" width="32" height="80"/>
  </objectgroup>
  <objectgroup name="Object Layer 2" width="35" height="24"/>
  <layer name="Tile Layer 2" width="35" height="24">
