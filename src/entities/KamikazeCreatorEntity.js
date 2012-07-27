@@ -12,8 +12,13 @@ define(
     delay: 5,
     
     init: function (x, y, settings) {
-      if (settings && settings.behavior) {
-        this.behavior = settings.behavior;
+      if (settings) {
+        if (settings.behavior) {
+          this.behavior = settings.behavior;
+        }
+        if (settings.delay) {
+          this.delay = settings.delay;
+        }
       }
       
       this.vitorc = null;

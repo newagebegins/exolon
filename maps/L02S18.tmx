@@ -124,6 +124,7 @@
   <object name="interceptor_creator" gid="764" x="512" y="64">
    <properties>
     <property name="behavior" value="acceleration"/>
+    <property name="delay" value="0.5"/>
    </properties>
   </object>
  </objectgroup>
