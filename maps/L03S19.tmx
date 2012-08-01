@@ -136,7 +136,8 @@
   <object name="beam" gid="869" x="464" y="272"/>
   <object name="louse_creator" gid="854" x="512" y="128">
    <properties>
-    <property name="behavior" value="acceleration"/>
+    <property name="behavior" value="swing"/>
+    <property name="delay" value="1"/>
    </properties>
   </object>
  </objectgroup>

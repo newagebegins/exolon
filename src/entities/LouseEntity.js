@@ -4,12 +4,14 @@ define(
     "src/entities/KamikazeEntity",
     "src/behaviors/AccelerationMovementBehavior",
     "src/behaviors/CircularMovementBehavior",
+    "src/behaviors/SwingMovementBehavior",
   ],
   function (
     util,
     KamikazeEntity,
     AccelerationMovementBehavior,
-    CircularMovementBehavior
+    CircularMovementBehavior,
+    SwingMovementBehavior
   ) {
       
   var LouseEntity = KamikazeEntity.extend({
@@ -42,6 +44,9 @@ define(
       }
       else if (behavior == "circular") {
         this.behavior = new CircularMovementBehavior(this);
+      }
+      else if (behavior == "swing") {
+        this.behavior = new SwingMovementBehavior(this);
       }
     },
     
