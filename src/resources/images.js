@@ -282,6 +282,11 @@ define(function () {
       type: "image",
       src: "images/flasher.gif",
     },
+    {
+      name: "fir",
+      type: "image",
+      src: "images/fir.gif",
+    },
     
     // other
     {
