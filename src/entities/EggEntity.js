@@ -19,7 +19,7 @@ define(
     init: function (x, y, settings) {
       settings.image = "egg";
       settings.spritewidth = EggEntity.WIDTH;
-      this.parent(x, y + EggEntity.HEIGHT, settings);
+      this.parent(x, y, settings);
       
       if (settings.bounds) {
         this.bounds = new me.Rect(new me.Vector2d(settings.bounds.x, settings.bounds.y), settings.bounds.w, settings.bounds.h);;
@@ -29,21 +29,40 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       this.vel.x = util.getRandomArbitrary(-4, 2) + 1;
-      this.vel.y = util.getRandomArbitrary(-1.5, 1) + 0.5;
+      this.vel.y = util.getRandomArbitrary(-2, 1) + 0.5;
+      this.prevVelX = this.vel.x;
+      this.prevVelY = this.vel.y;
     },
     
     updateMovement: function () {
+      this.normalMove();
+      this.shake();
+      this.updateVel();
+    },
+    
+    normalMove: function () {
       this.prevX = this.pos.x;
       this.prevY = this.pos.y;
       
       this.pos.add(this.vel);
-      this.pos.y += util.getRandomArbitrary(0.1, 0.5) * Math.sin(this.pos.x / 4);
+      this.handleCollisions();
+    },
+    
+    shake: function () {
+      this.prevX = this.pos.x;
+      this.prevY = this.pos.y;
       
-      this.handleCollisionWithBounds();
-      this.handleCollisionWithMap();
-      this.handleCollisionWithScreenBounds();
+      this.prevVelX = this.vel.x;
+      this.prevVelY = this.vel.y;
       
-      this.updateVel();
+      this.vel.x = 0;
+      this.vel.y = util.getRandomArbitrary(0.1, 0.5) * Math.sin(this.pos.x / 4);
+      
+      this.pos.add(this.vel);
+      this.handleCollisions();
+      
+      this.vel.x = this.prevVelX;
+      this.vel.y = this.prevVelY;
     },
     
     updateVel: function () {
@@ -54,6 +73,12 @@ define(
       else if (rnd == 1) {
         this.vel.y = -this.vel.y;
       }
+    },
+    
+    handleCollisions: function () {
+      this.handleCollisionWithBounds();
+      this.handleCollisionWithMap();
+      this.handleCollisionWithScreenBounds();
     },
     
     handleCollisionWithBounds: function () {
@@ -115,7 +140,6 @@ define(
   
   EggEntity.WIDTH = 16;
   EggEntity.HEIGHT = 16;
-  EggEntity.BOUNDS_INC = 8;
   
   return EggEntity;
   

@@ -23,7 +23,7 @@ define(
     createEggs: function (z) {
       for (var i = 0; i < IncubatorEntity.EGG_COUNT; ++i) {
         var bounds = {x: this.pos.x + 16, y: this.pos.y + 16, w: 32, h: 32};
-        var egg = new EggEntity(this.pos.x + 20, this.pos.y + 20, {bounds: bounds});
+        var egg = new EggEntity(this.pos.x + 20, this.pos.y + EggEntity.HEIGHT + 20, {bounds: bounds});
         me.game.add(egg, z);
         this.eggs.push(egg);
       }
