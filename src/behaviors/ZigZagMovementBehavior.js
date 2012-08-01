@@ -15,15 +15,15 @@ define(
       
       this.checkpoints = [
         {
-          vel: new me.Vector2d(-3, -3),
+          vel: new me.Vector2d(-2.5, -3),
           distance: 120,
         },
         {
-          vel: new me.Vector2d(-3, 3),
+          vel: new me.Vector2d(-2.5, 3),
           distance: 120,
         },
         {
-          vel: new me.Vector2d(-3, -3),
+          vel: new me.Vector2d(-2.5, -3),
           distance: 60,
         },
         {
@@ -31,19 +31,19 @@ define(
           distance: 40,
         },
         {
-          vel: new me.Vector2d(-3, 0),
+          vel: new me.Vector2d(-2.5, 0),
           distance: 180,
         },
         {
-          vel: new me.Vector2d(0, -3),
+          vel: new me.Vector2d(0, -2.5),
           distance: 60,
         },
         {
-          vel: new me.Vector2d(3, 0),
+          vel: new me.Vector2d(2.5, 0),
           distance: 60,
         },
         {
-          vel: new me.Vector2d(0, 3),
+          vel: new me.Vector2d(0, 2.5),
           distance: 60,
         },
         {

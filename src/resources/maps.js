@@ -341,6 +341,11 @@ define(function () {
       type: "tmx",
       src: "maps/L03S17.tmx",
     },
+    {
+      name: "L03S18",
+      type: "tmx",
+      src: "maps/L03S18.tmx",
+    },
   ];
   
   return maps;
