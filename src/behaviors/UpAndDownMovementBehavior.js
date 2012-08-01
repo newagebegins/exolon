@@ -2,17 +2,18 @@ define(
   [
     "src/me",
     "src/util",
+    "src/behaviors/CheckpointMovementBehavior",
   ],
   function (
     me,
-    util
+    util,
+    CheckpointMovementBehavior
   ) {
       
-  var UpAndDownMovementBehavior = Object.extend({
+  var UpAndDownMovementBehavior = CheckpointMovementBehavior.extend({
     
     init: function (host) {
-      this.host = host;
-      
+      this.parent(host)
       this.checkpoints = [
         {
           vel: new me.Vector2d(-1.5, 0),
@@ -30,20 +31,6 @@ define(
           vel: new me.Vector2d(-4, 0),
         },
       ];
-  
-      this.checkpoint = 0;
-      this.passedDistance = 0;
-    },
-    
-    update: function () {
-      var cp = this.checkpoints[this.checkpoint];
-      this.host.pos.add(cp.vel);
-      this.passedDistance += cp.vel.length();
-      
-      if (this.checkpoint < this.checkpoints.length - 1 && this.passedDistance >= cp.distance) {
-        this.passedDistance = 0;
-        this.checkpoint++;
-      }
     },
     
   });
