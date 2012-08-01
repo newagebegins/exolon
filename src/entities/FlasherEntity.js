@@ -4,12 +4,14 @@ define(
     "src/entities/KamikazeEntity",
     "src/behaviors/UpAndDownMovementBehavior",
     "src/behaviors/AccelerationMovementBehavior",
+    "src/behaviors/SwingMovementBehavior",
   ],
   function (
     util,
     KamikazeEntity,
     UpAndDownMovementBehavior,
-    AccelerationMovementBehavior
+    AccelerationMovementBehavior,
+    SwingMovementBehavior
   ) {
       
   var FlasherEntity = KamikazeEntity.extend({
@@ -39,6 +41,9 @@ define(
       
       if (behavior == "acceleration") {
         this.behavior = new AccelerationMovementBehavior(this);
+      }
+      else if (behavior == "swing") {
+        this.behavior = new SwingMovementBehavior(this);
       }
       else {
         this.behavior = new UpAndDownMovementBehavior(this);
