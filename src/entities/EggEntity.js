@@ -29,7 +29,7 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       this.vel.x = util.getRandomArbitrary(-4, 2) + 1;
-      this.vel.y = util.getRandomArbitrary(-2, 1) + 0.5;
+      this.vel.y = util.getRandomArbitrary(-1.5, 0.5) + 0.5;
       this.prevVelX = this.vel.x;
       this.prevVelY = this.vel.y;
     },
@@ -56,7 +56,7 @@ define(
       this.prevVelY = this.vel.y;
       
       this.vel.x = 0;
-      this.vel.y = util.getRandomArbitrary(0.1, 0.5) * Math.sin(this.pos.x / 4);
+      this.vel.y = util.getRandomArbitrary(-0.5, 0.5) * util.randomSign();
       
       this.pos.add(this.vel);
       this.handleCollisions();
