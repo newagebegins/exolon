@@ -16,7 +16,7 @@ define(
       this.parent(host)
       this.checkpoints = [
         {
-          vel: new me.Vector2d(-1.5, 0),
+          vel: new me.Vector2d(-3, 0),
           distance: 176,
         },
         {

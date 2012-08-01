@@ -4,12 +4,14 @@ define(
     "src/entities/KamikazeEntity",
     "src/behaviors/CircularMovementBehavior",
     "src/behaviors/SwingAndAccelerationMovementBehavior",
+    "src/behaviors/UpAndDownMovementBehavior",
   ],
   function (
     util,
     KamikazeEntity,
     CircularMovementBehavior,
-    SwingAndAccelerationMovementBehavior
+    SwingAndAccelerationMovementBehavior,
+    UpAndDownMovementBehavior
   ) {
       
   var JellyfishEntity = KamikazeEntity.extend({
@@ -42,6 +44,9 @@ define(
       }
       else if (behavior == "swing_and_acceleration") {
         this.behavior = new SwingAndAccelerationMovementBehavior(this);
+      }
+      else if (behavior == "up_and_down") {
+        this.behavior = new UpAndDownMovementBehavior(this);
       }
     },
     
