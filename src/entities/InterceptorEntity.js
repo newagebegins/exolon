@@ -4,12 +4,14 @@ define(
     "src/entities/KamikazeEntity",
     "src/behaviors/SwingAndAccelerationMovementBehavior",
     "src/behaviors/AccelerationMovementBehavior",
+    "src/behaviors/ZigZagMovementBehavior",
   ],
   function (
     util,
     KamikazeEntity,
     SwingAndAccelerationMovementBehavior,
-    AccelerationMovementBehavior
+    AccelerationMovementBehavior,
+    ZigZagMovementBehavior
   ) {
       
   var InterceptorEntity = KamikazeEntity.extend({
@@ -39,6 +41,9 @@ define(
       
       if (behavior == "acceleration") {
         this.behavior = new AccelerationMovementBehavior(this);
+      }
+      else if (behavior == "zig_zag") {
+        this.behavior = new ZigZagMovementBehavior(this);
       }
       else {
         this.behavior = new SwingAndAccelerationMovementBehavior(this);
