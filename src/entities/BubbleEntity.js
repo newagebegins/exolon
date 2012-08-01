@@ -4,12 +4,14 @@ define(
     "src/entities/KamikazeEntity",
     "src/behaviors/SwingMovementBehavior",
     "src/behaviors/CircularMovementBehavior",
+    "src/behaviors/ZigZagMovementBehavior",
   ],
   function (
     util,
     KamikazeEntity,
     SwingMovementBehavior,
-    CircularMovementBehavior
+    CircularMovementBehavior,
+    ZigZagMovementBehavior
   ) {
       
   var BubbleEntity = KamikazeEntity.extend({
@@ -39,6 +41,9 @@ define(
       
       if (behavior == "circular") {
         this.behavior = new CircularMovementBehavior(this);
+      }
+      else if (behavior == "zig_zag") {
+        this.behavior = new ZigZagMovementBehavior(this);
       }
       else {
         this.behavior = new SwingMovementBehavior(this);
