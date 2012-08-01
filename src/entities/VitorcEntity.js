@@ -357,13 +357,13 @@ define(
     duck: function () {
       this._setCurrentAnimation("duck");
       this.vel.x = 0;
-      this.updateColRect(-1, 0, 11, 53);
+      this.updateColRect(1, 46, 12, 52);
     },
     
     stand: function () {
       this._setCurrentAnimation("stand");
       this.vel.x = 0;
-      this.updateColRect(-1, 0, 0, 64);
+      this.updateColRect(1, 46, 1, 63);
     },
     
     die: function () {
