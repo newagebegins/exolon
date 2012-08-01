@@ -38,6 +38,7 @@ define(
     "src/entities/LouseCreatorEntity",
     "src/entities/CapsuleEntity",
     "src/entities/BeamEntity",
+    "src/entities/FlasherCreatorEntity",
   ],
   function (
     me,
@@ -77,7 +78,8 @@ define(
     FungusEntity,
     LouseCreatorEntity,
     CapsuleEntity,
-    BeamEntity
+    BeamEntity,
+    FlasherCreatorEntity
   ) {
     
   var app = {
@@ -127,6 +129,7 @@ define(
       me.entityPool.add("louse_creator", LouseCreatorEntity);
       me.entityPool.add("capsule", CapsuleEntity);
       me.entityPool.add("beam", BeamEntity);
+      me.entityPool.add("flasher_creator", FlasherCreatorEntity);
       
       me.input.bindKey(me.input.KEY.LEFT, "left");
       me.input.bindKey(me.input.KEY.RIGHT, "right");

@@ -277,6 +277,11 @@ define(function () {
       type: "image",
       src: "images/beam.gif",
     },
+    {
+      name: "flasher",
+      type: "image",
+      src: "images/flasher.gif",
+    },
     
     // other
     {

@@ -9,7 +9,7 @@ define(function () {
     initialLives: 9,
     initialZones: 0,
     
-    initialLevel: "L01S01",
+    initialLevel: "L03S02",
     
      // "vitorc" or "exolon"
     initialVitorcOutfit: "vitorc",
