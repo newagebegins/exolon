@@ -2,12 +2,12 @@ define(
   [
     "src/util",
     "src/entities/KamikazeEntity",
-    "src/behaviors/UpAndDownMovementBehavior",
+    "src/behaviors/ZigZagMovementBehavior",
   ],
   function (
     util,
     KamikazeEntity,
-    UpAndDownMovementBehavior
+    ZigZagMovementBehavior
   ) {
       
   var FirEntity = KamikazeEntity.extend({
@@ -34,7 +34,7 @@ define(
       this.collidable = true;
       this.isDestroyable = true;
       
-      this.behavior = new UpAndDownMovementBehavior(this);
+      this.behavior = new ZigZagMovementBehavior(this);
     },
     
     updateMovement: function () {

@@ -11,10 +11,10 @@ define(
   var FirCreatorEntity = KamikazeCreatorEntity.extend({
     
     // in sec
-    delay: 0.8,
+    delay: 1.2,
     
     createSpecificKamikaze: function (x, y) {
-      return new FirEntity(x, y, this.behavior);
+      return new FirEntity(x, y + 8, this.behavior);
     },
     
   });
