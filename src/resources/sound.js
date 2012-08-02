@@ -53,7 +53,13 @@ define(function () {
       name: "pick1",
       type: "audio",
       src: "sound/",
-      channel: 2,
+      channel: 1,
+    },
+    {
+      name: "pick2",
+      type: "audio",
+      src: "sound/",
+      channel: 1,
     },
     {
       name: "teleport",

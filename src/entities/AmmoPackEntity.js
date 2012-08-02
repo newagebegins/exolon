@@ -27,7 +27,7 @@ define(
       me.game.remove(this);
       util.setAmmo(config.initialAmmo);
       
-      me.audio.play("pick1");
+      me.audio.play("pick2");
     },
     
   });
