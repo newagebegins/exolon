@@ -58,6 +58,8 @@ define(
       var bullet = new DoubleLauncherBulletEntity(pos.x, pos.y);
       me.game.add(bullet, this.z);
       me.game.sort.defer();
+      
+      me.audio.play("rocket");
     },
     
     getBulletPosition: function () {

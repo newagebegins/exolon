@@ -67,6 +67,12 @@ define(function () {
       src: "sound/",
       channel: 1,
     },
+    {
+      name: "rocket",
+      type: "audio",
+      src: "sound/",
+      channel: 3,
+    },
   ];
   
   return sound;
