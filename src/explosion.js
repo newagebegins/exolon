@@ -16,6 +16,7 @@ define(
       }
       
       me.game.sort.defer();
+      me.audio.play("explosion");
     },
   };
   
