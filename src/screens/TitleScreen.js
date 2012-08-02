@@ -30,6 +30,9 @@ define(
       
       this.fontCyan = new me.BitmapFont("font_cyan", 16);
       this.fontCyan.set("left");
+      
+      this.fontPurple = new me.BitmapFont("font_purple", 16);
+      this.fontPurple.set("left");
     },
     
     onResetEvent: function () {
@@ -63,7 +66,8 @@ define(
       
       context.drawImage(this.titleImg, 128,0);
       this.fontGreen.draw(context, "BY  RAFFAELE CECCO", 112, 112);
-      this.fontCyan.draw(context, "PRESS FIRE TO PLAY", 112, 112 + 16 * 3);
+      this.fontCyan.draw(context, "PRESS      TO PLAY", 112, 112 + 16 * 6);
+      this.fontPurple.draw(context, "      FIRE        ", 112, 112 + 16 * 6);
       this.fontRed.draw(context, "EXOLON COPYRIGHT 1987 HEWSON", 32, 368);
     },
     

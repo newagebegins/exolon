@@ -1,12 +1,20 @@
 body {
   background-color: black;
+  color: #00DEDE;
+  font-family: Verdana,Geneva,sans-serif;
+  font-size: 12px;
+  font-weight: bold;
   margin-top: 20px;
+}
+strong {
+  color: #E800E8;
 }
 #page {
   width: 512px;
   margin: 0 auto;
 }
 #info {
+  margin-bottom: 7px;
   overflow: auto;
 }
 #sound {
@@ -17,9 +25,10 @@ body {
   background-position: 0 5px;
   background-repeat: no-repeat;
   padding-left: 19px;
-  
-  color: #00DEDE;
-  font-family: Impact,Charcoal,sans-serif;
-  font-size: 14px;
   text-decoration: none;
+  color: #00DEDE;
+}
+#help {
+  margin-top: 35px;
+  text-align: right;
 }
