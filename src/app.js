@@ -91,6 +91,8 @@ define(
       me.debug.renderCollisionMap = config.renderCollisionMap;
       
       me.video.init("app", 512, 384);
+      me.audio.init("mp3,ogg");
+      
       me.loader.onload = this.loaded.bind(this);
       me.loader.preload(resources);
       

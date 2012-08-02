@@ -25,6 +25,14 @@ define(
       this.fontCyan.set("left");
     },
     
+    onResetEvent: function () {
+      me.audio.play("theme");
+    },
+    
+    onDestroyEvent: function () {
+      me.audio.stop("theme");
+    },
+    
     update: function () {
       if (me.input.isKeyPressed('fire')) {
         me.state.change(screens.PLAY);
