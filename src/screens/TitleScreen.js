@@ -12,7 +12,7 @@ define(
     StarEntity
   ) {
       
-  var THEME_SONG_LENGTH_MS = 41000;
+  var THEME_SONG_LENGTH_MS = 42000;
   var STARS_NUM = 10;
       
   var TitleScreen = me.ScreenObject.extend({
