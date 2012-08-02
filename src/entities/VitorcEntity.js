@@ -302,11 +302,13 @@ define(
       if (this.insideTeleport) {
         if (!this.jumpPressed) {
           this.doTeleport();
+          me.audio.play("teleport");
         }
       }
       else if (this.insideCapsule) {
         if (!this.jumpPressed) {
           this.doChangeOutfit();
+          me.audio.play("ding");
         }
       }
       else {
@@ -399,8 +401,6 @@ define(
       var otherTeleport = this.getOtherTeleport(teleports);
       this.pos.x = otherTeleport.pos.x;
       this.pos.y = otherTeleport.pos.y + 32;
-      
-      me.audio.play("teleport");
     },
     
     doChangeOutfit: function () {
