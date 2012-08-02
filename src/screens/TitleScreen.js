@@ -18,6 +18,8 @@ define(
   var TitleScreen = me.ScreenObject.extend({
     
     init: function () {
+      this.parent(true);
+      
       this.titleImg = me.loader.getImage("title");
       
       this.fontGreen = new me.BitmapFont("font_green", 16);
@@ -32,7 +34,6 @@ define(
     
     onResetEvent: function () {
       this.stars = [];
-      me.game.add(this, 1);
       util.executeWithDelay(this.createStars.bind(this), THEME_SONG_LENGTH_MS);
       me.audio.play("theme");
     },
