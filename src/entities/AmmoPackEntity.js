@@ -26,6 +26,8 @@ define(
       this.collidable = false;
       me.game.remove(this);
       util.setAmmo(config.initialAmmo);
+      
+      me.audio.play("pick1");
     },
     
   });

@@ -16,6 +16,8 @@ define(
       
       this.animationspeed = 1;
       this.setCurrentAnimation("default", function () { me.game.remove(this); });
+      
+      me.audio.play("explosion3");
     },
     
   });

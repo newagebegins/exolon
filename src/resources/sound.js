@@ -44,6 +44,12 @@ define(function () {
       channel: 3,
     },
     {
+      name: "explosion3",
+      type: "audio",
+      src: "sound/",
+      channel: 3,
+    },
+    {
       name: "pick1",
       type: "audio",
       src: "sound/",
