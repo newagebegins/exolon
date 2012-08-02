@@ -55,6 +55,8 @@ define(
       var explosion = new BlasterExplosion(this.pos.x, this.pos.y);
       me.game.add(explosion, this.z);
       me.game.sort.defer();
+      
+      me.audio.play("burst");
     },
     
   });
