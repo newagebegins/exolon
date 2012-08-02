@@ -26,6 +26,8 @@ define(
       this.collidable = false;
       me.game.remove(this);
       util.setGrenades(config.initialGrenades);
+      
+      me.audio.play("pick1");
     },
     
   });

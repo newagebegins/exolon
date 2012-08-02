@@ -43,6 +43,12 @@ define(function () {
       src: "sound/",
       channel: 3,
     },
+    {
+      name: "pick1",
+      type: "audio",
+      src: "sound/",
+      channel: 2,
+    },
   ];
   
   return sound;
