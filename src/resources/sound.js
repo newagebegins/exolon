@@ -61,6 +61,12 @@ define(function () {
       src: "sound/",
       channel: 2,
     },
+    {
+      name: "burst",
+      type: "audio",
+      src: "sound/",
+      channel: 1,
+    },
   ];
   
   return sound;

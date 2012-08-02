@@ -55,6 +55,8 @@ define(
       var explosion = this.createSpecificExplosion(this.pos.x, this.pos.y);
       me.game.add(explosion, this.z + 1);
       me.game.sort.defer();
+      
+      me.audio.play("burst");
     },
     
     createSpecificExplosion: function (x, y) {
