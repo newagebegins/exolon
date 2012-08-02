@@ -1,13 +1,24 @@
+body {
+  background-color: black;
+}
+#page {
+  width: 512px;
+  margin: 0 auto;
+}
 #info {
   overflow: auto;
 }
-#info, #app {
-  width: 512px;
-}
-#fps {
+#sound {
   float: right;
 }
-#framecounter {
-  font-size: 10px;
-  font-family: "Courier New";
+#sound a {
+  background-image: url("../images/audio_icon.gif");
+  background-position: 0 5px;
+  background-repeat: no-repeat;
+  padding-left: 19px;
+  
+  color: #00DEDE;
+  font-family: Impact,Charcoal,sans-serif;
+  font-size: 14px;
+  text-decoration: none;
 }
