@@ -25,6 +25,12 @@ define(function () {
       src: "sound/",
       channel: 1,
     },
+    {
+      name: "grenade",
+      type: "audio",
+      src: "sound/",
+      channel: 1,
+    },
   ];
   
   return sound;

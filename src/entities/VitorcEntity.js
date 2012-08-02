@@ -354,6 +354,8 @@ define(
       
       global.aliveGrenadesCount++;
       util.updateGrenades(-1);
+      
+      me.audio.play("grenade");
     },
     
     duck: function () {
