@@ -73,6 +73,12 @@ define(function () {
       src: "sound/",
       channel: 3,
     },
+    {
+      name: "points",
+      type: "audio",
+      src: "sound/",
+      channel: 1,
+    },
   ];
   
   return sound;

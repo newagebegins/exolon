@@ -16,6 +16,8 @@ define(
       this.timer = 0;
       this.delay = 0.04;
       this.onComplete = null;
+      
+      me.audio.play("points");
     },
     
     update: function () {
