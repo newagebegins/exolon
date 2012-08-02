@@ -133,7 +133,7 @@
   <object name="bubble_creator" gid="543" x="512" y="96">
    <properties>
     <property name="behavior" value="zig_zag"/>
-    <property name="delay" value="1.2"/>
+    <property name="delay" value="1.5"/>
    </properties>
   </object>
  </objectgroup>
