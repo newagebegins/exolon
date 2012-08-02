@@ -30,8 +30,27 @@ define(["src/me", "src/global"], function (me, global) {
     return str;
   };
   
+  var ExecutionTimer = Object.extend({
+    init: function (callback, delay) {
+      this.time = 0;
+      this.callback = callback;
+      this.delay = delay;
+    },
+    update: function () {
+      this.time +=  (me.timer.tick / me.sys.fps) * 1000;
+      if (this.time > this.delay) {
+        this.callback();
+        me.game.remove(this);
+      }
+    }
+  });
+  
+  /**
+   * delay - in ms
+   */
   util.executeWithDelay = function (callback, delay) {
-    new me.Tween({t: 0}).to({t: 100}, delay).onComplete(callback).start();
+    me.game.add(new ExecutionTimer(callback, delay), 1);
+    me.game.sort.defer();
   };
   
   util.setAmmo = function (value) {

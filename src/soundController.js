@@ -3,12 +3,13 @@ define(["src/me"], function (me) {
   
   function toggleSound() {
     if (me.audio.isAudioEnable()) {
-      me.audio.stop("theme");
+      me.audio.pauseTrack();
       me.audio.disable();
       anchor.text('ENABLE SOUND');
     }
     else {
       me.audio.enable();
+      me.audio.resumeTrack();
       anchor.text('DISABLE SOUND');
     }
     return false;

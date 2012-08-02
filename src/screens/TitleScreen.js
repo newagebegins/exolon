@@ -35,11 +35,11 @@ define(
     onResetEvent: function () {
       this.stars = [];
       util.executeWithDelay(this.createStars.bind(this), THEME_SONG_LENGTH_MS);
-      me.audio.play("theme");
+      me.audio.playTrack("theme", false);
     },
     
     onDestroyEvent: function () {
-      me.audio.stop("theme");
+      me.audio.stopTrack("theme");
     },
     
     update: function () {
