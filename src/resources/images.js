@@ -63,6 +63,11 @@ define(function () {
     
     // entities
     {
+      name: "star",
+      type: "image",
+      src: "images/star.gif",
+    },
+    {
       name: "vitorc",
       type: "image",
       src: "images/vitorc.gif",
