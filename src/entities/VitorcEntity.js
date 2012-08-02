@@ -334,6 +334,8 @@ define(
       
       global.aliveBlasterBulletCount++;
       util.updateAmmo(-1);
+      
+      me.audio.play("shot2");
     },
     
     fireGrenade: function () {

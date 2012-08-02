@@ -14,10 +14,16 @@ define(function () {
       channel: 2,
     },
     {
+      name: "shot2",
+      type: "audio",
+      src: "sound/",
+      channel: 3,
+    },
+    {
       name: "gameover",
       type: "audio",
       src: "sound/",
-      channel: 2,
+      channel: 1,
     },
   ];
   
