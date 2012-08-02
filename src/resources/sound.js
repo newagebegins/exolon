@@ -49,6 +49,12 @@ define(function () {
       src: "sound/",
       channel: 2,
     },
+    {
+      name: "teleport",
+      type: "audio",
+      src: "sound/",
+      channel: 2,
+    },
   ];
   
   return sound;

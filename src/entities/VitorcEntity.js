@@ -399,6 +399,8 @@ define(
       var otherTeleport = this.getOtherTeleport(teleports);
       this.pos.x = otherTeleport.pos.x;
       this.pos.y = otherTeleport.pos.y + 32;
+      
+      me.audio.play("teleport");
     },
     
     doChangeOutfit: function () {

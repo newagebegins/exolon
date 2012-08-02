@@ -14,7 +14,7 @@ define(
       settings.spritewidth = TeleportFlashEntity.WIDTH;
       this.parent(x, y + TeleportFlashEntity.HEIGHT, settings);
       
-      this.animationspeed = 1;
+      this.animationspeed = 0.5;
       this.setCurrentAnimation("default", function () { me.game.remove(this); });
     },
     
