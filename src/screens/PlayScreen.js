@@ -86,7 +86,8 @@ define(
       global.aliveGrenadesCount = 0;
       global.aliveMissilesCount = 0;
       
-      setTimeout(function () { me.state.change(screens.TITLE); }, 3000);
+      setTimeout(function () { me.state.change(screens.TITLE); }, 4000);
+      me.audio.play("gameover");
     },
     
     restoreVitorcProperties: function (vitorc, prevLevelVitorc) {
