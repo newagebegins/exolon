@@ -37,6 +37,12 @@ define(function () {
       src: "sound/",
       channel: 2,
     },
+    {
+      name: "explosion2",
+      type: "audio",
+      src: "sound/",
+      channel: 3,
+    },
   ];
   
   return sound;

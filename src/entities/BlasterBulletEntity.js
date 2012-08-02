@@ -60,6 +60,8 @@ define(
       var explosion = new BlasterExplosion(this.pos.x, this.pos.y - 5);
       me.game.add(explosion, this.z);
       me.game.sort.defer();
+      
+      me.audio.play("explosion2");
     },
     
     onDestroyEvent: function () {
