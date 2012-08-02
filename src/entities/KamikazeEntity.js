@@ -40,11 +40,12 @@ define(
       
       if (hitVitorc) {
         this.createExplosion();
+        util.updatePoints(this.points);
       }
     },
     
     onCollision: function (res, obj) {
-      if (obj.name == "blaster_bullet") {
+      if (obj.name == "blaster_bullet" || obj.name == "vitorc") {
         me.game.remove(this);
         this.createExplosion();
         util.updatePoints(this.points);
