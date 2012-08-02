@@ -52,6 +52,7 @@ define(
     fire: function () {
       this.setCurrentAnimation("fire", "default");
       this.createBullet();
+      me.audio.play("shot1");
     },
     
     resetFireDurationAndTimer: function () {
