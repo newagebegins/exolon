@@ -3,6 +3,7 @@ define(
     "src/me",
     "src/config",
     "src/screens",
+    "src/soundController",
     "src/resources/resources",
     
     "src/screens/TitleScreen",
@@ -45,6 +46,7 @@ define(
     me,
     config,
     screens,
+    soundController,
     resources,
     
     TitleScreen,
@@ -87,6 +89,8 @@ define(
   var app = {
     
     onload: function () {
+      soundController.init();
+      
       me.debug.renderHitBox = config.renderHitBox;
       me.debug.renderCollisionMap = config.renderCollisionMap;
       
