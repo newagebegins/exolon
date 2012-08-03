@@ -28,6 +28,18 @@ strong {
   text-decoration: none;
   color: #00DEDE;
 }
+#app {
+  height: 387px;
+  position: relative;
+  width: 512px;
+}
+#loading {
+  color: #E800E8;
+  font-size: 18px;
+  left: 13%;
+  position: absolute;
+  top: 46%;
+}
 #help {
   margin-top: 35px;
   text-align: right;

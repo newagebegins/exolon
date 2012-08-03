@@ -6,6 +6,7 @@ define(
     "src/soundController",
     "src/resources/resources",
     
+    "src/screens/LoadingScreen",
     "src/screens/TitleScreen",
     "src/screens/PlayScreen",
     "src/screens/BonusScreen",
@@ -49,6 +50,7 @@ define(
     soundController,
     resources,
     
+    LoadingScreen,
     TitleScreen,
     PlayScreen,
     BonusScreen,
@@ -100,7 +102,8 @@ define(
       me.loader.onload = this.loaded.bind(this);
       me.loader.preload(resources);
       
-      me.state.change(me.state.LOADING);
+      me.state.set(screens.LOADING, new LoadingScreen());
+      me.state.change(screens.LOADING);
     },
     
     loaded: function () {

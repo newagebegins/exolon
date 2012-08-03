@@ -2,6 +2,12 @@ define(function () {
   
   var images = [
     
+    {
+      name: "loading_bg",
+      type: "image",
+      src: "images/loading_bg.gif",
+    },
+    
     // fonts
     {
       name: "font_white",

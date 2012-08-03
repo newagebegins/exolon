@@ -3,9 +3,10 @@ define(function () {
   var baseID = 100;
   
   var screens = {
-    TITLE: baseID,
-    PLAY: baseID + 1,
-    BONUS: baseID + 2,
+    LOADING: baseID,
+    TITLE: baseID + 1,
+    PLAY: baseID + 2,
+    BONUS: baseID + 3,
   };
   
   return screens;
