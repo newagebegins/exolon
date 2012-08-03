@@ -38,7 +38,12 @@ strong {
   font-size: 18px;
   left: 13%;
   position: absolute;
+  text-align: center;
   top: 46%;
+}
+#loading small {
+  color: #00DEDE;
+  font-size: 12px;
 }
 #help {
   margin-top: 35px;
