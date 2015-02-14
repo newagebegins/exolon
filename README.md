@@ -3,7 +3,7 @@ Exolon - An HTML5 remake of the 1987 ZX Spectrum game
 
 [Play](http://newagebegins.github.com/exolon/exolon.html)
 
-It works best in Firefox, Chrome and IE 9.
+It works best in Firefox and Chrome.
 
 This game was developed using [melonJS](http://melonjs.org/)
 
