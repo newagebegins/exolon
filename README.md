@@ -1,7 +1,7 @@
 Exolon - An HTML5 remake of the 1987 ZX Spectrum game
 =============================================================================
 
-[Play](http://newagebegins.github.com/exolon/exolon.html)
+[Play](http://newagebegins.github.io/exolon/exolon.html)
 
 It works best in Firefox and Chrome.
 
